@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20171120144030) do
 
-ActiveRecord::Schema.define(version: 20171120130204) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20171120130204) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
+  end
+
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_chatrooms_on_doctor_id"
+    t.index ["patient_id"], name: "index_chatrooms_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -94,6 +104,15 @@ ActiveRecord::Schema.define(version: 20171120130204) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.string "sender"
+    t.bigint "chatroom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -154,10 +173,13 @@ ActiveRecord::Schema.define(version: 20171120130204) do
 
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
+  add_foreign_key "chatrooms", "doctors"
+  add_foreign_key "chatrooms", "patients"
   add_foreign_key "doctors_notes", "doctors"
   add_foreign_key "doctors_notes", "patients"
   add_foreign_key "documents", "doctors"
   add_foreign_key "doses", "medications"
   add_foreign_key "doses", "prescriptions"
+  add_foreign_key "messages", "chatrooms"
   add_foreign_key "prescriptions", "doctors_notes"
 end
