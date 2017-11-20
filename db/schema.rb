@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120134416) do
+
+ActiveRecord::Schema.define(version: 20171120130204) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171120134416) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
     t.index ["specialty_id"], name: "index_doctors_on_specialty_id"
@@ -55,6 +58,14 @@ ActiveRecord::Schema.define(version: 20171120134416) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_doctors_notes_on_doctor_id"
     t.index ["patient_id"], name: "index_doctors_notes_on_patient_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+    t.index ["doctor_id"], name: "index_documents_on_doctor_id"
   end
 
   create_table "doses", force: :cascade do |t|
@@ -106,6 +117,7 @@ ActiveRecord::Schema.define(version: 20171120134416) do
     t.string "religion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_patients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end
@@ -144,6 +156,7 @@ ActiveRecord::Schema.define(version: 20171120134416) do
   add_foreign_key "appointments", "patients"
   add_foreign_key "doctors_notes", "doctors"
   add_foreign_key "doctors_notes", "patients"
+  add_foreign_key "documents", "doctors"
   add_foreign_key "doses", "medications"
   add_foreign_key "doses", "prescriptions"
   add_foreign_key "prescriptions", "doctors_notes"
