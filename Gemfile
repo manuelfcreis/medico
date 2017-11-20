@@ -12,6 +12,7 @@ gem 'redis'
 # File Upload
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'mini_magick'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
