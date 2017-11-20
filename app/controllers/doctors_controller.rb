@@ -2,7 +2,7 @@ class DoctorsController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @patients = Patient.all
+    @doctors = Doctor.all
   end
 
   def show

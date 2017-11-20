@@ -1,9 +1,8 @@
 class PatientsController < ApplicationController
-
   # before_action :authenticate_user!
 
   def index
-    @doctors = Doctor.all
+    @patients = Patient.all
   end
 
   def show
@@ -13,7 +12,6 @@ class PatientsController < ApplicationController
   def edit
     @patient = Patient.find(params[:id])
   end
-
 
   private
 
