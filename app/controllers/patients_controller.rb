@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   # before_action :authenticate_user!
 
   def index
@@ -12,6 +13,7 @@ class PatientsController < ApplicationController
   def edit
     @patient = Patient.find(params[:id])
   end
+
 
   private
 

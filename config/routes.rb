@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :patients
-  devise_for :doctors
+  devise_for :patients, path: 'patients'
+  devise_for :doctors, path: 'doctors'
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
+  get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
 end
 
 

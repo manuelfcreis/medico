@@ -12,6 +12,8 @@
 
 ActiveRecord::Schema.define(version: 20171120144030) do
 
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171120144030) do
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
+
 
   create_table "chatrooms", force: :cascade do |t|
     t.bigint "doctor_id"
