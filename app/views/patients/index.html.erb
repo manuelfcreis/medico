@@ -1,5 +1,5 @@
-<h1>This is the patients dashboard</h1>
-<% @patients.each do |d| %>
-<%= d.first_name %>
-<%= d.last_name %>
+<h1>This is your list of patients</h1>
+<% @patients.each do |p| %>
+<%= p.first_name %>
+<%= p.last_name %>
 <% end %>
