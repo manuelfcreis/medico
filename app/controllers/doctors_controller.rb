@@ -2,11 +2,11 @@ class DoctorsController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @patients = Patient.all
+    @doctors = Doctor.all
   end
 
   def show
-    @patient = Patient.find(params[:id])
+    @doctor = Doctor.find(params[:id])
   end
 
   def edit
