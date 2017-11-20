@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
+    resources :doctors_notes, only: ['show']
     resources :chatrooms, only: ['show', 'create'] do
       resources :messages
     end
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
+    resources :doctors_notes, only: ['new', 'create', 'show']
     resources :chatrooms, only: ['show', 'create'] do
       resources :messages, only: ['show', 'new', 'create']
     end
