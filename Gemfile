@@ -22,6 +22,9 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+# calendar
+gem "simple_calendar", "~> 2.0"
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
