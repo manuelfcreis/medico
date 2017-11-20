@@ -11,4 +11,6 @@ class Patient < ApplicationRecord
   has_many :prescriptions, through: :doctors_notes
   has_many :doses, through: :prescriptions
   has_many :medications, through: :doses
+  has_many :messages, through: :chatrooms
+  has_many :chatrooms
 end
