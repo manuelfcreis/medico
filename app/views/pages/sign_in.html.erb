@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="sign-in-form">
+    <div id="form">
+      <div>
+        <h2>You are a:</h2>
+      </div>
+      <ul class="list list-inline" id="question">
+        <li><%= button_to 'Doctor', new_doctor_session_path, class: 'btn btn-primary btn-lg', id: 'doctor' %></li>
+        <li><%= button_to 'Patient', new_patient_session_path, class: 'btn btn-success btn-lg', id: 'patient' %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+

@@ -1,3 +1,6 @@
 class DoctorsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+
+  def show
+  end
 end
