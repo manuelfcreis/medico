@@ -11,5 +11,6 @@ class Doctor < ApplicationRecord
   has_one :specialty
 
   has_many :documents
-
+  has_many :messages, through: :chatrooms
+  has_many :chatrooms
 end
