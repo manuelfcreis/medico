@@ -75,3 +75,23 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.patient {
+  background: $patient !important;
+  a {
+    color: #FEfEfE;
+    &:hover {
+      color: #DDD;
+    }
+  }
+}
+
+.doctor {
+  background: $doctor !important;
+  a {
+    color: #fefefe;
+    &:hover {
+      color: #DDD;
+    }
+  }
+}

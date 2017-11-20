@@ -13,6 +13,11 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
   end
 
+  def chatroom
+    @patient = Patient.find(params[:id])
+    @doctor = current_doctor
+  end
+
   private
 
   # def verify_role
