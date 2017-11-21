@@ -12,8 +12,6 @@ class MessagesController < ApplicationController
     @message.chat = @chat
     @message.sender = params[:sender]
 
-    byebug
-
     if @message.save
       ActionCable.server.broadcast "room_channel_#{@chat.id}",
          content:  @message.content,
