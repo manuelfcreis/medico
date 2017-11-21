@@ -92,7 +92,14 @@ Rails.application.configure do
 
   # cable for action cable
   config.web_socket_server_url = "wss://medi-co.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://medi-co.herokuapp.com', 'http://medi-co.herokuapp.com', 'http://www.medi-co.pt']
-
+  config.action_cable.allowed_request_origins = [
+    'https://medi-co.herokuapp.com',
+    'http://medi-co.herokuapp.com',
+    'http://www.medi-co.pt',
+    'https://www.medi-co.pt'
+    /http:\/\/medi-co.herokuapp.com.*/,
+    /http:\/\/www.medi-co.pt.*/,
+    /http:\/\/medi-co.herokuapp.com.*/,
+    /http:\/\/www.medi-co.pt.*/]
 
 end
