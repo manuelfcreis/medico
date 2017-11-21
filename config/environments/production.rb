@@ -96,7 +96,7 @@ Rails.application.configure do
     'https://medi-co.herokuapp.com',
     'http://medi-co.herokuapp.com',
     'http://www.medi-co.pt',
-    'https://www.medi-co.pt'
+    'https://www.medi-co.pt',
     /http:\/\/medi-co.herokuapp.com.*/,
     /http:\/\/www.medi-co.pt.*/,
     /http:\/\/medi-co.herokuapp.com.*/,
