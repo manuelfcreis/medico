@@ -1,0 +1,15 @@
+.home-banner {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .banner-content{
+    text-shadow: 1px 1px black;
+    font-family:'Lato', sans-serif;
+  }
+}
+

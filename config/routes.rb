@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
+  get '/patient', to: 'pages#patient'
+  get '/doctor', to: 'pages#doctor'
 end
 
 
