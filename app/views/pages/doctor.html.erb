@@ -1,0 +1,80 @@
+<%= render 'shared/home_banner' %>
+<div class="wrapper">
+
+  <div class="card-a" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 50%), url('https://s3-eu-west-1.amazonaws.com/medi-co/Images/nick-hillier-215633.jpg');">
+    <div class="card-a-box">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>The flexibility to practice medicine anywhere</h3>
+          <p>Medi-co lets you connect with patients via secure messaging and document sharing from your mobile device. With Medi-co, you have the flexibility to consult anytime, anywhere -when it’s convenient for you.</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card-a-image">
+              <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Images/app_screens_shot.png', :width=>300) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card-b" style= "background-color: white;">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card-b-image">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Images/conversations_screenshot.png', :width=>500, class: "card-b-image-1") %>
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Images/x-ray.png', :width=>200, class: "card-b-image-2") %>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="card-b-content">
+          <h3>A better way to connect with your patients</h3>
+          <p>Instantly communicate and share with your patients on our Medi-co chat feature.</p>
+          <p>Easy to use tools that allow you to:</p>
+          <ul>
+            <li>conveniently instant message your patients</li>
+            <li>securely and quickly send critical documents
+            to your patients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card-c" style= "background-color: white;">
+    <div class="card-c-content">
+      <h3>A better way to connect with your practice</h3>
+
+      <div class="row" style="align-items: center; display: flex;">
+        <div class="col-sm-6 benefitsss-icons">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/schedule_icon+2.png', :width=>110) %>
+          <h4>Flexible schedule</h4>
+          <p>Consult on your schedule when it’s convenient for you</p>
+        </div>
+        <div class="col-sm-6 benefitsss-icons" style="    margin-top: -4%;">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/practice_icon+2.png', :width=>70) %>
+          <h4>Grow your practice</h4>
+          <p>Attract new patients and eliminate urgent care visits</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 benefitsss-icons">
+         <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/outdoor_icon+2.png', :width=>70) %>
+         <h4>Work life balance</h4>
+         <p>Free yourself from the office by treating patients virtually</p>
+       </div>
+       <div class="col-sm-6 benefitsss-icons">
+        <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/health_care_icon.png', :width=>70) %>
+        <h4>Continuity of care</h4>
+        <p>More frequent check-ins with patients online</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
