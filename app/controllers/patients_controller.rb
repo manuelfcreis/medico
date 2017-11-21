@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   # before_action :authenticate_user!
+  include ApplicationHelper
 
   def index
     @patients = Patient.all
@@ -8,11 +9,33 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @doctor = current_doctor
-    @chatroom = Chatroom.where(patient_id: @patient.id, doctor_id: @doctor.id)[0]
+
+    @sender = current_active
+    @receiver = current_other
+
+    @chat = chat_builder(@receiver, @sender)
+    @messages = @chat.messages
+    @message = Message.new
   end
 
   def edit
     @patient = Patient.find(params[:id])
+  end
+
+    def new
+    @patient = Patient.new 
+  end
+  
+  def create
+    @patient = Patient.new(params[:patient])
+    if @patient.save
+      flash[:notice] = "You signed up successfully"
+      flash[:color]= "valid"
+    else
+      flash[:notice] = "Form is invalid"
+      flash[:color]= "invalid"
+    end
+    render "new"
   end
 
   private

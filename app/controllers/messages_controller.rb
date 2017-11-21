@@ -1,29 +1,32 @@
 class MessagesController < ApplicationController
+  include ApplicationHelper
+  def index
+  end
+
   def create
-    if !current_doctor.nil?
-      @sender = current_doctor
-    elsif !current_patient.nil?
-      @sender = current_patient
-    else
-      redirect_to root_path
-    end
+    @messages = current_active.messages
+    @receiver = receiver_finder(params[:chat_id], params[:sender])
+    @chat = Chat.find(params[:chat_id])
 
-    message = Message.new(message_params)
+    @message = current_active.messages.build(message_params)
+    @message.chat = @chat
+    @message.sender = params[:sender]
 
-    if message.save
-      ActionCable.server.broadcast 'messages',
-        message: message.content,
-        user: message.sender.first_name
-      head :ok
+    if @message.save
+      ActionCable.server.broadcast "room_channel_#{@chat.id}",
+         content:  @message.content,
+         username: @message.sender
     end
   end
 
   private
-  def message_params(sender)
-    if sender.class.to_s.downcase == "Doctor"
-      patient_id: params[:id], doctor_id: sender.id, content: params.require(:message).permit(:content)
-    else
-      patient_id: sender.id, doctor_id: params[:id], content: params.require(:message).permit(:content)
+
+    def get_messages
+      @messages = Message.for_display
+      @message  = current_active.messages.build
     end
-  end
+
+    def message_params
+      params.require(:message).permit(:content)
+    end
 end

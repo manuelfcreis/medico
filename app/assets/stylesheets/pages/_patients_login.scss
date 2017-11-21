@@ -1,0 +1,64 @@
+.patients-login {
+	height: 800px;
+	background-image: url(http://launchwithseven.com/wp-content/uploads/startupmeeting2.png?id=2203);
+	h2 {
+		margin-top: 80px;
+		text-align: center;
+		color: #f2f2f2;
+		font-family: Helvetica, sans-serif;
+		font-size: 36px;
+		font-weight: lighter;
+	}
+	.log-in-form {
+		.form-inputs {
+			margin-top: 70px;
+			#textfield{
+				display: block;
+				text-align: middle;
+				margin-left: 377px;
+				background-color: transparent;
+				border: none;
+				outline: none;
+			}
+		}
+		.form-actions {
+			margin-top: 50px;
+			#button {
+				font-family: Helvetica, sans-serif;
+				font-weight: bold;
+				width: 200px;
+				margin-left: 377px;
+				background-color: #84dcc6;
+				border-color: #84dcc6;
+				outline-color: #84dcc6;
+			}
+		}
+	}
+
+	.sign-up-form {
+		.form-inputs {
+			margin-top: 70px;
+			#textfield{
+				display: block;
+				text-align: middle;
+				margin-left: 135px;
+				background-color: transparent;
+				border: none;
+				outline: none;
+			}
+		}
+		.form-actions {
+			margin-top: 50px;
+			#button {
+				font-family: Helvetica, sans-serif;
+				font-weight: bold;
+				width: 200px;
+				margin-left: 135px;
+				background-color: #84dcc6;
+				border-color: #84dcc6;
+				outline-color: #84dcc6;
+			}
+		}
+
+	}
+}

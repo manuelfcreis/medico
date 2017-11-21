@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  mount ActionCable.server => '/cable'
+  mount ActionCable.server, at: '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
     resources :appointments, only: ['show']
-
-    resources :chatrooms, only: ['show', 'create'] do
+    resources :doctors_notes, only: ['show']
+    resources :chats, only: ['show', 'create'] do
       resources :messages
     end
 
@@ -21,13 +21,14 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
+    
     resources :appointments, only: ['new', 'create', 'show'] do
       resources :prescriptions, only: ['new', 'create'] do
         resources :doses, only: ['new', 'create']
       end
     end
 
-    resources :chatrooms, only: ['show', 'create'] do
+    resources :chats, only: ['show', 'create'] do
       resources :messages, only: ['show', 'new', 'create']
     end
 
