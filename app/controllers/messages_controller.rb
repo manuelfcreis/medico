@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast "room_channel_#{@chat.id}",
          content:  @message.content,
-         username: @message.sender
+         sender: @message.sender.strip
     end
   end
 
