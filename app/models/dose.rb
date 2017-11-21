@@ -1,4 +1,4 @@
 class Dose < ApplicationRecord
   belongs_to :medication
-  belongs_to :prescription
+  has_one :prescription
 end

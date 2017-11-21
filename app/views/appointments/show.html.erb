@@ -1,0 +1,16 @@
+<h3>this should show the doctor's notes</h3>
+<p>Patient: <%= @appointment.patient.first_name %> <%= @appointment.patient.last_name %></p>
+<p>Note: </p>
+
+<% if @prescription.id == nil %>
+<div class="prescription">
+  <div class="prescription-new">
+    <%= simple_form_for [@patient, @appointment, @prescription] do |f| %>
+      <%= f.submit "CREATE PRESCRIPTION", class: "btn btn-primary" %>
+    <% end  %>
+  </div>
+</div>
+<% else %>
+  <%= render 'shared/dose' %>
+<% end %>
+

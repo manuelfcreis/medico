@@ -22,6 +22,22 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
   end
 
+    def new
+    @patient = Patient.new 
+  end
+  
+  def create
+    @patient = Patient.new(params[:patient])
+    if @patient.save
+      flash[:notice] = "You signed up successfully"
+      flash[:color]= "valid"
+    else
+      flash[:notice] = "Form is invalid"
+      flash[:color]= "invalid"
+    end
+    render "new"
+  end
+
   private
 
   # def verify_role

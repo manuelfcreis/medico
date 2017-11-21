@@ -1,0 +1,8 @@
+<%= simple_form_for [@patient, @appointment, @prescription, @dose] do |f| %>
+  <%= f.input :days %>
+  <%= f.input :frequency %>
+  <%= f.input :quantity %>
+  <%= f.input :description %>
+  <%= f.input :medication_id%>
+  <%= f.submit %>
+<% end %>

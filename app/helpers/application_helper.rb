@@ -49,5 +49,17 @@ module ApplicationHelper
     elsif sender_class == 'patient'
       Doctor.find(Chat.find(chat_id).doctor_id)
     end
+
+  def resource_name
+    :patient
+  end
+
+  def resource
+    @resource ||= Patient.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:patient]
+
   end
 end

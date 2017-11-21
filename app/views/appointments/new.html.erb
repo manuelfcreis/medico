@@ -1,0 +1,11 @@
+<h1>Form for new note should be here</h1>
+<div class="appointment">
+  <div class="container">
+    <%= simple_form_for [@patient, @appointment] do |f| %>
+        <%= f.input :date %>
+        <%= f.input :duration %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+    <% end  %>
+  </div>
+</div>
+
