@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171120144030) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,16 +57,6 @@ ActiveRecord::Schema.define(version: 20171120144030) do
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
     t.index ["specialty_id"], name: "index_doctors_on_specialty_id"
-  end
-
-  create_table "doctors_notes", force: :cascade do |t|
-    t.bigint "doctor_id"
-    t.bigint "patient_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_doctors_notes_on_doctor_id"
-    t.index ["patient_id"], name: "index_doctors_notes_on_patient_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -139,10 +131,10 @@ ActiveRecord::Schema.define(version: 20171120144030) do
   end
 
   create_table "prescriptions", force: :cascade do |t|
-    t.bigint "doctors_note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctors_note_id"], name: "index_prescriptions_on_doctors_note_id"
+    t.bigint "appointment_id"
+    t.index ["appointment_id"], name: "index_prescriptions_on_appointment_id"
   end
 
   create_table "specialties", force: :cascade do |t|
@@ -172,11 +164,8 @@ ActiveRecord::Schema.define(version: 20171120144030) do
   add_foreign_key "appointments", "patients"
   add_foreign_key "chatrooms", "doctors"
   add_foreign_key "chatrooms", "patients"
-  add_foreign_key "doctors_notes", "doctors"
-  add_foreign_key "doctors_notes", "patients"
   add_foreign_key "documents", "doctors"
   add_foreign_key "doses", "medications"
   add_foreign_key "doses", "prescriptions"
   add_foreign_key "messages", "chatrooms"
-  add_foreign_key "prescriptions", "doctors_notes"
 end
