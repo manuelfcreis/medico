@@ -1,13 +1,17 @@
+<%= content_for :title, "medi-co" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="chatid" <%= content_for?(:chatid_content) ? yield(:chatid_content) : "no chat"%>>
-    <title>TODO</title>
+    <title>medi-co</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+    </style>
   </head>
   <body>
     <%= render 'shared/navbar' %>

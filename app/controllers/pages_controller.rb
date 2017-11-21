@@ -16,4 +16,10 @@ class PagesController < ApplicationController
 
   def sign_in
   end
+
+  def patient
+  end
+
+  def doctor
+  end
 end
