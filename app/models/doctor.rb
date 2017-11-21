@@ -9,8 +9,8 @@ class Doctor < ApplicationRecord
   has_many :doctors_notes
   has_many :patients, through: :doctors_notes
   has_one :specialty
+  has_many :chats
+  has_many :messages, through: :chats
 
   has_many :documents
-  has_many :messages, through: :chatrooms
-  has_many :chatrooms
 end

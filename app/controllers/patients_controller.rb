@@ -9,7 +9,12 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @doctor = current_doctor
-    @chatroom = chatroom_builder(@patient, @doctor)
+
+    @sender = current_active
+    @receiver = current_other
+
+    @chat = chat_builder(@receiver, @sender)
+    @messages = @chat.messages
     @message = Message.new
   end
 

@@ -15,14 +15,39 @@ module ApplicationHelper
     end
   end
 
-  def chatroom_builder(patient, doctor)
-    chat = Chatroom.where(patient_id: patient.id, doctor_id: doctor.id)
+  def chat_builder(patient, doctor)
+    chat = Chat.where(patient_id: patient.id, doctor_id: doctor.id)
 
     if chat.empty?
-      chat = Chatroom.create(patient_id: patient.id, doctor_id: doctor.id)
+      chat = Chat.create(patient_id: patient.id, doctor_id: doctor.id)
       return chat
     else
       return chat[0]
+    end
+  end
+
+  def current_active
+    if current_class == 'doctor'
+      current_doctor
+    elsif current_class == 'patient'
+      current_patient
+    end
+  end
+
+
+  def current_other
+    if current_class == 'doctor'
+      @patient
+    elsif current_class == 'patient'
+      @doctor
+    end
+  end
+
+  def receiver_finder(chat_id, sender_class)
+    if sender_class == 'doctor'
+      Patient.find(Chat.find(chat_id).patient_id)
+    elsif sender_class == 'patient'
+      Doctor.find(Chat.find(chat_id).doctor_id)
     end
   end
 end

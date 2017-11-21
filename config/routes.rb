@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
     resources :doctors_notes, only: ['show']
-    resources :chatrooms, only: ['show', 'create'] do
+    resources :chats, only: ['show', 'create'] do
       resources :messages
     end
 
@@ -21,8 +21,7 @@ Rails.application.routes.draw do
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
     resources :doctors_notes, only: ['new', 'create', 'show']
-
-    resources :chatrooms, only: ['show', 'create'] do
+    resources :chats, only: ['show', 'create'] do
       resources :messages, only: ['show', 'new', 'create']
     end
 
@@ -33,7 +32,6 @@ Rails.application.routes.draw do
 
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
-  post '/patients/:id', to: 'messages#create'
 end
 
 

@@ -1,10 +1,10 @@
-<div class="show-div doctor">
+<div class="show-div patient">
   <div class="left-side">
     <%= @doctor.first_name %>
     <%= @doctor.last_name %>
   </div>
   <div class="chatroom">
-    <%= render 'shared/chatroom' %>
+    <%= render 'messages/messages' %>
   </div>
   <div class="right-side">
     Right-side div

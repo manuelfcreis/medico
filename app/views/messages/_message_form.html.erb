@@ -1,0 +1,5 @@
+  <%= form_for([@receiver, @chat, @message], class: 'form-group') do |f| %>
+    <%= f.text_area :content, class: 'form-control', id: 'content' %>
+    <%= hidden_field_tag 'sender', current_class %>
+    <%= f.submit 'send', class: 'send btn btn-white' %>
+  <% end %>
