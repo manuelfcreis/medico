@@ -11,21 +11,22 @@ require 'csv'
 puts 'Cleaning database...'
 Medication.destroy_all
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'medicine_list.csv'), encoding: 'ISO-8859-1')
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'medicine_list.csv'), encoding: 'ISO-8859-1');
 csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
 
-10.times do |i, row|
+10.times do |i|
   row = csv[i]
   m = Medication.new
   m.name = row['Nome do medicamento']
   m.ingredient = row['Substancia Ativa']
-  m.format = row['Forma farmaceutica']
+  puts row['Forma farmaceutica']
+  m.format = row['Forma farmaceutica']
   m.avg_dose = row['Dosagem']
   m.unit = row['Unit']
   m.package_size = row['Tamanho da embalagem']
   m.price = row['Preco']
   m.generic = row['Generico']
-  Medication.create( name: m.name, ingredient: m.ingredient, format: m.format, avg_dose: m.avg_dose, unit: m.unit, package_size: m.package_size, price: m.price, generic: m.generic)
+  m.save
 end
 
 puts "There are now #{Medication.count} rows in the medications table"
