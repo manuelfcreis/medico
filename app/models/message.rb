@@ -4,4 +4,6 @@ class Message < ApplicationRecord
   has_one :patient, through: :chat
 
   scope :for_display, -> { order(:created_at).last(50) }
+
+  validates :content, length: { minimum: 1 }
 end

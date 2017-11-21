@@ -1,12 +1,17 @@
 
-  <div id="messages-table" class="body ">
-    <% if @messages.any? %>
-      <% @messages.each do |m| %>
-        <%= render m %>
-      <% end %>
-    <% end %>
-  </div>
 
-  <div class="input">
-    <%= render 'messages/message_form' %>
-  </div>
+<div id="messages-table" class="body ">
+  <% if @messages.any? %>
+    <% @messages.each do |m| %>
+      <%= render m %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="input">
+  <%= render 'messages/message_form' %>
+</div>
+
+<% content_for :chatid_content do %>
+  <%= "content=#{@chat.id}" %>
+<% end %>

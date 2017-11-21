@@ -12,10 +12,12 @@ class MessagesController < ApplicationController
     @message.chat = @chat
     @message.sender = params[:sender]
 
+    byebug
+
     if @message.save
-      redirect_to @receiver
-    else
-      redirect_to @receiver
+      ActionCable.server.broadcast "room_channel_#{@chat.id}",
+         content:  @message.content,
+         username: @message.sender
     end
   end
 

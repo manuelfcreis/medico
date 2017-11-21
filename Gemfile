@@ -22,6 +22,9 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+gem 'coffee-rails'
+gem 'therubyracer'
+
 # calendar
 gem "simple_calendar", "~> 2.0"
 
