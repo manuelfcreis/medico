@@ -7,11 +7,21 @@ var ready = function () {
   msgContent.keydown(function(event) {
 
     if (event.keyCode == 13 && event.shiftKey == 0) {
+      // Prevent Submit on enter key
       event.preventDefault();
-      console.log('Hey, I\'m a enter key');
+
+      // Create a message variable and empty the input
+      message = msgContent.val();
+      message = message.replace(/^\s+|\s+$/g, "");
+      msgContent.val("");
+      console.log(message);
+
+      if (message != '') {
+        message.submit
+      }
+
     }
   });
 }
 
-$(document).ready(ready);
 $(document).on("page:load", ready);

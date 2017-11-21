@@ -1,29 +1,27 @@
 class MessagesController < ApplicationController
+  include ApplicationHelper
+
   def create
-    if !current_doctor.nil?
-      @sender = current_doctor
-    elsif !current_patient.nil?
-      @sender = current_patient
-    else
-      redirect_to root_path
+    if current_class == 'doctor'
+      @chatroom = Chatroom.find_by(patient_id: params[:receiver_id], doctor_id: current_doctor)
+    elsif current_class == 'patient'
+      @chatroom = Chatroom.find_by(doctor_id: params[:receiver_id], patient_id: current_patient)
     end
 
-    message = Message.new(message_params)
+    m = @chatroom.messages.new(message_params)
+    m.sender = current_class
 
-    if message.save
+    if m.save
       ActionCable.server.broadcast 'messages',
-        message: message.content,
-        user: message.sender.first_name
+        message: m.content
       head :ok
     end
+
+
   end
 
   private
-  def message_params(sender)
-    if sender.class.to_s.downcase == "Doctor"
-      patient_id: params[:id], doctor_id: sender.id, content: params.require(:message).permit(:content)
-    else
-      patient_id: sender.id, doctor_id: params[:id], content: params.require(:message).permit(:content)
-    end
+  def message_params
+    params.permit(:content)
   end
 end

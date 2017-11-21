@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
+  post '/patients/:id', to: 'messages#create'
 end
 
 
