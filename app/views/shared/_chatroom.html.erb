@@ -1,11 +1,12 @@
+<% messages = @chatroom.messages %>
+
 <%= action_cable_meta_tag %>
 
 <div id="chatroom">
-  <div class="title">
-    This is the title of the chat
-  </div>
   <div class="body">
-    This is the body of the chat
+    <% messages.each do |m| %>
+      <%= render partial: 'shared/message', locals: { message: m } %>
+    <% end %>
   </div>
   <div class="input">
     <%= form_tag('#', class: 'form-group') do %>
