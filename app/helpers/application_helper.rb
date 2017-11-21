@@ -7,6 +7,14 @@ module ApplicationHelper
     end
   end
 
+  def other_class(classy)
+    if classy == 'doctor'
+      "patient"
+    elsif classy == 'patient'
+      "doctor"
+    end
+  end
+
   def chatroom_builder(patient, doctor)
     chat = Chatroom.where(patient_id: patient.id, doctor_id: doctor.id)
 

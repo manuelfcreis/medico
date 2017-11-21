@@ -13,7 +13,6 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-
     if current_doctor.nil?
       @sender = @patient
     else
