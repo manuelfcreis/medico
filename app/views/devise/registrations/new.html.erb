@@ -1,17 +1,42 @@
-<h2>Sign up</h2>
+<div class="patients-login row">
+	<div class="log-in-form col-sm-8">
+		<h2>Please Sign-up/ <br>
+		Log-in here</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+		<%= simple_form_for(resource, url: session_path(resource)) do |f| %>
+		<div class="form-inputs">
+			<%= f.text_field :email, required: false, autofocus: true, placeholder: 'E-Mail', :id => "textfield" %>
+			<%= f.text_field :password, required: false, placeholder: 'Password', :id => "textfield" %>
+			<%= f.text_field :remember_me, as: :boolean if devise_mapping.rememberable? %>
+		</div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
+		<div class="form-actions">
+			<%= f.button :submit, "Log in", :id => "button"%>
+		</div>
+		<% end %>
+	</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+	<div class="sign-up-form col-sm-4">
+		<h2>New Patient? <br>
+		Sign Up</h2>
 
-<%= render "devise/shared/links" %>
+		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%= f.error_notification %>
+
+		<div class="form-inputs">
+			<%= f.text_field :email, required: true, autofocus: true, placeholder: 'E-Mail', :id => "textfield" %>
+			<%= f.text_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: 'Password', :id => "textfield" %>
+			<%= f.text_field :password_confirmation, required: true, placeholder: 'Confirm password', :id => "textfield" %>
+		</div>
+
+		<div class="form-actions">
+			<%= f.button :submit, "Sign up", :id => "button" %>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+
+
+
+
