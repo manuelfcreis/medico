@@ -6,5 +6,6 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:d7e9288fe1160e75ed45860b0ff11307@jack.redistogo.com:10259/
+
   channel_prefix: medico_production
