@@ -1,4 +1,9 @@
 class Message < ApplicationRecord
-  belongs_to :chatroom
+  belongs_to :chat
+  has_one :doctor, through: :chat
+  has_one :patient, through: :chat
 
+  scope :for_display, -> { order(:created_at).last(50) }
+
+  validates :content, length: { minimum: 1 }
 end
