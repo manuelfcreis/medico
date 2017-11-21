@@ -6,4 +6,17 @@ module ApplicationHelper
       "patient"
     end
   end
+
+  def chatroom_builder(patient, doctor)
+    chat = Chatroom.where(patient_id: patient.id, doctor_id: doctor.id)
+
+    byebug
+
+    if chat.empty?
+      chat = Chatroom.create(patient_id: patient.id, doctor_id: doctor.id)
+      return chat
+    else
+      return chat[0]
+    end
+  end
 end

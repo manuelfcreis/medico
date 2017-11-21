@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   # before_action :authenticate_user!
+  include ApplicationHelper
 
   def index
     @patients = Patient.all
@@ -8,7 +9,7 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     @doctor = current_doctor
-    @chatroom = Chatroom.where(patient_id: @patient.id, doctor_id: @doctor.id)[0]
+    @chatroom = chatroom_builder(@patient, @doctor)
   end
 
   def edit
