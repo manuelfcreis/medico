@@ -8,9 +8,14 @@
 require 'faker'
 require 'csv'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'medicine_list.csv'))
-csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';')
-csv.each do |row|
+puts 'Cleaning database...'
+Medication.destroy_all
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'medicine_list.csv'), encoding: 'ISO-8859-1')
+csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
+
+10.times do |i, row|
+  row = csv[i]
   m = Medication.new
   m.name = row['Nome do medicamento']
   m.ingredient = row['Substancia Ativa']
