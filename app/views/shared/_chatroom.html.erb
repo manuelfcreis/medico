@@ -1,5 +1,4 @@
 <% messages = @chatroom.messages %>
-
 <%= action_cable_meta_tag %>
 
 <div id="chatroom">
@@ -12,8 +11,12 @@
     <%= form_tag('#', class: 'form-group') do %>
       <%= text_field_tag(:input, "", placeholder: "Enter your message", class: 'form-control', id: 'content') %>
       <%= button_tag(class: 'send btn btn-white') do %>
-        <%= icon('paper-plane-o')  %>
+        <%= icon('paper-plane-o', id: 'send')  %>
       <% end %>
     <% end %>
   </div>
 </div>
+
+<% content_for(:js_content) do %>
+  <%= javascript_include_tag 'chatroom' %>
+<% end %>
