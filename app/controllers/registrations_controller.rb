@@ -8,13 +8,11 @@ class RegistrationController < Devise::RegistrationsController
     :patient
   end
 
-  def new  
+  def new
     @patient = Patient.new
   end
 
   def create
     @patient = Patient.new(params[:patient])
-    ...
-    ...
   end
 end
