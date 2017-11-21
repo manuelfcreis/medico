@@ -49,6 +49,7 @@ module ApplicationHelper
     elsif sender_class == 'patient'
       Doctor.find(Chat.find(chat_id).doctor_id)
     end
+  end
 
   def resource_name
     :patient
