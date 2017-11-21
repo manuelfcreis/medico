@@ -6,9 +6,9 @@ class Patient < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :doctors_notes
-  has_many :doctors, through: :doctors_notes
-  has_many :prescriptions, through: :doctors_notes
+  has_many :appointments
+  has_many :doctors, through: :appointments
+  has_many :prescriptions, through: :appointments
   has_many :doses, through: :prescriptions
   has_many :medications, through: :doses
   has_many :messages, through: :chatrooms

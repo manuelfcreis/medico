@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
-    resources :doctors_notes, only: ['show']
+    resources :appointments, only: ['show']
+
     resources :chatrooms, only: ['show', 'create'] do
       resources :messages
     end
@@ -20,11 +21,16 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
-    resources :doctors_notes, only: ['new', 'create', 'show']
+    resources :appointments, only: ['new', 'create', 'show'] do
+      resources :prescriptions, only: ['new', 'create'] do
+        resources :doses, only: ['new', 'create']
+      end
+    end
 
     resources :chatrooms, only: ['show', 'create'] do
       resources :messages, only: ['show', 'new', 'create']
     end
+
 
     member do
       get '/chatroom', to: 'patients#chatroom'
