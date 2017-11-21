@@ -7,6 +7,8 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
+    @doctor = current_doctor
+    @chatroom = Chatroom.where(patient_id: @patient.id, doctor_id: @doctor.id)[0]
   end
 
   def edit

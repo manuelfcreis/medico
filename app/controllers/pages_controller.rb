@@ -6,11 +6,11 @@ class PagesController < ApplicationController
 
   def dashboard
     if !current_doctor.nil?
-      redirect_to 'doctors#dashboard'
+      @user = current_doctor
     elsif !current_patient.nil?
-      redirect_to 'patients#dashboard'
+      @user = current_patient
     else
-      redirect_to 'pages#home'
+      redirect_to root_path
     end
   end
 

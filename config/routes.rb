@@ -13,12 +13,21 @@ Rails.application.routes.draw do
     resources :chatrooms, only: ['show', 'create'] do
       resources :messages
     end
+
+    member do
+      get '/chatroom', to: 'patients#chatroom'
+    end
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
     resources :doctors_notes, only: ['new', 'create', 'show']
+
     resources :chatrooms, only: ['show', 'create'] do
       resources :messages, only: ['show', 'new', 'create']
+    end
+
+    member do
+      get '/chatroom', to: 'patients#chatroom'
     end
   end
 

@@ -1,5 +1,9 @@
 <h1>This is your list of patients</h1>
-<% @patients.each do |p| %>
-<%= p.first_name %>
-<%= p.last_name %>
-<% end %>
+<ul class="list">
+  <% @patients.each do |p| %>
+    <%= link_to p do %>
+      <li><%= p.first_name %>
+      <%= p.last_name %></li>
+    <% end %>
+  <% end %>
+</ul>

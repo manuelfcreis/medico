@@ -10,9 +10,13 @@ class DoctorsController < ApplicationController
   end
 
   def edit
-  @doctor = Doctor.find(params[:id])
+    @doctor = Doctor.find(params[:id])
   end
 
+  def chatroom
+    @patient = current_patient
+    @doctor = Doctor.find(params[:id])
+  end
 
 
 end
