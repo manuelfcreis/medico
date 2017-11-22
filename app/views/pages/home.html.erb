@@ -11,13 +11,13 @@
   btnDoctor.addEventListener("click", () => {
     landingPatient.classList.add("hidden");
   landingDoc.classList.remove("hidden");
-  landingDoc.scrollIntoView();
+  landingDoc.scrollIntoView({behavior: "smooth", block: "start"});
 });
 
   btnPatient.addEventListener("click", () => {
     landingDoc.classList.add("hidden");
   landingPatient.classList.remove("hidden");
-  landingPatient.scrollIntoView();
+  landingPatient.scrollIntoView({behavior: "smooth", block: "start"});
 });
 
 </script>
