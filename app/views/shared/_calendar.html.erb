@@ -1,10 +1,13 @@
+<div class="simple-calendar">
 <%= month_calendar events: @appointments do |date, appointments| %>
-  <%= date %>
+  <%= date.day %>
 
   <% appointments.each do |appointment| %>
     <div>
       <%= appointment.patient.first_name %>
-      <%= appointment.patient.last_name %>
+      <%= appointment.patient.last_name %><%= appointment.date.hour %>:<%= appointment.date.min %>
+      <p><%= appointment.duration %> minutes</p>
     </div>
   <% end %>
 <% end %>
+</div>
