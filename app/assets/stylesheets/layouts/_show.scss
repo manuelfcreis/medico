@@ -1,8 +1,15 @@
-
 .show-div {
   position: relative;
   height: calc(100vh - 70px);
   width: 99vw;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  div {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 3px;
+  }
   .left-side {
     position: absolute;
     height: 100%;
@@ -19,26 +26,28 @@
   }
 
   .chatroom {
-    position: absolute;
-    left: 20%;
-    height: 100%;
-    width: 60%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
 
     .input {
-      position: absolute;
-      bottom: 2%;
-      height: 8%;
-      width: 100%;
+      display: flex;
+      padding: 0;
 
       form {
         height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
       }
 
       #content {
+        padding: 10px 10px 10px 15px;
         vertical-align: center;
         font-size: 18px;
-        max-width: 95%;
-        flex: 0 1 80% !important;
+        max-width: 90%;
+        flex: 1 0 auto !important;
         height: 100%;
         display: inline;
         border: none;
@@ -46,27 +55,35 @@
       }
 
       .send {
-        position: absolute;
-        right: 0;
         margin-bottom: 5px;
+        padding: 0;
         font-size: 30px;
-        flex: 0 0 10%;
+        flex: 0 1 10%;
         height: 100%;
         background: white;
+        transition: all 0.3s ease;
+      }
+
+      .send.doctor {
         &:hover {
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+          color: $doctor;
         }
       }
 
+      .send.patient {
+        &:hover {
+          color: $patient;
+        }
+      }
     }
     .body {
       border-radius: 5px;
       background-color: white;
-      position: absolute;
-      top: 2%;
-      height: 85%;
+      height: 70vh;
       width: 100%;
       overflow: scroll;
+      margin: 0px 0px 30px 0px;
+      padding: 2px;
     }
   }
 }

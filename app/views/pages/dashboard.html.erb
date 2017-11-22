@@ -8,17 +8,23 @@
       </div>
     <% else %>
       <div class="link-list">
-        link list
-        <%#= render 'shared/link_list' %>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a href="#">Add a Prescription</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Manage your appointments</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Search for a Medication</a>
+          </li>
+        </ul>
       </div>
     <% end %>
   </div>
   <% if @user.class.to_s.downcase == 'patient' %>
     <div class="center-bar">
       <div class="center">
-        <div class="search_dash">
-          search bar
-        </div>
         <div class="dash-main">
           Main Dashboard
         </div>
@@ -38,9 +44,6 @@
   <% else %>
     <div class="right-center-bar">
       <div class="center">
-        <div class="search-dash">
-            Search bar
-        </div>
         <div class="dash-main <%= current_class %>">
           <div class="past">
             <% if @user.appointments.where(status: "done").last.nil? %>

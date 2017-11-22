@@ -1,13 +1,14 @@
 <div class="show-div patient">
-  <div class="left-side">
-    <%= @patient.first_name %>
-    <%= @patient.last_name %>
+  <div class="left-bar">
+    <%= render 'shared/profile', locals: { user: @patient } %>
   </div>
-  <div class="chatroom">
+  <div class="center-bar">
+    <div class="chatroom">
     <%= render 'messages/messages' %>
+    </div>
   </div>
-  <div class="right-side">
-    Right-side div
+  <div class="right-bar">
+
   </div>
 </div>
 
