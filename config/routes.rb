@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :patients, path: 'patients'
+  #:controllers => { :invitations => 'patients/invitations' }
   devise_for :doctors, path: 'doctors'
+
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -39,6 +41,10 @@ Rails.application.routes.draw do
 
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
+  post '/dashboard', to: 'pages#invite_patients', as: 'invite'
+
+
+
   get '/patient', to: 'pages#patient', as: :patient_landing
   get '/doctor', to: 'pages#doctor', as: :doctor_landing
 end

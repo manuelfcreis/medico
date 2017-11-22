@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+
     if !current_doctor.nil?
       @user = current_doctor
     elsif !current_patient.nil?
@@ -27,5 +28,29 @@ class PagesController < ApplicationController
   def doctor
   end
 
+  def invite_patients
+    @patient = Patient.invite!(email: invite_params[:email]) do |p|
+      p.skip_invitation = true
+    end
 
+    @appointment = Appointment.new
+    @appointment.doctor = current_doctor
+    @appointment.patient = @patient
+    @appointment.save
+
+    if Patient.last.email == invite_params[:email]
+      flash[:notice] = "User invited!"
+      render :dashboard
+    else
+      flash[:notice] = "This user has already been invited!"
+      render :dashboard
+    end
+  end
+
+  private
+
+  def invite_params
+
+    params.require(:patient).permit(:email)
+  end
 end
