@@ -15,14 +15,16 @@
   </div>
   <% if @user.class.to_s.downcase == 'patient' %>
     <div class="center-bar">
-      <div class="search_dash">
-        search bar
-      </div>
-      <div class="dash-main">
-        Main Dashboard
-      </div>
-      <div class="dash-cards">
-        Card list
+      <div class="center">
+        <div class="search_dash">
+          search bar
+        </div>
+        <div class="dash-main">
+          Main Dashboard
+        </div>
+        <div class="dash-cards">
+          Card list
+        </div>
       </div>
     </div>
     <div class="right-bar">
@@ -35,14 +37,36 @@
     </div>
   <% else %>
     <div class="right-center-bar">
-      <div class="search_dash">
-        Search bar
-      </div>
-      <div class="dash-main">
-        Main Dashboard
-      </div>
-      <div class="dash-card">
-        card
+      <div class="center">
+        <div class="search-dash">
+            Search bar
+        </div>
+        <div class="dash-main <%= current_class %>">
+          <div class="past">
+            <% if @user.appointments.where(status: "done").last.nil? %>
+              You didn't have a past appointment
+            <% else %>
+              <%= @user.appointments.where(status: "done").last %>
+            <% end %>
+          </div>
+          <div class="upcoming">
+            <% if @user.appointments.where(status: "scheduled").empty? %>
+              You don't have a scheduled appointment
+            <% else %>
+              <%= @user.appointments.where(status: "scheduled").order(:date).first %>
+            <% end %>
+          </div>
+          </div>
+        <div class="dash-card">
+          <ul class="list-group">
+          <% @user.patients.each do |p| %>
+            <li class="list-group-item">
+              <%= render 'shared/doctor_card', locals: { patient: p } %>
+            </li>
+          <% end %>
+        </ul>
+        </div>
+        </div>
       </div>
     </div>
   <% end %>

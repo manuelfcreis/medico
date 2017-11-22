@@ -1,15 +1,18 @@
 @media screen and (min-width: 480px) {
   .dashboard {
     height: calc(100vh - 70px;);
+    display: grid;
+    grid-template-columns: 25% 60% 15%;
+
     div {
       margin: 5px;
       padding: 10px 20px;
       background-color: white;
       border-radius: 3px;
     }
-    display: grid;
-    grid-template-columns: 25% 60% 15%;
+
     .left-bar {
+      margin: 0;
       grid-column: 1 / span 1;
     }
 
@@ -18,10 +21,13 @@
     }
 
     .right-bar {
+      margin: 0;
+      margin-right: 20px;
       grid-column: 3 / span 1;
     }
 
     .right-center-bar {
+      margin: 0px 20px 0px 0px;
       grid-column: 2 / span 2;
     }
 
@@ -29,6 +35,50 @@
       background-color: transparent;
       border: none;
     }
+
+    .center {
+      margin: 0px;
+      padding: 0px;
+      background-color: transparent;
+
+      .dash-main.doctor {
+        div {
+          background-color: transparent;
+        }
+        background-color: $doctor;
+        margin: 0px 0px 20px 0px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        color: white;
+        .past {
+          grid-column: 1 / span 1;
+          margin: 0px;
+          width: 100%;
+          border-radius: 0;
+          border-right: 2px solid white;
+        }
+        .upcoming {
+          grid-column: 2 / span 1;
+          margin: 0px;
+          width: 100%;
+        }
+      }
+      .search-dash {
+        margin: 5px 0px 20px 0px;
+      }
+
+      .dash-card {
+        margin: 0px 0px 0px 0px;
+        padding: 20px 10px 1px 10px;
+        ul {
+          li {
+            border: none;
+            padding: 0 0 10px 0;
+          }
+        }
+      }
+    }
   }
 }
+
 
