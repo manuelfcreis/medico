@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.5'
 
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
@@ -38,6 +39,8 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker'
+  gem 'letter_opener'
+  gem 'email_spec'
 end
 
 
