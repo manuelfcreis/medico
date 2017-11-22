@@ -23,6 +23,9 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+# effects
+gem 'typing'
+
 # Chat
 gem 'coffee-rails'
 gem 'therubyracer'

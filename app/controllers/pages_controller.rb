@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:home]
 
+
+
+
   def home
+    @typing_array = ["health", "patients", "doctors"]
   end
 
   def dashboard

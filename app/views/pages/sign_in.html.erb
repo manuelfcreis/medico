@@ -1,14 +1,40 @@
-<div class="container">
+
   <div class="sign-in-form">
-    <div id="form">
+    <div id="login-buttons">
       <div>
         <h2>You are a:</h2>
       </div>
       <ul class="list list-inline" id="question">
-        <li><%= link_to 'Doctor', new_doctor_registration_path, class: 'btn btn-primary btn-lg', id: 'doctor' %></li>
-        <li><%= link_to 'Patient', new_patient_registration_path, class: 'btn btn-success btn-lg', id: 'patient' %></li>
+          <li><div class= "btn btn-primary btn-lg" id="doctor"> Doctor </div></li>
+        <li><div class= "btn btn-success btn-lg" id= "patient"> Patient</div></li>
       </ul>
     </div>
+<%= render 'shared/patient_login'  %>
+<%= render 'shared/doctor_login'  %>
   </div>
-</div>
+
+
+<% content_for(:js_content) do %>
+
+<script>
+  const btnDocSignIn = document.getElementById("doctor");
+  const docLogIn = document.getElementById("doctor-login"); 
+  const btnPatSignIn = document.getElementById("patient");
+  const patLogIn = document.getElementById("patient-login");
+  const loginButtons = document.getElementById("login-buttons")
+
+  btnDocSignIn.addEventListener("click", () => {
+    patLogIn.classList.add("hidden");
+    docLogIn.classList.remove("hidden");
+    loginButtons.classList.add("hidden");
+  });
+
+  btnPatSignIn.addEventListener("click", () => {
+    docLogIn.classList.add("hidden");
+    patLogIn.classList.remove("hidden");
+ loginButtons.classList.add("hidden");
+  });
+
+</script>
+<% end %>
 

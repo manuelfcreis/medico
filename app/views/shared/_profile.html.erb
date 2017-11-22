@@ -1,0 +1,23 @@
+<div class="profile-dashboard">
+  <div class="user-name">
+  <% if locals[:user].avatar.url.nil? %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle.png" %>
+  <% else %>
+    <%= image_tag locals[:user].avatar.url %>
+  <% end %>
+  <div class="name">
+  <p><%= locals[:user].first_name %> <br><%= locals[:user].last_name %></p>
+  </div>
+  </div>
+  <div class="link-list">
+    <ul class="list-group">
+      <% if locals[:user].class.to_s == "Doctor" %>
+        <a href="#"><li id="<%= current_class %>" class="list-group-item">Doctor Invitations</li></a>
+      <% else %>
+        <a href="#"><li  id="<%= current_class %>" class="list-group-item">Invite a Patient</li></a>
+      <% end %>
+      <a href="#"><li class="list-group-item">Settings</li></a>
+      <a href="#"><li class="list-group-item">Log-out</li></a>
+    </ul>
+  </div>
+</div>
