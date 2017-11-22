@@ -5,16 +5,21 @@
   border-radius: 50px;
   font-weight: lighter;
   opacity: 1;
-  margin-top: 20px !important;
-  a{
+  margin-top: 72px !important;
+  margin-bottom: 10%;
+  text-decoration: none;
+}
+.banner-content{
+  a:hover{
+    opacity: 0.6;
     text-decoration: none;
-    a:hover{
-      opacity: 0.6;
-      text-decoration: none;
-      color: white;
-    }
+    color: white;
+  }
+  .btn-home:hover{
+    opacity: 0.6;
+    text-decoration: none;
+    color: white;
   }
 }
-
 
 
