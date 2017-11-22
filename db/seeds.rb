@@ -7,41 +7,68 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require 'csv'
+answer = ""
 
-puts 'Cleaning medication database...'
-Medication.destroy_all
+# Ask if we want to reboot seeds
+until answer == "n"
+  puts "Do you want to reboot the medication database? (y/n)"
+  answer = STDIN.gets.chomp
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'medicine_list.csv'), encoding: 'ISO-8859-1');
-csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
+  if answer == "y"
+    puts 'Cleaning medication database...'
+    Medication.destroy_all
 
-10.times do |i|
-  row = csv[i]
-  m = Medication.new
-  m.name = row['Nome do medicamento']
-  m.ingredient = row['Substancia Ativa']
-  puts row['Forma farmaceutica']
-  m.format = row['Forma farmaceutica']
-  m.avg_dose = row['Dosagem']
-  m.unit = row['Unit']
-  m.package_size = row['Tamanho da embalagem']
-  m.price = row['Preco']
-  m.generic = row['Generico']
-  m.save
+    puts "reading the medication list"
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'medicine_list.csv'), encoding: 'ISO-8859-1');
+    csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
+
+    puts "Creating the Medication... This may take a while"
+    csv.each do |row|
+      m = Medication.new
+      m.name = row['Nome do medicamento']
+      m.ingredient = row['Substancia Ativa']
+      m.format = row['Forma farmaceutica']
+      m.avg_dose = row['Dosagem']
+      m.unit = row['Unit']
+      m.package_size = row['Tamanho da embalagem']
+      m.price = row['Preco']
+      m.generic = row['Generico']
+      m.save
+    end
+    answer = "n"
+    puts "There are now #{Medication.count} rows in the medications table"
+  elsif answer != "n"
+    puts "Please answer (y/n)"
+  end
 end
 
-puts "There are now #{Medication.count} rows in the medications table"
+answer = ""
+
+until answer == "n"
+  puts "Do you want to reboot the Specialty database? (y/n)"
+  answer = STDIN.gets.chomp
+
+  if answer == "y"
+    puts "Clearing Specialties"
+    Specialty.destroy_all
+
+    puts 'Creating Specialties'
+    10.times do
+      Specialty.create!(
+      name: ['Anaesthesiology', 'Cardiology', 'Cardiothoracic Surgery', 'Dermatology'].sample
+      )
+    end
+    answer = "n"
+  elsif answer != "n"
+    puts "Please answer (y/n)"
+  end
+end
 
 puts 'Cleaning Patient and Doctor database...'
+Chat.destroy_all
 Patient.destroy_all
 Doctor.destroy_all
-Specialty.destroy_all
 
-puts 'Creating Specialties'
-10.times do
-Specialty.create!(
-name: ['Anaesthesiology', 'Cardiology', 'Cardiothoracic Surgery', 'Dermatology'].sample
-)
-end
 
 puts 'Creating Doctors...'
 10.times do
