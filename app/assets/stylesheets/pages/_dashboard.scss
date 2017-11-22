@@ -1,0 +1,34 @@
+@media screen and (min-width: 480px) {
+  .dashboard {
+    height: calc(100vh - 70px;);
+    div {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: white;
+      border-radius: 3px;
+    }
+    display: grid;
+    grid-template-columns: 25% 60% 15%;
+    .left-bar {
+      grid-column: 1 / span 1;
+    }
+
+    .center-bar {
+      grid-column: 2 / span 1;
+    }
+
+    .right-bar {
+      grid-column: 3 / span 1;
+    }
+
+    .right-center-bar {
+      grid-column: 2 / span 2;
+    }
+
+    .left-bar,.right-center-bar, .center-bar, .right-bar {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+

@@ -1,2 +1,49 @@
-<h1>Welcome to your dashboard</h1>
-<%= @user.class %>
+<div class="dashboard">
+  <div class="left-bar">
+    <%= render 'shared/profile', locals: { user: @user } %>
+    <% if @user.class.to_s.downcase == 'patient' %>
+      <div class="medications">
+        medications
+         <%#= render 'shared/medications', locals: { user: user } %>
+      </div>
+    <% else %>
+      <div class="link-list">
+        link list
+        <%#= render 'shared/link_list' %>
+      </div>
+    <% end %>
+  </div>
+  <% if @user.class.to_s.downcase == 'patient' %>
+    <div class="center-bar">
+      <div class="search_dash">
+        search bar
+      </div>
+      <div class="dash-main">
+        Main Dashboard
+      </div>
+      <div class="dash-cards">
+        Card list
+      </div>
+    </div>
+    <div class="right-bar">
+      <div class="appointments">
+        Appointments
+      </div>
+      <div class="documents">
+        DOcuments
+      </div>
+    </div>
+  <% else %>
+    <div class="right-center-bar">
+      <div class="search_dash">
+        Search bar
+      </div>
+      <div class="dash-main">
+        Main Dashboard
+      </div>
+      <div class="dash-card">
+        card
+      </div>
+    </div>
+  <% end %>
+</div>

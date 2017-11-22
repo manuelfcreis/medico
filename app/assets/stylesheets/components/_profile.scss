@@ -1,0 +1,57 @@
+.profile-dashboard {
+
+  .user-name {
+    margin: 0;
+    padding: 0;
+    img {
+      border-radius: 50%;
+      height: 100px;
+    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .name {
+      padding: 0;
+      margin-left: 15px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+  }
+  .link-list {
+    margin: 0px;
+    margin-top: 30px;
+    padding: 0px !important;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        padding: 5px 0px;
+        border: none;
+        color: black;
+        a {
+          &:hover {
+            text-decoration-color: black !important;
+          }
+        }
+      }
+      #doctor {
+        color: $doctor;
+        a {
+          &:hover {
+            text-decoration-color: $doctor;
+          }
+        }
+      }
+
+      #patient {
+        color: $patient;
+        a {
+           &:hover {
+            text-decoration-color: $patient;
+          }
+        }
+      }
+    }
+  }
+}
+
