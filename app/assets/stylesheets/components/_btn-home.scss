@@ -1,40 +1,36 @@
-.btn-content{
-  display: flex;
-
-  #btn-patient{
-    position: absolute;
-    right: 35%;
-    bottom: 15%;
-    padding: 15px 25px;
-    color: white;
-    border: 1.5px solid #FF686B;
-    border-radius: 50px;
-    font-weight: lighter;
-    opacity: 1;
-    a{
-      text-decoration: none;
-    } 
-  }
-
-  #btn-doctor{
-    position: absolute;
-    left: 35%;
-    bottom: 15%;
-    padding: 15px 25px;
-    color: white;
-    border: 1.5px solid #FF686B;
-    border-radius: 50px;
-    font-weight: lighter;
-    opacity: 1;
-    a{
-      text-decoration: none;
-    }
-  }
-
+.btn-home{
+  padding: 9%;
+  color: white;
+  border: 1.5px solid #FF686B;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 1;
+  margin-top: 72px !important;
+  margin-bottom: 10%;
+  text-decoration: none;
+}
+.banner-content{
 
   .btn-home:hover{
     opacity: 0.6;
     text-decoration: none;
     color: white;
+    cursor: pointer;
+  }
+  .style1{
+    opacity: 0.6;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding: 9%;
+    border: 1.5px solid #FF686B;
+    border-radius: 50px;
+    font-weight: lighter;
+    margin-top: 72px !important;
+    margin-bottom: 10%;
+    text-decoration: none;
   }
 }
+
+
+

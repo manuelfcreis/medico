@@ -21,8 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
-    
-    resources :appointments, only: ['new', 'create', 'show'] do
+    resources :appointments, only: ['new', 'create', 'index', 'show'] do
       resources :prescriptions, only: ['new', 'create'] do
         resources :doses, only: ['new', 'create']
       end
@@ -40,8 +39,8 @@ Rails.application.routes.draw do
 
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
-  get '/patient', to: 'pages#patient'
-  get '/doctor', to: 'pages#doctor'
+  get '/patient', to: 'pages#patient', as: :patient_landing
+  get '/doctor', to: 'pages#doctor', as: :doctor_landing
 end
 
 
