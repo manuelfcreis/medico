@@ -4,6 +4,10 @@ class AppointmentsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
   end
 
+  def calendar
+    @appointments = Appointment.all
+  end
+
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.doctor = current_doctor

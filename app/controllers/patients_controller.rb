@@ -10,6 +10,8 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     @doctor = current_doctor
 
+    @appointments = Appointment.all
+
     @sender = current_active
     @receiver = current_other
 
@@ -23,9 +25,9 @@ class PatientsController < ApplicationController
   end
 
     def new
-    @patient = Patient.new 
+    @patient = Patient.new
   end
-  
+
   def create
     @patient = Patient.new(params[:patient])
     if @patient.save
