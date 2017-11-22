@@ -25,21 +25,22 @@ class PagesController < ApplicationController
   end
 
   def invite_patients
-
-
-    Patient.invite!(email: invite_params[:email]) do |p|
+    @patient = Patient.invite!(email: invite_params[:email]) do |p|
       p.skip_invitation = true
     end
 
+    @appointment = Appointment.new
+    @appointment.doctor = current_doctor
+    @appointment.patient = @patient
+    @appointment.save
 
     if Patient.last.email == invite_params[:email]
-      redirect_to root_path
       flash[:notice] = "User invited!"
+      render :dashboard
     else
-      redirect_to dashboard
       flash[:notice] = "This user has already been invited!"
+      render :dashboard
     end
-
   end
 
   private
