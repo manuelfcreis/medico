@@ -1,0 +1,95 @@
+@media screen and (min-width: 480px) {
+  .dashboard {
+    margin-top: 15px;
+    height: calc(100vh - 70px;);
+    display: grid;
+    grid-template-columns: 25% 60% 15%;
+
+    .list-group {
+      margin: 0;
+
+    }
+
+    ul {
+      li {
+        border: none;
+        padding: 0 0 10px 0;
+        a{ color: black; }
+      }
+    }
+
+    div {
+      padding: 10px 20px;
+      background-color: white;
+      border-radius: 3px;
+    }
+  }
+
+  .left-bar {
+    margin-right: 15px;
+    margin-left: 30px;
+    grid-column: 1 / span 1;
+    div {
+      margin: 20px 0px;
+    }
+  }
+
+  .center-bar {
+    grid-column: 2 / span 1;
+  }
+
+  .right-bar {
+    margin: 0;
+    margin-right: 30px;
+    grid-column: 3 / span 1;
+  }
+
+  .right-center-bar {
+    margin: 0px 30px 0px 0px;
+    grid-column: 2 / span 2;
+  }
+
+  .left-bar, .right-center-bar, .center-bar, .right-bar {
+    background-color: transparent !important;
+    border: none;
+  }
+
+  .center {
+    margin: 0px !important ;
+    padding: 0px !important;
+    background-color: transparent !important;
+
+    .dash-main.doctor {
+      div {
+        background-color: transparent;
+      }
+      background-color: $doctor;
+      margin: 0px 0px 20px 0px;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      color: white;
+      .past {
+        grid-column: 1 / span 1;
+        margin: 0px;
+        width: 100%;
+        border-radius: 0;
+        border-right: 2px solid white;
+      }
+      .upcoming {
+        grid-column: 2 / span 1;
+        margin: 0px;
+        width: 100%;
+      }
+    }
+    .search-dash {
+      margin: 5px 0px 20px 0px;
+    }
+
+    .dash-card {
+      margin: 0px 0px 0px 0px;
+      padding: 20px 10px 1px 10px;
+    }
+  }
+}
+
+

@@ -1,3 +1,78 @@
-<h1>Welcome to your dashboard</h1>
-<%= @user.class %>
+
+<div class="dashboard">
+  <div class="left-bar">
+    <%= render 'shared/profile', locals: { user: @user } %>
+    <% if @user.class.to_s.downcase == 'patient' %>
+      <div class="medications">
+        medications
+         <%#= render 'shared/medications', locals: { user: user } %>
+      </div>
+    <% else %>
+      <div class="link-list">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a href="#">Add a Prescription</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Manage your appointments</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Search for a Medication</a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <% if @user.class.to_s.downcase == 'patient' %>
+    <div class="center-bar">
+      <div class="center">
+        <div class="dash-main">
+          Main Dashboard
+        </div>
+        <div class="dash-cards">
+          Card list
+        </div>
+      </div>
+    </div>
+    <div class="right-bar">
+      <div class="appointments">
+        Appointments
+      </div>
+      <div class="documents">
+        DOcuments
+      </div>
+    </div>
+  <% else %>
+    <div class="right-center-bar">
+      <div class="center">
+        <div class="dash-main <%= current_class %>">
+          <div class="past">
+            <% if @user.appointments.where(status: "done").last.nil? %>
+              You didn't have a past appointment
+            <% else %>
+              <%= @user.appointments.where(status: "done").last %>
+            <% end %>
+          </div>
+          <div class="upcoming">
+            <% if @user.appointments.where(status: "scheduled").empty? %>
+              You don't have a scheduled appointment
+            <% else %>
+              <%= @user.appointments.where(status: "scheduled").order(:date).first %>
+            <% end %>
+          </div>
+          </div>
+        <div class="dash-card">
+          <ul class="list-group">
+          <% @user.patients.each do |p| %>
+            <li class="list-group-item">
+              <%= render 'shared/doctor_card', locals: { patient: p } %>
+            </li>
+          <% end %>
+        </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
