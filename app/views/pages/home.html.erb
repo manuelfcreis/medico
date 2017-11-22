@@ -8,18 +8,31 @@
   const btnPatient = document.getElementById("btn-home-patient");
   const landingPatient = document.getElementById("landing-patient");
 
+  function visitedButton1()
+{
+    document.getElementById('btn-home-doctor').setAttribute("class", "style1");
+}
+function visitedButton2()
+{
+    document.getElementById('btn-home-patient').setAttribute("class", "style1");
+}
   btnDoctor.addEventListener("click", () => {
     landingPatient.classList.add("hidden");
-  landingDoc.classList.remove("hidden");
-  landingDoc.scrollIntoView({behavior: "smooth", block: "start"});
-});
+    landingDoc.classList.remove("hidden");
+    landingDoc.scrollIntoView({behavior: "smooth", block: "start"});
+    visitedButton1();
+  });
 
   btnPatient.addEventListener("click", () => {
     landingDoc.classList.add("hidden");
-  landingPatient.classList.remove("hidden");
-  landingPatient.scrollIntoView({behavior: "smooth", block: "start"});
-});
+    landingPatient.classList.remove("hidden");
+    landingPatient.scrollIntoView({behavior: "smooth", block: "start"});
+    visitedButton2();
+  });
 
 </script>
 <% end %>
+
+
+
 
