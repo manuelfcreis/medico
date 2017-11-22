@@ -33,18 +33,17 @@ class PagesController < ApplicationController
       p.skip_invitation = true
     end
 
-    @appointment = Appointment.new
-    @appointment.doctor = current_doctor
-    @appointment.patient = @patient
-    @appointment.save
+    @chat = Chat.new
+    @chat.doctor = current_doctor
+    @chat.patient = @patient
+    @chat.save
 
     if Patient.last.email == invite_params[:email]
       flash[:notice] = "User invited!"
-      render :dashboard
     else
       flash[:notice] = "This user has already been invited!"
-      render :dashboard
     end
+    redirect_to :dashboard
   end
 
   private
