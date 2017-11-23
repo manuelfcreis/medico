@@ -78,8 +78,16 @@
 
 .nav-patient {
   background: $patient !important;
-  a {
+  .navbar-wagon-link {
     color: #FEfEfE;
+    font-size: 14px;
+  }
+  .navbar-wagon-link:hover {
+    color: #DDD;
+    text-decoration: none;
+  }
+  a {
+    color: #FEfEfE !important;
     &:hover {
       color: #DDD;
     }
@@ -88,10 +96,25 @@
 
 .nav-doctor {
   background: $doctor !important;
-  a {
+  .navbar-wagon-link {
     color: #fefefe;
+    font-size: 14px;
+  }
+  .navbar-wagon-link:hover {
+    color: #DDD;
+    text-decoration: none;
+  }
+  a {
+    color: #fefefe !important;
     &:hover {
       color: #DDD;
     }
   }
 }
+
+.send-btn{
+  padding: 7px;
+  margin-bottom: 0;
+  background-color: #D3D3D3;
+  margin-left: 4px;
+  }

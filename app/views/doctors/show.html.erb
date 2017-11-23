@@ -1,26 +1,12 @@
 <div class="show-div doctor">
-  <div class="left-side">
+  <div class="left-top-side">
     <%= render 'shared/profile', locals: { user: @patient } %>
-    <% if current_class == 'patient' %>
-    <div class="medications">
-      medications
-      <%#= render 'shared/medications', locals: { user: user } %>
-    </div>
-    <% else %>
-    <div class="link-list">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a href="#">Add a Prescription</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">Manage your appointments</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">Search for a Medication</a>
-        </li>
-      </ul>
-    </div>
-    <% end %>
+  </div>
+  <div class="medications-block text-center">
+
+    medications
+    <%#= render 'shared/medications', locals: { user: user } %>
+
   </div>
 
   <div class="middle-side">
