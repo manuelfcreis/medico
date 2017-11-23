@@ -123,3 +123,20 @@
   }
 
 }
+
+#invite {
+  text-align: center;
+  flex-orientation: column;
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+  left: 37%;
+  padding: 10px 20px;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
