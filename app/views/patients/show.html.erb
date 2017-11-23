@@ -1,6 +1,6 @@
 <div class="show-div patient">
   <div class="left-bar">
-    <%= render 'shared/profile', locals: { user: @user } %>
+    <%= render 'shared/profile', locals: { user: @doctor } %>
     <% if current_class == 'patient' %>
     <div class="medications">
       medications
@@ -29,10 +29,11 @@
     </div>
   </div>
 
-  <div class="right-bar">
-    <div class="right-bar">
-      <%= render 'shared/appointments', locals: { user: @user } %>
-      <%= render 'shared/documents', locals: { user: @user } %>
+
+  <div class="right-top-bar">
+    <%= render 'shared/appointments', locals: { user: @doctor } %>
   </div>
+  <div class="right-bottom-bar">
+    <%= render 'shared/documents', locals: { user: @doctor } %>
   </div>
 </div>

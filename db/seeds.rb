@@ -52,11 +52,31 @@ until answer == "n"
     puts "Clearing Specialties"
     Specialty.destroy_all
 
+    ary = [
+      'Radiology',
+      'Psychiatry',
+      'Pediatrics',
+      'Anesthesiology',
+      'Orthopaedic Surgery',
+      'Internal Medicine',
+      'Medical Genetics',
+      'Pathology-Anatomic & Clinical',
+      'Neurology',
+      'Immunology',
+      'Plastic Surgery',
+      'Thoracic Surgey',
+      'Dermatology',
+      'Obstetrics & Gynecology',
+      'Family Medicine',
+      'Emergency Medicine',
+      'Otolaryngology',
+      'Ophthalmology',
+      'Urology',
+    ]
+
     puts 'Creating Specialties'
-    10.times do
-      Specialty.create!(
-      name: ['Anaesthesiology', 'Cardiology', 'Cardiothoracic Surgery', 'Dermatology'].sample
-      )
+    ary.each do |s|
+      Specialty.create(name: s)
     end
     answer = "n"
   elsif answer != "n"

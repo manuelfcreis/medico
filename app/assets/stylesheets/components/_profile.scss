@@ -57,6 +57,7 @@
   }
 }
 
+
 #invite {
   text-align: center;
   flex-orientation: column;
@@ -124,4 +125,17 @@
     }
 }
     }
+
+.radio_buttons {
+  display: flex;
+  align-items: center;
+}
+
+.radio {
+  margin: 20px 10px 20px 10px !important;
+}
+
+.flex-on {
+  display: flex;
+}
 }

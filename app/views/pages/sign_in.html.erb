@@ -27,34 +27,36 @@
         <div class="tab-content">
           
           <div id="<%= resource.to_s %>login" class="tab-pane fade in active">
-            <h3>Login here</h3>
+       <!--      <h3>Login here</h3> -->
             <%= simple_form_for(resource, :url => session_path(resource)) do |f| %>
-            <%= f.text_field :email, placeholder: "e-mail", class: 'text-field' %>
+            <%= f.text_field :email, placeholder: "E-mail", class: 'text-field', :size => 39 %>
             <p></p>
-            <%= f.password_field :password, placeholder: "password", class: 'text-field' %>
+            <%= f.password_field :password, placeholder: "Password", class: 'text-field', :size => 39 %>
             <p></p>
-            <%= f.input :remember_me, as: :boolean %>
+            <%= f.input :remember_me, as: :boolean, class: "accept" %>
             <div class="buttons">
-              <%= f.submit 'Log-in', class: 'btn patient' %>
-              <p><%= link_to "Forgot your password?", new_password_path(resource) %></p>
+              <%= f.submit 'Log-in', class: 'btn patient', :size => 39  %>
             </div>
+              <p><%= link_to "Forgot your password?", new_password_path(resource), class: "forgot" %></p>
             <% end %>
           </div>
 
 
           <div id="<%= resource.to_s %>signup" class="tab-pane fade">
-            <h3>Signup here</h3>
+   <!--          <h3>Signup here</h3> -->
             <%= simple_form_for(resource, :url => registration_path(resource)) do |f| %>
-            <%= f.text_field :email, placeholder: "e-mail", class: 'text-field' %>
+            <%= f.text_field :email, placeholder: "E-mail", class: 'text-field' , :size => 39 %>
             <p></p>
-            <%= f.password_field :password, placeholder: "password", class: 'text-field' %>
             <p></p>
-            <%= f.password_field :password, placeholder: "confirm password", class: 'text-field' %>
-            <%= f.input :remember_me, as: :boolean %>
+            <%= f.password_field :password, placeholder: "Password", class: 'text-field' , :size => 39  %>
+            <p></p>
+            <p></p>
+            <%= f.password_field :password, placeholder: "Confirm password", class: 'text-field', :size => 39  %>
+     <%= f.input "I accept the terms and conditions", as: :boolean, class: "accept" %>
             <div class="buttons">
-              <%= f.submit 'Sign up', class: 'btn patient' %>
-              <p><%= link_to "Forgot your password?", new_password_path(resource) %></p>
+              <%= f.submit 'Sign up', class: 'btn patient', :size => 39 %>
             </div>
+
             <% end %>
           </div>
 

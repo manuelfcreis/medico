@@ -16,7 +16,7 @@
       <% else %>
         <a href="update" data-toggle="modal" data-target="#update"><li  id="<%= current_class %>" class="list-group-item">Pending Invitations</li></a>
       <% end %>
-      <a href="#"><li class="list-group-item">Settings</li></a>
+      <%= link_to settings_path do %><li class="list-group-item">Settings</li><% end %>
       <a href="#"><li class="list-group-item">Log-out</li></a>
     </ul>
   </div>
