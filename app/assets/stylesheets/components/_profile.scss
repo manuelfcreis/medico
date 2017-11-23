@@ -18,6 +18,7 @@
       font-weight: 900;
     }
   }
+
   .link-list {
     margin: 0px;
     margin-top: 30px;
@@ -56,3 +57,71 @@
   }
 }
 
+#invite {
+  text-align: center;
+  flex-orientation: column;
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  top: 0%;
+  left: 37%;
+  padding: 10px 20px;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+#update {
+  text-align: center;
+  flex-orientation: column;
+  background-color: white;
+  width: 400px;
+  height: auto;
+  position: absolute;
+  top: 0%;
+  left: 37%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    .edit_chat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0px;
+      .buttons {
+      width: 20%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .accept {
+    background-color: $patient;
+  }
+
+  .reject {
+    background-color: $doctor;
+  }
+
+  .accept, .reject {
+    position: relative;
+    display: block;
+    margin: 0px;
+    width: 30px;
+    height: 35px;
+    border: none;
+    color: white;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0px 0px 5px #999;
+    }
+}
+    }
+}

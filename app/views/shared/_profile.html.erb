@@ -12,9 +12,9 @@
   <div class="link-list">
     <ul class="list-group">
       <% if locals[:user].class.to_s == "Doctor" %>
-        <a href="#invite" data-toggle="modal" data-target="#invite"><li id="<%= current_class %>" class="list-group-item">Doctor Invitations</li></a>
+        <a href="invite" data-toggle="modal" data-target="#invite"><li id="<%= current_class %>" class="list-group-item">Invite a Patient</li></a>
       <% else %>
-        <a href="#"><li  id="<%= current_class %>" class="list-group-item">Invite a Patient</li></a>
+        <a href="update" data-toggle="modal" data-target="#update"><li  id="<%= current_class %>" class="list-group-item">Pending Invitations</li></a>
       <% end %>
       <a href="#"><li class="list-group-item">Settings</li></a>
       <a href="#"><li class="list-group-item">Log-out</li></a>
@@ -22,19 +22,22 @@
   </div>
 </div>
 
-
 <div id="invite" class="modal fade">
   <h2><%= t "devise.invitations.new.header" %></h2>
 
   <div>
   <%= simple_form_for(Patient.new, url: invite_path) do |f| %>
   <%= devise_error_messages! %>
-
-
   <%= f.text_field :email %>
-
-
   <%= f.submit "Submit" ,class: "btn btn-primary" %>
   <% end %>
   </div>
+</div>
+
+<div id="update" class="modal fade">
+<% @user.chats.where(accepted: false).each do |chat| %>
+  <li class="list-group-item">
+    <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
+  </li>
+<% end %>
 </div>

@@ -51,6 +51,10 @@ Rails.application.routes.draw do
 
   post '/appointments/:id/accept', to: 'appointments#accept', as: :accept_appointment
   post '/appointments/:id/reject', to: 'appointments#reject', as: :reject_appointment
+
+  post '/chats/:id/accept', to: 'chats#accept', as: :accept_chat
+  post '/chats/:id/reject', to: 'chats#reject', as: :reject_chat
+
 end
 
 
