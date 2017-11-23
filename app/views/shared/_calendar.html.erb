@@ -1,7 +1,9 @@
+<% @apt = @user.appointments.where(status: 'scheduled')  %>
+
 <div class="simple-calendar <% current_class %>">
   <% if current_class == "doctor" %>
 
-      <%= calendar number_of_days: 5, events: @user.appointments do |date, appointments| %>
+      <%= calendar number_of_days: 5, events: @apt do |date, appointments| %>
         <%= date.day %>
 
         <% appointments.each do |appointment| %>
@@ -15,7 +17,7 @@
 
 
   <% elsif current_class == "patient" %>
-      <%= week_calendar events: @user.appointments do |date, appointments| %>
+      <%= week_calendar events: @apt do |date, appointments| %>
         <%= date.day %>
 
         <% appointments.each do |appointment| %>

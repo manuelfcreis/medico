@@ -30,6 +30,22 @@ class AppointmentsController < ApplicationController
     @patient = @appointment.patient
   end
 
+  def accept
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = "scheduled"
+    @appointment.save
+
+    redirect_to dashboard_path
+  end
+
+  def reject
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = "cancelled"
+    @appointment.save
+
+    redirect_to dashboard_path
+  end
+
   private
   def appointment_params
     params.require(:appointment).permit(:duration, :date)

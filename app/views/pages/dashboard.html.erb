@@ -1,7 +1,7 @@
 <div class="dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @user } %>
-<% if @user.class.to_s.downcase == 'patient' %>
+<% if current_class == 'patient' %>
     <div class="medications">
       medications
       <%#= render 'shared/medications', locals: { user: user } %>
@@ -27,16 +27,14 @@
     </div>
   </div>
   <div class="right-bar">
-    <div class="appointments">
-      <div class="show-div calendar">
-        <%= render 'shared/calendar' %>
-      </div>
+    <div class="appo-dash">
+      <%= render 'shared/appointments', locals: { user: @user } %>
     </div>
     <div class="documents">
-      DOcuments
+      Documents
     </div>
   </div>
-<% else %>
+<% elsif current_class == "doctor" %>
   <div class="center-bar">
     <div class="center">
       <div class="dash-main <%= current_class %>">
@@ -67,7 +65,8 @@
     </div>
   </div>
   <div class="right-bar">
-
+      <%= render 'shared/appointments', locals: { user: @user } %>
+      <%= render 'shared/documents', locals: { user: @user } %>
   </div>
 <% end %>
 </div>
