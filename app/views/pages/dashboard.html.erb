@@ -1,10 +1,11 @@
 <div class="dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @user } %>
+
     <% if current_class == 'patient' %>
       <div class="medications">
         medications
-         <%#= render 'shared/medications', locals: { user: user } %>
+        <%#= render 'shared/medications', locals: { user: user } %>
       </div>
     <% else %>
       <div class="link-list">
@@ -18,34 +19,33 @@
           <li class="list-group-item">
             <a href="#">Search for a Medication</a>
           </li>
-        </ul>
+       </ul>
       </div>
     <% end %>
   </div>
-<% if @user.class.to_s.downcase == 'patient' %>
-  <div class="center-bar">
-    <div class="center">
-      <div class="dash-main">
-        Main Dashboard
-      </div>
-      <div class="dash-cards">
-        <ul class="list-group">
+
+  <% if @user.class.to_s.downcase == 'patient' %>
+    <div class="center-bar">
+      <div class="center">
+        <div class="dash-main <%= current_class %>">
+          Main Dashboard
+        </div>
+          <div class="dash-cards">
+            <ul class="list-group">
               <% @user.chats.where(accepted: false).each do |chat| %>
-                <li class="list-group-item">
+              <li class="list-group-item">
                 <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
-                </li>
+              </li>
               <% end %>
-        </ul>
-
-        <ul class="list-group">
-              <% @user.chats.where(accepted: true).each do |chat| %>
-                <li class="list-group-item">
-                  <%= render 'shared/doctor_card', locals: { patient: chat.patient } %>
-                </li>
-              <% end %>
-        </ul>
-
-      </div>
+             </ul>
+           <ul class="list-group">
+             <% @user.chats.where(accepted: true).each do |chat| %>
+             <li class="list-group-item">
+               <%= render 'shared/card', locals: { user: chat.patient } %>
+             </li>
+             <% end %>
+           </ul>
+          </div>
     </div>
   </div>
   <div class="right-bar">
@@ -56,39 +56,40 @@
       Documents
     </div>
   </div>
-<% elsif current_class == "doctor" %>
+
+  <% elsif current_class == "doctor" %>
   <div class="center-bar">
     <div class="center">
       <div class="dash-main <%= current_class %>">
         <div class="past">
-  <% if @user.appointments.where(status: "done").last.nil? %>
+          <% if @user.appointments.where(status: "done").last.nil? %>
           You didn't have a past appointment
-  <% else %>
+          <% else %>
           <%= @user.appointments.where(status: "done").last %>
-  <% end %>
+          <% end %>
         </div>
         <div class="upcoming">
-  <% if @user.appointments.where(status: "scheduled").empty? %>
+          <% if @user.appointments.where(status: "scheduled").empty? %>
           You don't have a scheduled appointment
-  <% else %>
+          <% else %>
           <%= @user.appointments.where(status: "scheduled").order(:date).first %>
-  <% end %>
+          <% end %>
         </div>
       </div>
       <div class="dash-card">
         <ul class="list-group">
-  <% @user.patients.each do |p| %>
+          <% @user.patients.each do |p| %>
           <li class="list-group-item">
-            <%= render 'shared/doctor_card', locals: { patient: p } %>
+            <%= render 'shared/card', locals: { user: p } %>
           </li>
-  <% end %>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
   <div class="right-bar">
-      <%= render 'shared/appointments', locals: { user: @user } %>
-      <%= render 'shared/documents', locals: { user: @user } %>
+    <%= render 'shared/appointments', locals: { user: @user } %>
+    <%= render 'shared/documents', locals: { user: @user } %>
   </div>
-<% end %>
+  <% end %>
 </div>
