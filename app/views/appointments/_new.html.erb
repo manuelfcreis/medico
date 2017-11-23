@@ -1,0 +1,9 @@
+<div id="appointment-form-<%= locals[:patient].id %>" class="apt-form modal fade">
+  <h2>Add an appointment</h2>
+    <%= simple_form_for [locals[:patient], locals[:patient].appointments.new] do |f| %>
+        <%= f.input :date %>
+        <%= f.input :duration %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+    <% end  %>
+</div>
+

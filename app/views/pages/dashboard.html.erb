@@ -92,18 +92,3 @@
   </div>
 <% end %>
 </div>
-
-
-<div id="invite" hidden>
-  <h2><%= t "devise.invitations.new.header" %></h2>
-
-  <%= form_for(Patient.new, url: invite_path) do |f| %>
-  <%= devise_error_messages! %>
-
-
-  <%= f.text_field :email %>
-
-
-  <%= f.submit %>
-  <% end %>
-</div>
