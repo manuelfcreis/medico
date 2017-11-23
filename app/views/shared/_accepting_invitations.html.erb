@@ -1,3 +1,13 @@
-<%= simple_form_for(locals[:chat], :url => patient_chat_path(patient_id: @user.id, id: locals[:chat].id), :method => :patch) do |f| %>
-    <%= f.submit 'Accept', class: 'btn btn-success' %>
-<% end %>
+<div class="edit_chat">
+  <%= "Dr. #{locals[:chat].doctor.first_name} #{locals[:chat].doctor.last_name}" %>
+  <div class="buttons">
+    <%= button_to accept_chat_path(id: locals[:chat].id), class: 'accept' do %>
+      <%= icon('check') %>
+    <% end %>
+    <%= button_to reject_chat_path(id: locals[:chat].id), class: 'reject' do %>
+      <%= icon('times') %>
+    <% end %>
+  </div>
+</div>
+
+
