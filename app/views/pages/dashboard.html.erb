@@ -22,34 +22,6 @@
       </div>
     <% end %>
   </div>
-  <% if @user.class.to_s.downcase == 'patient' %>
-    <div class="center-bar">
-      <div class="center">
-        <div class="dash-main">
-          <div class="dash-card">
-            <ul class="list-group">
-              <% @user.chats.where(accepted: false).each do |chat| %>
-                <li class="list-group-item">
-                <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
-                </li>
-              <% end %>
-            </ul>
-            <ul class="list-group">
-              <% @user.chats.where(accepted: true).each do |chat| %>
-                <li class="list-group-item">
-                  <%= render 'shared/doctor_card', locals: { patient: chat.patient } %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <div class="dash-cards">
-          Card list
-        </div>
-      </div>
-    </div>
-<% end %>
-  </div>
 <% if @user.class.to_s.downcase == 'patient' %>
   <div class="center-bar">
     <div class="center">
@@ -57,7 +29,22 @@
         Main Dashboard
       </div>
       <div class="dash-cards">
-        Card list
+        <ul class="list-group">
+              <% @user.chats.where(accepted: false).each do |chat| %>
+                <li class="list-group-item">
+                <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
+                </li>
+              <% end %>
+        </ul>
+
+        <ul class="list-group">
+              <% @user.chats.where(accepted: true).each do |chat| %>
+                <li class="list-group-item">
+                  <%= render 'shared/doctor_card', locals: { patient: chat.patient } %>
+                </li>
+              <% end %>
+        </ul>
+
       </div>
     </div>
   </div>
