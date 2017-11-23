@@ -27,4 +27,16 @@ class DoctorsController < ApplicationController
     @patient = current_patient
     @doctor = Doctor.find(params[:id])
   end
+
+  def update
+    @doctor = Doctor.find(params[:id])
+    @doctor.update(doctor_params)
+
+    redirect_to dashboard_path
+  end
+
+  private
+    def doctor_params
+      params.require(:doctor).permit(:email, :first_name, :last_name, :specialty_id)
+    end
 end

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   post '/dashboard', to: 'pages#invite_patients', as: 'invite'
+  get '/settings', to: 'pages#settings', as: 'settings'
 
 
   get '/patient', to: 'pages#patient', as: :patient_landing
