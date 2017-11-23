@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :chats, only: ['show', 'create'] do
+    resources :chats, only: ['show', 'create', 'update'] do
       resources :messages, only: ['show', 'new', 'create']
     end
 

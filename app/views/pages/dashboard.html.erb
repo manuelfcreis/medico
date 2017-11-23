@@ -1,16 +1,51 @@
 <div class="dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @user } %>
-<% if current_class == 'patient' %>
-    <div class="medications">
-      medications
-      <%#= render 'shared/medications', locals: { user: user } %>
-    </div>
-<% else %>
-    <div class="link-list">
-      <div class="calendar">
-        <%= render 'shared/calendar' %>
-
+    <% if current_class == 'patient' %>
+      <div class="medications">
+        medications
+         <%#= render 'shared/medications', locals: { user: user } %>
+      </div>
+    <% else %>
+      <div class="link-list">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a href="#">Add a Prescription</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Manage your appointments</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">Search for a Medication</a>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <% if @user.class.to_s.downcase == 'patient' %>
+    <div class="center-bar">
+      <div class="center">
+        <div class="dash-main">
+          <div class="dash-card">
+            <ul class="list-group">
+              <% @user.chats.where(accepted: false).each do |chat| %>
+                <li class="list-group-item">
+                <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
+                </li>
+              <% end %>
+            </ul>
+            <ul class="list-group">
+              <% @user.chats.where(accepted: true).each do |chat| %>
+                <li class="list-group-item">
+                  <%= render 'shared/doctor_card', locals: { patient: chat.patient } %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="dash-cards">
+          Card list
+        </div>
       </div>
     </div>
 <% end %>

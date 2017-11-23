@@ -12,6 +12,10 @@
     font-family:'Lato', sans-serif;
     margin-bottom: 3%;
     margin-top: 26%;
+    span :last-child {
+    color: white !important;
+    background-color: transparent !important;
+  }
   }
 }
 

@@ -28,8 +28,13 @@ class PagesController < ApplicationController
   end
 
   def invite_patients
-    @patient = Patient.invite!(email: invite_params[:email]) do |p|
-      p.skip_invitation = true
+    if Patient.find_by(email: invite_params[:email]) == nil
+      @patient = Patient.invite!({email: invite_params[:email]}, current_doctor) do |p|
+        p.skip_invitation = true
+        p.accept_invitation!
+      end
+    else
+      @patient = Patient.find_by(email: invite_params[:email])
     end
 
     @chat = Chat.new
@@ -37,12 +42,8 @@ class PagesController < ApplicationController
     @chat.patient = @patient
     @chat.save
 
-    if Patient.last.email == invite_params[:email]
-      flash[:notice] = "User invited!"
-    else
-      flash[:notice] = "This user has already been invited!"
-    end
-    redirect_to :dashboard
+    redirect_to dashboard_path
+    flash[:notice] = "User invited!"
   end
 
   private
