@@ -3,7 +3,7 @@
     margin-top: 15px;
     height: calc(100vh - 70px;);
     display: grid;
-    grid-template-columns: 25% 60% 15%;
+    grid-template-columns: 25% 50% 25%;
 
     .list-group {
       margin: 0;
@@ -19,7 +19,6 @@
     }
 
     div {
-      padding: 10px 20px;
       background-color: white;
       border-radius: 3px;
     }
@@ -35,10 +34,13 @@
   }
 
   .center-bar {
+    display: flex;
+    align-items: space-between;
     grid-column: 2 / span 1;
   }
 
   .right-bar {
+    border: 1px solid red;
     margin: 0;
     margin-right: 30px;
     grid-column: 3 / span 1;
@@ -62,6 +64,8 @@
     .dash-main.doctor {
       div {
         background-color: transparent;
+        padding: 10px 20px;
+        margin: 10px 0px;
       }
       background-color: $doctor;
       margin: 0px 0px 20px 0px;
@@ -70,14 +74,12 @@
       color: white;
       .past {
         grid-column: 1 / span 1;
-        margin: 0px;
         width: 100%;
         border-radius: 0;
         border-right: 2px solid white;
       }
       .upcoming {
         grid-column: 2 / span 1;
-        margin: 0px;
         width: 100%;
       }
     }
