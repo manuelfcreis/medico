@@ -70,10 +70,15 @@
         </div>
       </div>
       <div class="dash-card">
+          <% if @user.chats.where(accepted: true).empty? %>
+            <div class="card-img">
+              <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Images/no_patients.png", style: "width: 300px; height: 300px;" %>
+            </div>
+          <% end %>
         <ul class="list-group">
-          <% @user.patients.each do |p| %>
+          <% @user.chats.where(accepted: true).each do |chat| %>
           <li class="list-group-item">
-            <%= render 'shared/card', locals: { user: p } %>
+            <%= render 'shared/card', locals: { user: chat.patient } %>
           </li>
           <% end %>
         </ul>

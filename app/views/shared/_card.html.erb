@@ -35,7 +35,7 @@
     <%= button_to locals[:user], method: :get, form_class: "important" do %>
       <%= icon('paper-plane-o') %>
     <% end %>
-    <%= button_to '#' do %>
+    <%= button_to '#', remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
       <%= icon('calendar') %>
     <% end %>
   </div>
@@ -84,8 +84,8 @@
     <% end %>
   </div>
 </div>
-
+<% end %>
 <%= render 'appointments/new', locals: { user: locals[:user] } %>
 
-<% end %>
+
 

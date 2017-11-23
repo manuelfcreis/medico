@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
     resources :documents, only: ['create', 'delete']
-    resources :appointments, only: ['show']
+    resources :appointments, only: ['show', 'create']
     resources :doctors_notes, only: ['show']
     resources :chats, only: ['show', 'create'] do
       resources :messages

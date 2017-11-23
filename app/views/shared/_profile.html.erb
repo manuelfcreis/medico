@@ -29,13 +29,13 @@
   <%= simple_form_for(Patient.new, url: invite_path) do |f| %>
   <%= devise_error_messages! %>
   <%= f.text_field :email %>
-  <%= f.submit "Submit" ,class: "btn btn-primary" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
   </div>
 </div>
 
 <div id="update" class="modal fade">
-<% @user.chats.where(accepted: false).each do |chat| %>
+<% locals[:user].chats.where(accepted: false).each do |chat| %>
   <li class="list-group-item">
     <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
   </li>

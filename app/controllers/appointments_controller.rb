@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  include ApplicationHelper
+
   def new
     @appointment = Appointment.new
     @patient = Patient.find(params[:patient_id])
@@ -9,13 +11,24 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
-    @appointment.doctor = current_doctor
-    @appointment.patient = Patient.find(params[:patient_id])
-    if @appointment.save
-      redirect_to doctor_appointment_path(current_doctor, @appointment)
-    else
-      render :new
+    if current_class == "doctor"
+      @appointment = Appointment.new(appointment_params)
+      @appointment.doctor = current_doctor
+      @appointment.patient = Patient.find(params[:patient_id])
+      if @appointment.save
+        redirect_to patient_path(@appointment.patient)
+      else
+        render :new
+      end
+    elsif current_class == "patient"
+      @appointment = Appointment.new(appointment_params)
+      @appointment.doctor = Doctor.find(params[:doctor_id])
+      @appointment.patient = current_patient
+      if @appointment.save
+        redirect_to doctor_path(@appointment.doctor)
+      else
+        render :new
+      end
     end
   end
 
