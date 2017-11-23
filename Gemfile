@@ -25,6 +25,7 @@ gem 'uglifier'
 
 # effects
 gem 'typing'
+gem 'faker'
 
 # Chat
 gem 'coffee-rails'
@@ -41,7 +42,6 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
   gem 'letter_opener'
   gem 'email_spec'
 end

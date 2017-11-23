@@ -1,13 +1,35 @@
-<div class="simple-calendar">
-<%= month_calendar events: @appointments do |date, appointments| %>
-  <%= date.day %>
+<% @apt = @user.appointments.where(status: 'scheduled')  %>
 
-  <% appointments.each do |appointment| %>
-    <div>
-      <%= appointment.patient.first_name %>
-      <%= appointment.patient.last_name %><%= appointment.date.hour %>:<%= appointment.date.min %>
-      <p><%= appointment.duration %> minutes</p>
-    </div>
+<div class="simple-calendar <% current_class %>">
+  <% if current_class == "doctor" %>
+
+      <%= calendar number_of_days: 5, events: @apt do |date, appointments| %>
+        <%= date.day %>
+
+        <% appointments.each do |appointment| %>
+          <div>
+            <%= appointment.patient.first_name %>
+            <%= appointment.patient.last_name %><%= appointment.date.hour %>:<%= appointment.date.min %>
+            <p><%= appointment.duration %> minutes</p>
+          </div>
+        <% end %>
+      <% end %>
+
+
+  <% elsif current_class == "patient" %>
+      <%= week_calendar events: @apt do |date, appointments| %>
+        <%= date.day %>
+
+        <% appointments.each do |appointment| %>
+          <div>
+            <%= appointment.doctor.first_name %>
+            <%= appointment.doctor.last_name %><%= appointment.date.hour %>:<%= appointment.date.min %>
+            <p><%= appointment.duration %> minutes</p>
+          </div>
+        <% end %>
+      <% end %>
+
   <% end %>
-<% end %>
 </div>
+
+

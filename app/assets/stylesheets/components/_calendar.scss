@@ -1,6 +1,9 @@
 .simple-calendar {
+  max-width: 100%;
+  padding: 10px 20px;
+
   .day {
-    width: 10px;
+    max-width: 8px;
   }
 
   .wday-0 {}
@@ -26,7 +29,16 @@
   .next-month { }
   .current-month {}
 
-  .has-events {
+}
+
+.simple-calendar.patient {
+   .has-events {
     background-color: $patient;
+  }
+}
+
+.simple-calendar.doctor {
+   .has-events {
+    background-color: $doctor;
   }
 }

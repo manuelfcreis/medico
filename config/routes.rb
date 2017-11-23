@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   devise_for :doctors, path: 'doctors'
 
 
-  root to: 'pages#home'
+  root 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
   mount ActionCable.server, at: '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
+    resources :documents, only: ['new', 'create', 'delete']
     resources :appointments, only: ['show']
     resources :doctors_notes, only: ['show']
     resources :chats, only: ['show', 'create'] do
@@ -44,9 +45,11 @@ Rails.application.routes.draw do
   post '/dashboard', to: 'pages#invite_patients', as: 'invite'
 
 
-
   get '/patient', to: 'pages#patient', as: :patient_landing
   get '/doctor', to: 'pages#doctor', as: :doctor_landing
+
+  post '/appointments/:id/accept', to: 'appointments#accept', as: :accept_appointment
+  post '/appointments/:id/reject', to: 'appointments#reject', as: :reject_appointment
 end
 
 

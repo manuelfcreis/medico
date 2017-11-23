@@ -72,33 +72,33 @@ Doctor.destroy_all
 
 puts 'Creating Doctors...'
 10.times do
-Doctor.create!(
-first_name: Faker::Name.first_name,
-last_name: Faker::Name.last_name,
-email: Faker::Internet.email,
-password: "secret",
-specialty_id: rand(1..10),
-avatar: "http://www.wetpaint.com/wp-content/uploads/2016/08/greys-anatomy-chandra-wilson-miranda-bailey-4.jpg"
-)
+  Doctor.create!(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: "secret",
+  specialty_id: rand(1..10),
+  avatar: "http://www.wetpaint.com/wp-content/uploads/2016/08/greys-anatomy-chandra-wilson-miranda-bailey-4.jpg"
+  )
 end
 
 puts 'Creating Patients...'
 10.times do
-Patient.create!(
-first_name: Faker::Name.first_name,
-last_name: Faker::Name.last_name,
-email: Faker::Internet.email,
-sex: ['female', 'male', 'intersex'].sample,
-birthday: Faker::Date.birthday(18, 65),
-password: "secret",
-bloodtype: ["A", "B", "AB", "O"].sample,
-education: ["Master's Degree", "Graduate", "Undergraduate", "Doctoral Degree", "High School"].sample,
-occupation: ["Student", "Teacher", "Anthropologist", "Architect", "Plumber"].sample,
-marital_status: ["Married", "Single", "Divorced", "Widowed"].sample,
-disability: ["none", "High Blood Pressure", "Diabetes", "High Colesterol", "Hepatitis", "Obesity"].sample,
-religion: ["Roman Catholic", "Protestant", "Sunni", "Jew", "Hindu", " jehovah's witness"].sample,
-avatar: "http://bubbamama.com/wp-content/uploads/2013/07/20130722-185719.jpg"
-)
+  Patient.create!(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  sex: ['female', 'male', 'intersex'].sample,
+  birthday: Faker::Date.birthday(18, 65),
+  password: "secret",
+  bloodtype: ["A", "B", "AB", "O"].sample,
+  education: ["Master's Degree", "Graduate", "Undergraduate", "Doctoral Degree", "High School"].sample,
+  occupation: ["Student", "Teacher", "Anthropologist", "Architect", "Plumber"].sample,
+  marital_status: ["Married", "Single", "Divorced", "Widowed"].sample,
+  disability: ["none", "High Blood Pressure", "Diabetes", "High Colesterol", "Hepatitis", "Obesity"].sample,
+  religion: ["Roman Catholic", "Protestant", "Sunni", "Jew", "Hindu", " jehovah's witness"].sample,
+  avatar: "http://bubbamama.com/wp-content/uploads/2013/07/20130722-185719.jpg"
+  )
 end
 
 puts 'Finished!'

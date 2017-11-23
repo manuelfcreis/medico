@@ -1,0 +1,37 @@
+<div class="documents">
+  <h4> Documents list: </h4>
+
+<ul class="list-group">
+
+<% if @user.documents.empty? %>
+  <li class="list-group-item">You don't have any Documents :( </li>
+<% end %>
+
+<% @user.documents.each do |doc| %>
+  <li class="list-group-item">
+    <% link_to doc.avatar do %>
+      <%= doc.name %></strong> <br>
+    <% end %>
+    <%= doc.description %>
+  </li>
+<% end %>
+</ul>
+
+
+    <%= button_to '#', remote: true, 'data-toggle': 'modal', 'data-target': '#document-form', id: 'document-button', class: "btn btn-primary new-document" do %>
+      New Document
+    <% end %>
+  </div>
+</div>
+
+<div id="document-form" class="doc-form modal fade">
+  <h4>New Document:</h4>
+  <%= simple_form_for([@user, @user.documents.new]) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :avatar %>
+    <%= f.submit 'Upload' %>
+  <% end %>
+</div>
+
+

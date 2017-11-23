@@ -1,0 +1,40 @@
+.appointments {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 3px;
+  li {
+    position: relative;
+    padding: 10px 0px 10px 15;
+    margin-bottom: 10px;
+  }
+  .buttons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  .accept {
+    background-color: $patient;
+  }
+
+  .reject {
+    background-color: $doctor;
+  }
+
+  .accept, .reject {
+    position: relative;
+    display: block;
+    margin: 0px;
+    width: 30px;
+    height: 35px;
+    border: none;
+    color: white;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0px 0px 5px #999;
+    }
+  }
+}

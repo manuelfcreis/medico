@@ -3,23 +3,14 @@
     margin-top: 15px;
     height: calc(100vh - 70px;);
     display: grid;
-    grid-template-columns: 25% 60% 15%;
+    grid-template-columns: 25% 50% 25%;
 
     .list-group {
       margin: 0;
 
     }
 
-    ul {
-      li {
-        border: none;
-        padding: 0 0 10px 0;
-        a{ color: black; }
-      }
-    }
-
     div {
-      padding: 10px 20px;
       background-color: white;
       border-radius: 3px;
     }
@@ -35,18 +26,16 @@
   }
 
   .center-bar {
+    display: flex;
+    align-items: space-between;
+    justify-content: center;
     grid-column: 2 / span 1;
   }
 
   .right-bar {
-    margin: 0;
+    margin-left: 15px;
     margin-right: 30px;
     grid-column: 3 / span 1;
-  }
-
-  .right-center-bar {
-    margin: 0px 30px 0px 0px;
-    grid-column: 2 / span 2;
   }
 
   .left-bar, .right-center-bar, .center-bar, .right-bar {
@@ -59,9 +48,19 @@
     padding: 0px !important;
     background-color: transparent !important;
 
+    ul {
+      li {
+        border: none;
+        padding: 0 0 10px 0;
+        a{ color: black; }
+      }
+    }
+
     .dash-main.doctor {
       div {
         background-color: transparent;
+        padding: 10px 20px;
+        margin: 10px 0px;
       }
       background-color: $doctor;
       margin: 0px 0px 20px 0px;
@@ -70,14 +69,12 @@
       color: white;
       .past {
         grid-column: 1 / span 1;
-        margin: 0px;
         width: 100%;
         border-radius: 0;
         border-right: 2px solid white;
       }
       .upcoming {
         grid-column: 2 / span 1;
-        margin: 0px;
         width: 100%;
       }
     }
@@ -90,6 +87,14 @@
       padding: 20px 10px 1px 10px;
     }
   }
+
+  .appo-dash {
+    margin-bottom: 20px;
+    padding: 0px;
+  }
+
+  .documents {
+    margin-bottom: 20px;
+  }
+
 }
-
-

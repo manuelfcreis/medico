@@ -9,7 +9,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
     if !current_doctor.nil?
       @user = current_doctor
     elsif !current_patient.nil?
@@ -29,7 +28,6 @@ class PagesController < ApplicationController
   end
 
   def invite_patients
-
     if Patient.find_by(email: invite_params[:email]) == nil
       @patient = Patient.invite!({email: invite_params[:email]}, current_doctor) do |p|
         p.skip_invitation = true
@@ -51,7 +49,6 @@ class PagesController < ApplicationController
   private
 
   def invite_params
-
     params.require(:patient).permit(:email)
   end
 end
