@@ -40,11 +40,24 @@ class PatientsController < ApplicationController
     render "new"
   end
 
+  def update
+    @patient = Patient.find(params[:id])
+    @patient.update(patient_params)
+
+    redirect_to dashboard_path
+  end
   private
-
-  # def verify_role
-  #   if current_user.class == current_controller
-
-  #   end
-  # end
+    def patient_params
+      params.require(:patient).permit(
+        :email,
+        :first_name,
+        :last_name,
+        :sex,
+        :bloodtype,
+        :education,
+        :marital_status,
+        :occupation,
+        :disability
+        )
+    end
 end

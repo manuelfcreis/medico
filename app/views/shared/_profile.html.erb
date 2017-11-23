@@ -16,7 +16,7 @@
       <% else %>
         <a href="#"><li  id="<%= current_class %>" class="list-group-item">Invite a Patient</li></a>
       <% end %>
-      <a href="#"><li class="list-group-item">Settings</li></a>
+      <%= link_to settings_path do %><li class="list-group-item">Settings</li><% end %>
       <a href="#"><li class="list-group-item">Log-out</li></a>
     </ul>
   </div>
