@@ -20,6 +20,7 @@ class PagesController < ApplicationController
   end
 
   def sign_in
+    @resources = [:patient, :doctor]
   end
 
   def patient
