@@ -3,101 +3,190 @@
     margin-top: 15px;
     position: relative;
     height: calc(100vh - 70px);
-    // width: 99vw;
     display: grid;
-    // grid-template-columns: 20% 60% 20%;
     grid-template-columns: 25% 50% 25%;
-  // div {
-  //   margin: 5px;
-  //   padding: 10px 20px;
-  //   background-color: white;
-  //   border-radius: 3px;
-  // }
+    grid-template-rows: 50% 50%;
+    font-family: 'Roboto', sans-serif;
 
-  .left-side {
-    margin-right: 15px;
-    margin-left: 30px;
-    grid-column: 1 / span 1;
-    background-color: white;
-    // position: absolute;
-    // height: 100%;
-    // width: 20%;
-    // padding: 5px 10px;
-  }
 
-  .right-side {
-    margin-left: 15px;
-    margin-right: 30px;
-    grid-column: 3 / span 1;
-    // padding: 5px 10px;
-    // position: absolute;
-    // right: 0;
-    // height: 100%;
-    // width: 20%;
-  }
-
-  .chatroom {
-    display: block;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    grid-column: 2 / span 1;
-
-    .input {
-      display: flex;
-      padding: 0;
-
-      form {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-      }
-
-      #content {
-        padding: 10px 10px 10px 15px;
-        vertical-align: center;
-        font-size: 18px;
-        max-width: 90%;
-        flex: 1 0 auto !important;
-        height: 100%;
-        display: inline;
-        border: none;
-        box-shadow: none;
-      }
-
-      .send {
-        margin-bottom: 5px;
-        padding: 0;
-        font-size: 30px;
-        flex: 0 1 10%;
-        height: 100%;
-        background: white;
-        transition: all 0.3s ease;
-      }
-
-      .send.doctor {
-        &:hover {
-          color: $doctor;
-        }
-      }
-
-      .send.patient {
-        &:hover {
-          color: $patient;
-        }
-      }
-    }
-    .body {
-      border-radius: 5px;
+    .left-top-side {
+      margin-right: 15px;
+      margin-left: 30px;
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 1;
       background-color: white;
-      height: 70vh;
-      width: 100%;
-      overflow: scroll;
-      margin: 0px 0px 30px 0px;
-      padding: 2px;
+    }
+    .medications-block{
+      grid-column: 1 / span 1;
+      grid-row: 2 / span 1;
+      background-color: white;
+      margin-right: 15px;
+      margin-left: 30px;
+      padding: 10px 20px 10px 20px;
+      margin-bottom: 30px;
+      margin-top: 15px;
+    }
+
+    .right-side {
+      margin-left: 15px;
+      margin-right: 30px;
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 1;
+    }
+
+    .middle-side {
+      display: block;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 2;
+
+      .input {
+        display: flex;
+        padding: 0;
+
+        form {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        #content {
+          padding: 10px 10px 10px 15px;
+          vertical-align: center;
+          font-size: 18px;
+          max-width: 90%;
+          flex: 1 0 auto !important;
+          height: 100%;
+          display: inline;
+          border: none;
+          box-shadow: none;
+        }
+
+        .send {
+          margin-bottom: 5px;
+          padding: 0;
+          font-size: 30px;
+          flex: 0 1 10%;
+          height: 100%;
+          background: white;
+          transition: all 0.3s ease;
+        }
+
+        .send.doctor {
+          &:hover {
+            color: $doctor;
+          }
+        }
+
+        .send.patient {
+          &:hover {
+            color: $patient;
+          }
+        }
+      }
+      .body {
+        border-radius: 5px;
+        background-color: white;
+        height: 70vh;
+        width: 100%;
+        overflow: scroll;
+        margin: 0px 0px 30px 0px;
+        padding: 2px;
+      }
+    }
+    .left-bar {
+      margin-right: 15px;
+      margin-left: 30px;
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 2;
+      .profile-dashboard{
+        background-color: white;
+      }
+      .link-list{
+        margin-top: 15px;
+      }
+    }
+
+    .right-top-bar {
+      margin-left: 15px;
+      margin-right: 30px;
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 1;
+    }
+    .right-bottom-bar {
+      margin-left: 15px;
+      margin-right: 30px;
+      grid-column: 3 / span 1;
+      grid-row: 2 / span 1;
+      background-color: white;
+      margin-bottom: 20px;
+
+    }
+    .center-bar {
+      display: block;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 2;
+
+      .input {
+        display: flex;
+        padding: 0;
+
+        form {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        #content {
+          padding: 10px 10px 10px 15px;
+          vertical-align: center;
+          font-size: 18px;
+          max-width: 90%;
+          flex: 1 0 auto !important;
+          height: 100%;
+          display: inline;
+          border: none;
+          box-shadow: none;
+        }
+
+        .send {
+          margin-bottom: 5px;
+          padding: 0;
+          font-size: 30px;
+          flex: 0 1 10%;
+          height: 100%;
+          background: white;
+          transition: all 0.3s ease;
+        }
+
+        .send.doctor {
+          &:hover {
+            color: $doctor;
+          }
+        }
+
+        .send.patient {
+          &:hover {
+            color: $patient;
+          }
+        }
+      }
+      .body {
+        border-radius: 5px;
+        background-color: white;
+        height: 70vh;
+        width: 100%;
+        overflow: scroll;
+        margin: 0px 0px 30px 0px;
+        padding: 2px;
+      }
     }
   }
 }
-}
-
