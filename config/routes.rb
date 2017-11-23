@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
-    resources :documents, only: ['new', 'create', 'delete']
+    resources :documents, only: ['create', 'delete']
     resources :appointments, only: ['show']
     resources :doctors_notes, only: ['show']
     resources :chats, only: ['show', 'create'] do
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
+    resources :documents, only: ['create', 'delete']
     resources :appointments, only: ['new', 'create', 'index', 'show'] do
       resources :prescriptions, only: ['new', 'create'] do
         resources :doses, only: ['new', 'create']

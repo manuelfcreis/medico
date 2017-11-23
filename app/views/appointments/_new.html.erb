@@ -1,0 +1,20 @@
+<% if current_class == "doctor" %>
+<div id="appointment-form-<%= locals[:user].id %>" class="apt-form modal fade">
+  <h2>Add an appointment</h2>
+    <%= simple_form_for [locals[:user], locals[:user].appointments.new] do |f| %>
+        <%= f.input :date %>
+        <%= f.input :duration %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+    <% end  %>
+</div>
+<% else %>
+<div id="appointment-form-<%= locals[:user].id %>" class="apt-form modal fade">
+  <h2>Add an appointment</h2>
+    <%= simple_form_for [@user, locals[:user].appointments.new] do |f| %>
+        <%= f.input :date %>
+        <%= f.input :duration %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+    <% end  %>
+</div>
+
+<% end %>
