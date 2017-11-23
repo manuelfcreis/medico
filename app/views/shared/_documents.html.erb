@@ -3,11 +3,11 @@
 
 <ul class="list-group">
 
-<% if @user.documents.empty? %>
+<% if locals[:user].documents.empty? %>
   <li class="list-group-item">You don't have any Documents :( </li>
 <% end %>
 
-<% @user.documents.each do |doc| %>
+<% locals[:user].documents.each do |doc| %>
   <li class="list-group-item">
     <% link_to doc.avatar do %>
       <%= doc.name %></strong> <br>
@@ -26,7 +26,7 @@
 
 <div id="document-form" class="doc-form modal fade">
   <h4>New Document:</h4>
-  <%= simple_form_for([@user, @user.documents.new]) do |f| %>
+  <%= simple_form_for([locals[:user], locals[:user].documents.new]) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :avatar %>
