@@ -16,7 +16,7 @@
     background-color: white;
     font-family: 'Lato', sans-serif;
     .benefit-icons{
-      padding: 20px;
+      // padding: 20px;
 
       p{
         font-family: 'Roboto', sans-serif;
@@ -24,6 +24,14 @@
         font-weight: lighter;
         text-align: left;
       }}
+      #left-icon{
+        padding-left: 50px;
+        padding-top: 11px;
+      }
+      #right-icon{
+        padding-left: 60px;
+        padding-top: 11px;
+      }
     }
   }
   .card_two{
