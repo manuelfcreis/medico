@@ -14,7 +14,7 @@
       <% if locals[:user].class.to_s == "Doctor" %>
         <a href="invite" data-toggle="modal" data-target="#invite"><li id="<%= current_class %>" class="list-group-item">Invite a Patient</li></a>
       <% else %>
-        <a href="update" data-toggle="modal" data-target="#update"><li  id="<%= current_class %>" class="list-group-item">Pending Invitations</li></a>
+        <a href="update" data-toggle="modal" data-target="#update"><li  id="<%= current_class %>" class="list-group-item"> <%= locals[:user].chats.where(accepted: false).count %> Pending <%= "Invitation".pluralize(locals[:user].chats.where(accepted: false).count) %></li></a>
       <% end %>
       <%= link_to settings_path do %><li class="list-group-item">Settings</li><% end %>
       <a href="#"><li class="list-group-item">Log-out</li></a>
