@@ -26,7 +26,7 @@ until answer == "n"
     puts "Creating the Medication... This may take a while"
     20.times do |i|
     # csv.each do |row|
-      row = csv[i]
+      row = csv.sample
       m = Medication.new
       m.name = row['Nome do medicamento']
       m.ingredient = row['Substancia Ativa']
