@@ -3,13 +3,15 @@
   color: white;
   border: 1.5px solid #FF686B;
   border-radius: 50px;
-  font-weight: lighter;
+  font-weight: normal;
   opacity: 1;
   margin-top: 47px !important;
   margin-bottom: 10%;
   text-decoration: none;
+  font-size: 25px;
+  text-shadow: 1px 1px black;
   .btn-home:hover{
-    opacity: 0.6;
+    border: 1.5px solid #84DCC6;
     text-decoration: none;
     color: white;
     cursor: pointer;
@@ -17,25 +19,28 @@
 }
 
 
-  .btn-home:hover{
-    opacity: 0.6;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-  }
-  .style1{
-    opacity: 0.6;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-    padding: 9%;
-    border: 1.5px solid #FF686B;
-    border-radius: 50px;
-    font-weight: lighter;
-    margin-top: 47px !important;
-    margin-bottom: 10%;
-    text-decoration: none;
-  }
+.btn-home:hover{
+  border: 1.5px solid #84DCC6;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+.style1{
+  opacity: 0.7;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  padding: 9%;
+  color: white;
+  border: 1.5px solid #84DCC6;
+  border-radius: 50px;
+  font-weight: normal;
+  margin-top: 47px !important;
+  margin-bottom: 10%;
+  text-decoration: none;
+  font-size: 25px;
+  text-shadow: 1px 1px black;
+}
 
 
 
