@@ -21,3 +21,28 @@
 
   </div>
 </div>
+
+<%#= render partial: 'shared/unbind' %>
+
+<script>
+  $('#update').on('hidden', function (e) {
+      if (e.keyCode == 13) {
+        console.log('hey this is working');
+        e.preventDefault();
+      }
+  });
+
+  $('#invite').on('hidden', function (e) {
+      if (e.keyCode == 13) {
+        console.log('hey this is working');
+        e.preventDefault();
+      }
+  });
+
+  $('#document-form').on('hidden', function (e) {
+      if (e.keyCode == 13) {
+        console.log('hey this is working');
+        e.preventDefault();
+      }
+  });
+</script>

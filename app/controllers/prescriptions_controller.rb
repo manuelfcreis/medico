@@ -20,4 +20,13 @@ class PrescriptionsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    @prescription = Prescription.find(params[:id])
+    @appointment = @prescription.appointment
+
+    @prescription.update(params.require(:prescription).permit(:doctors_notes))
+
+    render :new
+  end
 end

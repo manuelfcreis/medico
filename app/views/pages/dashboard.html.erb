@@ -8,7 +8,7 @@
         <%#= render 'shared/medications', locals: { user: user } %>
       </div>
     <% else %>
-      <div class="link-list">
+      <!-- div class="link-list">
         <ul class="list-group">
           <li class="list-group-item">
             <a href="#">Add a Prescription</a>
@@ -20,7 +20,8 @@
             <a href="#">Search for a Medication</a>
           </li>
        </ul>
-      </div>
+      </div> -->
+      <%= render 'shared/calendar', locals: { user: @user } %>
     <% end %>
   </div>
 
@@ -60,8 +61,14 @@
           <% else %>
           <% @last = @user.appointments.where(status: "done").last %>
           <h4>Last Appointment: <%= @last.patient.first_name %> <%= @last.patient.last_name %></h4>
-          <hr>
           <%= @last.date.day %> of <%= @last.date.strftime("%B") %>
+          <hr>
+          <p>"<emphasis><%= @last.prescriptions.last.doctors_notes %></emphasis>"</p>
+          <%= button_to "Edit Prescription",
+          new_patient_appointment_prescription_path(patient_id: @last.patient, appointment_id: @last),
+           method: :get,
+           class: "btn btn-white",
+           style: 'color: #ff686b; margin-top: 10px;' %>
           <% end %>
         </div>
         <div class="upcoming">
@@ -102,3 +109,9 @@
   </div>
   <% end %>
 </div>
+
+
+
+<%= content_for :title do %>
+  <%= "Dashboard" %>
+<% end %>
