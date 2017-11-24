@@ -10,7 +10,7 @@ def create
 
     if @dose.save
       redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment.id)
-      flash[:notice] = "dose saved"
+      flash[:notice] = "Prescription saved"
     else
       redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment.id)
     end
