@@ -29,6 +29,11 @@
   <%= simple_form_for([locals[:user], locals[:user].documents.new]) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
+   <%= f.simple_fields_for :post_attachments do |p| %>
+         <div class="field">
+           <%= p.input :media, as: :file, :multiple => true, name: "post_attachments[media][]" %>
+         </div>
+         <% end %>
     <%= f.submit 'Upload', class: 'btn btn-primary' %>
   <% end %>
 

@@ -63,7 +63,6 @@ Rails.application.routes.draw do
 end
 
 
-
 # Landing Page
 # Dashboard -> Users and Doctors -> Identify which one they are
   # Doctors -> Patients, Conversations
