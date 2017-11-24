@@ -79,6 +79,7 @@
   text-align: center;
   flex-orientation: column;
   background-color: white;
+  margin-top: 100px;
   width: 400px;
   height: auto;
   position: absolute;
@@ -138,4 +139,13 @@
 
 .flex-on {
   display: flex;
+}
+
+.no-invitaions {
+  height: 100%;
+  align-items: center;
+}
+
+#thumbsup {
+  width: 50%;
 }
