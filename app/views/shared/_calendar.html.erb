@@ -1,6 +1,7 @@
 <% @apt = @user.appointments.where(status: 'scheduled')  %>
 
-<div class="simple-calendar <% current_class %>">
+<div class="simple-calendar <% current_class %>" style="padding:0;">
+  <center>
   <% if current_class == "doctor" %>
 
       <%= calendar number_of_days: 5, events: @apt do |date, appointments| %>
@@ -30,6 +31,7 @@
       <% end %>
 
   <% end %>
+</center>
 </div>
 
 

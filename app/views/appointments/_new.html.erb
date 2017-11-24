@@ -15,13 +15,20 @@
     </div>
   </div>
 </div>
+
 <% else %>
 <div id="appointment-form-<%= locals[:user].id %>" class="apt-form modal fade">
-  <h2>Add an appointment</h2>
-  <%= simple_form_for [locals[:user], locals[:user].appointments.new] do |f| %>
-  <%= f.input :date %>
-  <%= f.input :duration %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-  <% end  %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add an appointment</h2>
+      </div>
+      <%= simple_form_for [locals[:user], locals[:user].appointments.new] do |f| %>
+      <%= f.input :date %>
+      <%= f.input :duration %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+      <% end  %>
+    </div>
+  </div>
 </div>
 <% end %>

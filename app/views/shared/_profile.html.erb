@@ -36,21 +36,23 @@
 
 <div id="update" class="modal fade" role="dialog">
   <div class="modal-dialog apt-form">
-    <div class="modal-content">
       <% if locals[:user].chats.where(accepted: false).count == 0 %>
+    <div class="modal-content">
         <div class="no-invitations">
           <%= image_tag "thumbs_up.png", id: "thumbsup" %>
         </div>
+    </div>
       <p>All clear!</p>
       <% else %>
-      <ul>
+    <div class="modal-content" style="padding: 0;">
+      <ul class="list-group">
       <% locals[:user].chats.where(accepted: false).each do |chat| %>
         <li class="list-group-item">
         <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
         </li>
       <% end %>
     </ul>
+  </div>
     <% end %>
-    </div>
   </div>
 </div>
