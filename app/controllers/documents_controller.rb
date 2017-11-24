@@ -25,3 +25,7 @@ class DocumentsController < ApplicationController
     redirect_to dashboard_path
   end
 end
+
+
+
+
