@@ -30,13 +30,19 @@
 
   </div>
   <div class="card-button <%= current_class %>">
-    <%= button_to new_patient_appointment_prescription_path(patient_id: locals[:user].appointments.where(doctor_id: current_doctor.id).last.patient.id , appointment_id: locals[:user].appointments.where(doctor_id: current_doctor.id).last.id), method: :get do %>
-      <%= icon('paperclip') %>
+    <% if locals[:user].appointments.empty? %>
+      <%= button_to '#', remote:true do %>
+        <%= icon('paperclip') %>
+      <% end %>
+    <% else %>
+      <%= button_to new_patient_appointment_prescription_path(patient_id: locals[:user].appointments.where(doctor_id: current_doctor.id).last.patient.id , appointment_id: locals[:user].appointments.where(doctor_id: current_doctor.id).last.id), method: :get do %>
+        <%= icon('paperclip') %>
+      <% end %>
     <% end %>
     <%= button_to locals[:user], method: :get, form_class: "important" do %>
       <%= icon('paper-plane-o') %>
     <% end %>
-    <%= button_to '#', remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
       <%= icon('calendar') %>
     <% end %>
   </div>
@@ -80,12 +86,13 @@
     <%= button_to locals[:user], method: :get, form_class: "important" do %>
       <%= icon('paper-plane-o') %>
     <% end %>
-    <%= button_to '#', remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
       <%= icon('calendar') %>
     <% end %>
   </div>
 </div>
 <% end %>
+
 <%= render 'appointments/new', locals: { user: locals[:user] } %>
 
 
