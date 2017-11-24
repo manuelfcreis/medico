@@ -41,6 +41,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :prescriptions, only: ['update'] do
+    resources :doses, only: ['create', 'delete']
+  end
+
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   post '/dashboard', to: 'pages#invite_patients', as: 'invite'

@@ -30,6 +30,19 @@ It receives a @user from the dashboard/conversation -->
 <% end %>
 </ul>
 
+<ul class="list-group">
+<h4>Upcoming Appointments:</h4>
+<% if locals[:user].appointments.where(status: "scheduled").empty? %>
+  <li class="list-group-item">You don't have any scheduled appointments :) </li>
+<% end %>
+
+<% locals[:user].appointments.where(status: "scheduled").each do |apt| %>
+  <li class="list-group-item">
+    <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
+    <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
+  </li>
+<% end %>
+</ul>
 
 <% elsif current_class == "patient" %>
 <h4>Upcoming Appointments:</h4>

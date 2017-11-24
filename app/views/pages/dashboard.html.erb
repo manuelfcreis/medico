@@ -58,14 +58,25 @@
           <% if @user.appointments.where(status: "done").last.nil? %>
           You didn't have a past appointment
           <% else %>
-          <%= @user.appointments.where(status: "done").last %>
+          <% @last = @user.appointments.where(status: "done").last %>
+          <h4>Last Appointment: <%= @last.patient.first_name %> <%= @last.patient.last_name %></h4>
+          <hr>
+          <%= @last.date.day %> of <%= @last.date.strftime("%B") %>
           <% end %>
         </div>
         <div class="upcoming">
           <% if @user.appointments.where(status: "scheduled").empty? %>
           You don't have a scheduled appointment
           <% else %>
-          <%= @user.appointments.where(status: "scheduled").order(:date).first %>
+          <% @next = @user.appointments.where(status: "scheduled").first %>
+          <h4>Next Appointment: <%= @next.patient.first_name %> <%= @next.patient.last_name %></h4>
+          <hr>
+          <%= @next.date.day %> of <%= @next.date.strftime("%B") %> at <%= @next.date.strftime('%k') %>:<%= @next.date.strftime('%M') %>
+          <%= button_to "End Appointment",
+          new_patient_appointment_prescription_path(patient_id: @next.patient, appointment_id: @next),
+           method: :get,
+           class: "btn btn-white",
+           style: 'color: #ff686b; margin-top: 10px;' %>
           <% end %>
         </div>
       </div>
