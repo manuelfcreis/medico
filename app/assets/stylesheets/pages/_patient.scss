@@ -1,21 +1,24 @@
-.card_one{
-  text-align: center;
-  height: 75vh;
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin-top: 2%;
-  .card_one_box{
-    height: 70%;
-    width: 60%;
-    border: 1px solid white;
-    position: absolute;
-    left: 2%;
-    background-color: white;
-    font-family: 'Lato', sans-serif;
-    .benefit-icons{
+.patient-wrapper{
+  padding-top: 40px;
+  margin-top: -40px;
+  .card_one{
+    text-align: center;
+    height: 75vh;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 2%;
+    .card_one_box{
+      height: 70%;
+      width: 60%;
+      border: 1px solid white;
+      position: absolute;
+      left: 2%;
+      background-color: white;
+      font-family: 'Lato', sans-serif;
+      .benefit-icons{
       // padding: 20px;
 
       p{
@@ -95,3 +98,4 @@
       padding: 13px;
     }
   }
+}

@@ -1,104 +1,108 @@
-.card-a{
-  text-align: center;
-  height: 75vh;
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin-top: 2%;
-  .card-a-box{
-    height: 70%;
-    width: 60%;
-    border: 1px solid white;
-    position: absolute;
-    left: 2%;
-    background-color: white;
-    font-family: 'Lato', sans-serif;
-    padding: 2%;
-    p{
-      font-family: 'Roboto', sans-serif;
-      opacity: 0.8;
-      font-weight: lighter;
-      text-align: left;
-    }
-    .card-a-image{
-      padding: 2%;
-      padding-left: 2%;
-      margin-left: 2%;
-      margin-top: 45%;
-    }
-  }
-}
-
-.card-b{
-  text-align: center;
-  height: 75vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin-top: 2% !important;
-  border: 1px solid white;
-  .card-b-content{
+.doctor-wrapper{
+  padding-top: 40px;
+  margin-top: -40px;
+  .card-a{
     text-align: center;
-    padding: 2%;
-    p {
-      font-family: 'Roboto', sans-serif;
-      opacity: 0.8;
-      font-weight: lighter;
-      text-align: left;
-    }
-    li{
-      font-family: 'Roboto', sans-serif;
-      opacity: 0.8;
-      font-weight: lighter;
-      text-align: left;
-    }
-  }
-  .card-b-image{
-    padding: 13px;
-    .card-b-image-1{
-      position: relative;
-      top: 0;
-      left: 0;
-    }
-    .card-b-image-2{
+    height: 75vh;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 2%;
+    .card-a-box{
+      height: 70%;
+      width: 60%;
+      border: 1px solid white;
       position: absolute;
-      top: 71%;
-      left: 62%;
-    }
-  }
-}
-
-.card-c{
-  text-align: center;
-  height: 75vh;
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin-top: 2%;
-  border: 1px solid white;
-  padding-bottom: 24px;
-  h3{
-      margin-top: 6%;
-    }
-  .card-c-content{
-    text-align: center;
-    padding: 25px;
-
-    .benefitsss-icons{
+      left: 2%;
+      background-color: white;
+      font-family: 'Lato', sans-serif;
       padding: 2%;
-
       p{
         font-family: 'Roboto', sans-serif;
         opacity: 0.8;
         font-weight: lighter;
         text-align: left;
-      }}
+      }
+      .card-a-image{
+        padding: 2%;
+        padding-left: 2%;
+        margin-left: 2%;
+        margin-top: 45%;
+      }
+    }
+  }
+
+  .card-b{
+    text-align: center;
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 2% !important;
+    border: 1px solid white;
+    .card-b-content{
+      text-align: center;
+      padding: 2%;
+      p {
+        font-family: 'Roboto', sans-serif;
+        opacity: 0.8;
+        font-weight: lighter;
+        text-align: left;
+      }
+      li{
+        font-family: 'Roboto', sans-serif;
+        opacity: 0.8;
+        font-weight: lighter;
+        text-align: left;
+      }
+    }
+    .card-b-image{
+      padding: 13px;
+      .card-b-image-1{
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+      .card-b-image-2{
+        position: absolute;
+        top: 71%;
+        left: 62%;
+      }
+    }
+  }
+
+  .card-c{
+    text-align: center;
+    height: 75vh;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 2%;
+    border: 1px solid white;
+    padding-bottom: 24px;
+    h3{
+      margin-top: 6%;
+    }
+    .card-c-content{
+      text-align: center;
+      padding: 25px;
+
+      .benefitsss-icons{
+        padding: 2%;
+
+        p{
+          font-family: 'Roboto', sans-serif;
+          opacity: 0.8;
+          font-weight: lighter;
+          text-align: left;
+        }}
+      }
     }
   }
 
