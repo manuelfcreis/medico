@@ -2,7 +2,7 @@
 <div class="doctor-card">
   <div class="card-avatar">
   <% if locals[:user].avatar.url.nil? %>
-    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle.png" %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1,2,3].sample}.png" %>
   <% else %>
     <%= image_tag locals[:user].avatar.url %>
   <% end %>
@@ -53,7 +53,7 @@
 <div class="patient-card">
   <div class="card-avatar">
   <% if locals[:user].avatar.url.nil? %>
-    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle.png" %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1,2,3].sample}.png" %>
   <% else %>
     <%= image_tag locals[:user].avatar.url %>
   <% end %>
