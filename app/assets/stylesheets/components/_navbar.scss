@@ -1,4 +1,9 @@
 /* Main navbar */
+#navbar{
+  top: 0 !important;
+  position: sticky !important;
+  z-index: 1000;
+}
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
