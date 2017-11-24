@@ -60,17 +60,18 @@
   <p><%= locals[:user].first_name %> <br><%= locals[:user].last_name %></p>
   </div>
   <div class="card-body">
-    <% @apts = locals[:user].appointments.where(doctor_id: current_active.id).where.not(status: "cancelled").where.not(status: "pending") %>
-    <% if @apts.nil? %>
-      <% if @apts.last.status == "scheduled" %>
-        Next Appointment: <%= @apts.last.date %>
-      <% elsif @apts.last.status == "done" %>
-        Last Appointment: <%= @apts.last.date %>
+ <% @apt = locals[:user].appointments.where(patient_id: current_active.id).where.not(status: "cancelled").where.not(status: "pending").order(:date).last %>
+    <% if !@apt.nil? %>
+      <% if @apt.status == "scheduled" %>
+        <strong>Next Appointment: <%= @apt.date %></strong>
+      <% elsif @apt.status == "done" %>
+        <strong>Last Appointment: <%= @apt.date.day.to_s + " " + @apt.date.strftime("%B") %></strong>
+        <p><%= @apt.prescriptions.last.doctors_notes %></p>
       <% end %>
-      <% if @apts.prescriptions.last.nil? %>
+      <% if @apt.prescriptions.last.nil? %>
         No previous prescriptions
       <% else %>
-        <% link_to @apts.prescriptions.last do %>
+        <% link_to @apt.prescriptions.last do %>
           Previous Prescription
         <% end %>
       <% end %>
