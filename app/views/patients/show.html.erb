@@ -37,3 +37,20 @@
     <%= render 'shared/documents', locals: { user: @doctor } %>
   </div>
 </div>
+
+
+<%#= render partial: 'shared/_unbind.js' %>
+
+<script>
+  $('#update').on('hidden', function (e) {
+    $(e.currentTarget).unbind(); // or $(this)
+});
+
+$('#invite').on('hidden', function (e) {
+    $(e.currentTarget).unbind(); // or $(this)
+});
+
+$('#document-form').on('hidden', function (e) {
+    $(e.currentTarget).unbind(); // or $(this)
+});
+</script>
