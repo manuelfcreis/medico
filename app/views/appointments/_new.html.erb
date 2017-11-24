@@ -24,9 +24,9 @@
         <h2>Add an appointment</h2>
       </div>
       <%= simple_form_for [locals[:user], locals[:user].appointments.new] do |f| %>
-      <%= f.input :date %>
-      <%= f.input :duration %>
-      <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.input :date %>
+        <%= f.input :duration %>
+        <%= f.button :submit, class: "btn btn-primary" %>
       <% end  %>
     </div>
   </div>

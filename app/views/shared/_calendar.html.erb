@@ -1,4 +1,4 @@
-<% @apt = @user.appointments.where(status: 'scheduled')  %>
+<% @apt = locals[:user].appointments.where(status: 'scheduled')  %>
 
 <div class="simple-calendar <% current_class %>" style="padding:0;">
   <center>

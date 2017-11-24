@@ -117,9 +117,17 @@
   }
 }
 
-.send-btn{
-  padding: 7px;
-  margin-bottom: 0;
-  background-color: #D3D3D3;
-  margin-left: 4px;
+  .send-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0px 0px 0px 20px;
+    .doctor {
+    background-color: $doctor;
+    }
+
+    .patient {
+    background-color: $patient;
+    }
   }
