@@ -48,6 +48,7 @@
   </div>
 </div>
 
+<!-- DOCTOR SIDE -->
 <% else %>
 
 <div class="patient-card">
@@ -81,8 +82,14 @@
 
   </div>
   <div class="card-button <%= current_class %>">
+        <% if locals[:user].appointments.empty? %>
+      <%= button_to '#', remote:true do %>
+        <%= icon('paperclip') %>
+      <% end %>
+    <% else %>
     <%= button_to new_patient_appointment_prescription_path(patient_id: current_patient.id , appointment_id: locals[:user].appointments.where(doctor_id: locals[:user].appointments.last.doctor.id).last.id), method: :get do %>
       <%= icon('paperclip') %>
+    <% end %>
     <% end %>
     <%= button_to locals[:user], method: :get, form_class: "important" do %>
       <%= icon('paper-plane-o') %>
