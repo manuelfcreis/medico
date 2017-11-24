@@ -1,8 +1,8 @@
 <div class="navbar-wagon nav-<%= current_class %>" id="navbar">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <% if current_class == "doctor" %>
-    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Logos/medi-co-green.png" %>
+    <% if patient_signed_in? or doctor_signed_in? %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Images/whitelogo.png" %>
     <% else %>
     <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Logos/medi-co.png" %>
     <% end %>

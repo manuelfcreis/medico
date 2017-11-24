@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <center>
+      <h3>Your appointment with <%= @appointment.patient.first_name %> has finished</h3>
+    </center>
+    <hr style="border-color: #ff686b;">
+    <div class="update-prescription col-xs-12 col-md-4">
+      <h5>Doctor's Notes</h5>
+    <%= simple_form_for([@prescription]) do |f| %>
+      <%= f.input :doctors_notes, label: false %>
+      <%= f.submit "Update", class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+
+    <div class="dose-list col-xs-12 col-md-4">
+      <ul class="list-group">
+        <h5>Current Prescription</h5>
+        <% @prescription.doses.each do |dose| %>
+        <li class="list-group-item">
+          <strong><%= dose.medication.name %>:</strong><br>
+          <%= pluralize(dose.quantity, dose.medication.format) %> <%= pluralize(dose.frequency, "times") %> per day<br>
+          for <%= pluralize(dose.days, "days") %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="new-dose col-xs-12 col-md-4">
+      <h5>Add a medication</h5>
+      <%= simple_form_for [@prescription, @prescription.doses.new] do |f| %>
+      <%= f.input :medication_id %>
+      <%= f.input :quantity, label: "Take how many:" %>
+      <%= f.input :days, label: "For how many days:" %>
+      <%= f.input :frequency, label: "How many times per day:" %>
+      <%= f.input :description %>
+      <div style="text-align: right;">
+      <%= f.submit "Add a medication", class: "btn btn-primary btn-sm" %>
+      </div>
+      <% end %>
+    </div>
+
+    <center>
+    <%= button_to "Finish Doctors Notes", dashboard_path, method: :get, class: "btn btn-danger btn-lg" %>
+    </center>
+  </div>
+</div>
