@@ -1,7 +1,7 @@
 <div class="profile-dashboard">
   <div class="user-name">
   <% if locals[:user].avatar.url.nil? %>
-    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle.png" %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1,2,3].sample}.png" %>
   <% else %>
     <%= image_tag locals[:user].avatar.url %>
   <% end %>
@@ -34,7 +34,9 @@
   </div>
 </div>
 
-<div id="update" class="modal fade">
+<div id="update" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
   <% if locals[:user].chats.where(accepted: false).count == 0 %>
   <div class="no-invitations">
     <%= image_tag "thumbs_up.png", id: "thumbsup" %>
@@ -47,4 +49,6 @@
   </li>
 <% end %>
 <% end %>
+</div>
+</div>
 </div>
