@@ -4,8 +4,8 @@
 
     <% if current_class == 'patient' %>
       <div class="medications">
-        medications
-        <%#= render 'shared/medications', locals: { user: user } %>
+        <h4>Medications</h4>
+        <%= render 'shared/medications' %>
       </div>
     <% else %>
       <div class="link-list">

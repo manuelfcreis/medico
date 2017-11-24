@@ -1,0 +1,9 @@
+<div class="patient-medication">
+<% current_patient.doses.each do |m| %>
+<p>Name: <%= m.medication.name %></p>
+<p>Duration: <%= m.days %></p>
+<p>Quantity: <%= m.quantity %></p>
+<p>Frequency: <%= m.frequency %> per day</p>
+<p>Instructions: <%= m.description %></p>
+<p><% end %></p>
+</div>
