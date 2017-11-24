@@ -1,6 +1,6 @@
-class DocumentUpload < ActiveRecord::Base
-  mount_uploader :file, DocUploader
-  attr_accessible :file
+class DocumentUpload < ApplicationRecord
+  mount_uploader :doc, DocUploader
 
-  belongs_to :doctor
+  belongs_to :document
 end
+
