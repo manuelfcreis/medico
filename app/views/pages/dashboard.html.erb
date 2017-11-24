@@ -64,7 +64,7 @@
            <ul class="list-group">
              <% @user.chats.where(accepted: true).each do |chat| %>
              <li class="list-group-item">
-               <%#= render 'shared/card', locals: { user: chat.doctor } %>
+               <%= render 'shared/card', locals: { user: chat.doctor } %>
              </li>
              <% end %>
            </ul>
