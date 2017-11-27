@@ -82,12 +82,12 @@
 
   </div>
   <div class="card-button <%= current_class %>">
-        <% if locals[:user].appointments.empty? %>
+    <% @app = Appointment.where(patient_id: current_active.id, doctor_id: locals[:user].id).last %>
+    <% if @app.prescriptions.empty? %>
       <%= button_to '#', remote:true do %>
         <%= icon('paperclip') %>
       <% end %>
     <% else %>
-    <% @app = Appointment.where(patient_id: current_active.id, doctor_id: locals[:user].id).last %>
     <%= button_to patient_appointment_prescription_path(patient_id: current_active.id,
                                                         appointment_id: @app.id,
                                                         id: @app.prescriptions.last.id ), method: :get do %>

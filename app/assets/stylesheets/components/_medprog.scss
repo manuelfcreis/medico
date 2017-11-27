@@ -1,14 +1,14 @@
-.progress {
+.med-progress {
   margin: 20px auto;
+  overflow: scroll;
   height: auto;
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid red !important;
 
   div {
     border: 1px solid red;
   }
   .pill {
     border-radius: 500px;
-
   }
 }
