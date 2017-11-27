@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   post '/chats/:id/accept', to: 'chats#accept', as: :accept_chat
   post '/chats/:id/reject', to: 'chats#reject', as: :reject_chat
 
+  get '/dose/:id', to: 'doses#progress', as: :progress
+
 end
 
 
