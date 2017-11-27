@@ -10,7 +10,7 @@ class PrescriptionsController < ApplicationController
       format.html
       format.pdf do
         render  pdf: "Prescription_#{@patient.first_name}_#{@appointment.date}.pdf",
-                template: "controller_name/show.pdf.erb",
+                template: "prescriptions/show.pdf.erb",
                 layout: "pdf_layout.html"
       end
     end

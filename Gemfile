@@ -38,7 +38,7 @@ gem "simple_calendar", "~> 2.0"
 
 # PDF outputting
 gem 'wicked_pdf'
-gem 'wkhtmltopdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'pry-byebug'
