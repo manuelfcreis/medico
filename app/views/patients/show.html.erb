@@ -41,7 +41,7 @@
 
 
 <%#= render partial: 'shared/_unbind.js' %>
-
+<% content_for(:js_content) do %>
 <script>
   $('#update').on('hidden', function (e) {
     $(e.currentTarget).unbind(); // or $(this)
@@ -55,3 +55,7 @@ $('#document-form').on('hidden', function (e) {
     $(e.currentTarget).unbind(); // or $(this)
 });
 </script>
+<% end %>
+
+
+
