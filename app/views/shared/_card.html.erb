@@ -30,7 +30,7 @@
 
   </div>
   <div class="card-button <%= current_class %>">
-    <% if locals[:user].appointments.empty? %>
+    <% if locals[:user].appointments.where(doctor_id: current_doctor.id).empty? %>
       <%= button_to '#', remote:true do %>
         <%= icon('paperclip') %>
       <% end %>
