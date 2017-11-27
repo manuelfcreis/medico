@@ -1,6 +1,6 @@
 <div class='navbar-wagon <%= action_name == "home" ? "initial" : "scrolled nav-#{current_class}" %>' id="navbar">
   <% if action_name == "home" %>
-  <i class="fa fa-bars fa-4x" ></i>
+  <i class="fa fa-bars fa-4x" id="hamburger-btn"></i>
   <% end %>
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>

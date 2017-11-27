@@ -11,25 +11,24 @@
     display: flex;
     margin-top: 2%;
     .card-a-box{
-      width: 60%;
+      width: 65%;
       border: 1px solid white;
       position: absolute;
       left: 2%;
       background-color: white;
       font-family: 'Lato', sans-serif;
-      padding: 5%;
+      padding: 2%;
 
-      p{
+      .card-a-text{
+        margin-left: 9%;
+        p{
         font-family: 'Roboto', sans-serif;
         opacity: 0.8;
         font-weight: lighter;
         text-align: left;
-      }
+      }}
       .card-a-image{
-        padding: 2%;
-        padding-left: 2%;
-        margin-left: 2%;
-        margin-top: 45%;
+        margin-right: 5%
       }
     }
   }
