@@ -2,6 +2,6 @@
     <%= f.text_area :content, class: 'form-control', id: 'content' %>
     <%= hidden_field_tag 'sender', current_class %>
     <div class="send-btn">
-      <%= f.submit 'send', class: "#{current_class} btn-primary" %>
+      <%= f.submit 'send', id: "chat-input", class: "#{current_class} btn-primary" %>
     </div>
   <% end %>
