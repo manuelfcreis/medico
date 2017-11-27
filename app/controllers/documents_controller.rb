@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+
   def new
    @doctor = Doctor.find(params[:doctor_id])
    @doctor.documents.new
@@ -21,10 +22,21 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @document = Document.find(params[:id])
     @document.destroy
     redirect_to dashboard_path
   end
-end
 
+  private 
+  def document_params
+    params.require(:document).permit(
+      :uploader_id,
+      :uploader_type,
+      :name,
+      :description,
+      :file, 
+      :file_cache
+      )
+  end
+end
