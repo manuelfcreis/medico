@@ -24,7 +24,8 @@ until answer == "n"
     csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
 
     puts "Creating the Medication... This may take a while"
-    20.times do |i|
+    i = 1
+    20.times do
     # csv.each do |row|
       row = csv[i]
       m = Medication.new
@@ -37,6 +38,7 @@ until answer == "n"
       m.price = row['Preco']
       m.generic = row['Generico']
       m.save
+      i += 100
     end
     answer = "n"
     puts "There are now #{Medication.count} rows in the medications table"

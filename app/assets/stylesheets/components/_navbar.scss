@@ -1,12 +1,45 @@
 /* Main navbar */
-#navbar{
+#navbar.initial {
   top: 0 !important;
-  position: sticky !important;
+  position: fixed;
   z-index: 1000;
+  padding: 80px 50px;
+  img {
+    width: 150px;
+    height: 100px;
+  }
+  i{
+    top: 0 !important;
+    position: fixed;
+    z-index: 1000;
+    padding: 50px;
+    color: white;
+    right: 0px;
+    &:hover {
+      color: #e4e4e4;
+      cursor: pointer;
+    }
+  }
 }
+
+#navbar.scrolled {
+  position: fixed;
+  width: 100%;
+  background: white;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+
+}
+
+
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -117,17 +150,20 @@
   }
 }
 
-  .send-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: 0px 0px 0px 20px;
-    .doctor {
+.send-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0px 0px 0px 20px;
+  .doctor {
     background-color: $doctor;
-    }
-
-    .patient {
-    background-color: $patient;
-    }
   }
+
+  .patient {
+    background-color: $patient;
+  }
+}
+li{
+  list-style-type: none;
+}

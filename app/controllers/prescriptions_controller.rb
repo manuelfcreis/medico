@@ -1,4 +1,22 @@
 class PrescriptionsController < ApplicationController
+
+  def show
+    @appointment = Appointment.find(params[:appointment_id])
+    @prescription = Prescription.find(params[:id])
+    @doctor = @appointment.doctor
+    @patient = @appointment.patient
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  pdf: "Prescription_#{@patient.first_name}_#{@appointment.date}.pdf",
+                template: "prescriptions/show.pdf.erb",
+                layout: "pdf_layout.html"
+      end
+    end
+
+  end
+
   def new
     @appointment = Appointment.find(params[:appointment_id])
     @appointment.update(status: 'done')

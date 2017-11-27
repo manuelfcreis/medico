@@ -1,0 +1,63 @@
+<div class="pdf">
+  <div class="title">
+    <div class="flex">
+        <%= wicked_pdf_image_tag 'rx.png' %>
+        <h1>Dr. <%= @doctor.first_name %> <%= @doctor.last_name %></h1>
+    </div>
+  </div>
+  <hr>
+
+  <div class="body">
+    <div class="patient">
+      <div class="name">
+        <h2><%= @patient.first_name + " " + @patient.last_name %></h2>
+      </div>
+      <div class="flex">
+        <p>Age: <%= @patient.birthday.nil? ? "______________" : @patient.birthday - Date.today() %></p>
+        <p>Date: <%= @prescription.updated_at.strftime('%d %b %Y') %></p>
+      </div>
+    </div>
+<hr>
+    <div class="prescription">
+      <h5>Medication prescribed:</h5>
+        <ul class="list-group">
+          <% @prescription.doses.each do |dose| %>
+            <li class="list-group-item">
+              <div class="flex">
+                <div class="name">
+                  <strong><%= dose.medication.name %></strong> - <%= dose.medication.ingredient %>
+                </div>
+                <div class="quantity">
+                  <%= pluralize(dose.quantity, dose.medication.format) %> <br>
+                <strong><%= pluralize(dose.frequency, "time") %></strong> per day for <strong><%= pluralize(dose.days, "day") %></strong>
+                </div>
+              </div>
+              <hr>
+              <%= dose.description %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <table>
+      <tr>
+        <td>Signature:</td>
+        <td>____________________</td>
+      </tr>
+      <tr>
+        <td>Licence Number:</td>
+        <td>____________________</td>
+      </tr>
+      <tr>
+        <td>Practice Number</td>
+        <td>____________________</td>
+      </tr>
+      <tr>
+        <td>Contact:</td>
+        <td>____________________</td>
+      </tr>
+    </table>
+  </div>
+</div>

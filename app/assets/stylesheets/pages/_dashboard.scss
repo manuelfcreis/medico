@@ -1,6 +1,6 @@
 @media screen and (min-width: 480px) {
   .dashboard {
-    margin-top: 15px;
+    margin: 0;
     height: calc(100vh - 70px;);
     display: grid;
     grid-template-columns: 25% 50% 25%;
@@ -130,6 +130,10 @@
 
 .medications {
   padding: 10px 20px;
+
+  div {
+    border: 1px solid red;
+  }
 
   .modal {
     background-color: #000000 !important;

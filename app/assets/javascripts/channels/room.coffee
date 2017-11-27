@@ -12,7 +12,7 @@ scroll_bottom = () ->
 submit_listen = () ->
   $('#new_message').on 'keydown', (event) ->
     if event.keyCode is 13
-      $('input').click()
+      $('#chat-input').click()
       event.target.value = ""
       event.preventDefault()
 

@@ -1,0 +1,25 @@
+<% @prescription = locals[:prescription] %>
+<% if @prescription.nil? %>
+
+  <% @prescription.doses.each do |dose| %>
+
+
+  <div class="progress">
+    <% dose.days.times do |days| %>
+      <%= days + @prescription.updated_at.strftime('%D').to_i %>
+      <div class="day pill">
+        <% dose.frequency.times do |fr| %>
+          <div class="fr half">
+
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= dose.quantity %> pills
+  </div>
+
+
+
+  <% end %>
+
+<% end %>

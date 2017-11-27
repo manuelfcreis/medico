@@ -1,0 +1,25 @@
+.prescription {
+  .doctors-notes {
+    p {
+      background-color: white;
+      padding: 10px 20px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      height: 100%;
+    }
+  }
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      margin-top: 20px;
+      background-color: $patient;
+      border-color: darken($patient, 10%);
+      transition: all 0.1s ease;
+      &:hover {
+        background-color: darken($patient, 8%);
+      }
+    }
+  }
+}

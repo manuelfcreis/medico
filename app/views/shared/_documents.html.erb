@@ -1,4 +1,3 @@
-
 <h4> Documents list: </h4>
 
 <ul class="list-group">
@@ -9,33 +8,38 @@
 
 <% locals[:user].documents.each do |doc| %>
   <li class="list-group-item">
-    <% link_to doc.avatar do %>
+    <%= link_to doc.file.url, target: "_blank" do %>
       <%= doc.name %></strong> <br>
     <% end %>
-    <%= doc.description %>
+    <%= link_to "Delete", document_path(doc), method: :delete   %>
   </li>
+
 <% end %>
 </ul>
 
 
-    <%= button_to '#', remote: true, 'data-toggle': 'modal', 'data-target': '#document-form', id: 'document-button', class: "btn btn-primary new-document #{current_class}" do %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': '#document-form', id: 'document-button', class: "btn btn-primary new-document #{current_class}" do %>
       New Document
     <% end %>
   </div>
 </div>
 
-<div id="document-form" class="doc-form modal fade">
+<%= content_for(:js_content) do %>
+<div id="document-form" class="modal fade">
+  <div class="modal-dialog" style="padding: 0;">
+    <div class="modal-content">
   <h4>New Document:</h4>
   <%= simple_form_for([locals[:user], locals[:user].documents.new]) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-   <%= f.simple_fields_for :post_attachments do |p| %>
-         <div class="field">
-           <%= p.input :media, as: :file, :multiple => true, name: "post_attachments[media][]" %>
-         </div>
-         <% end %>
+    <div class="field">
+      <%= f.input :file %>
+      <%= f.input :file_cache, as: :hidden %>
+     </div>
+
     <%= f.submit 'Upload', class: 'btn btn-primary' %>
   <% end %>
-
-
-
+   </div>
+  </div>
+</div>
+<% end %>

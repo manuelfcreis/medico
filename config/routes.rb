@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
-    resources :documents, only: ['create', 'delete']
+    resources :documents, only: ['create']
     resources :appointments, only: ['show', 'create']
     resources :doctors_notes, only: ['show']
     resources :chats, only: ['show', 'create'] do
@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
-    resources :documents, only: ['create', 'delete']
+    resources :documents, only: ['create']
     resources :appointments, only: ['new', 'create', 'index', 'show'] do
-      resources :prescriptions, only: ['new', 'create'] do
+      resources :prescriptions, only: ['show', 'new', 'create'] do
         resources :doses, only: ['new', 'create']
       end
     end
@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       get '/chatroom', to: 'patients#chatroom'
     end
   end
+
+  resources :documents, only: ['destroy']
 
   resources :prescriptions, only: ['update'] do
     resources :doses, only: ['create', 'delete']
