@@ -35,6 +35,9 @@ gem 'therubyracer'
 
 # calendar
 gem "simple_calendar", "~> 2.0"
+gem 'google-api-client'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 # PDF outputting
 gem 'wicked_pdf'
