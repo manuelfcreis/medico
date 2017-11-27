@@ -13,37 +13,43 @@
   const btnPatient = document.getElementById("btn-home-patient");
   const landingPatient = document.getElementById("landing-patient");
 
+  const mq = window.matchMedia( "(min-width: 320px)" );
   const nav = document.getElementById("navbar");
   const menu = document.getElementById("navbar-menu");
   const navBtn = document.getElementById("hamburger-btn");
 
-  const lastScrollTop = 0;
-
-  window.addEventListener("scroll", function(){
-   const st = window.pageYOffset || document.documentElement.scrollTop;
-   console.log(st);
-
-   if (st > lastScrollTop){
+  if (mq.matches) {
     nav.classList.add("scrolled");
     nav.classList.remove("initial");
-    menu.classList.remove("hidden");
-    // hide burger
-    nav.querySelector("i").classList.add('hidden');
   } else {
-    nav.classList.add("initial");
-    nav.classList.remove("scrolled");
-    menu.classList.add("hidden");
-    nav.querySelector("i").classList.remove('hidden');
-  };
-  //lastScrollTop = st;
-}, false);
+    const lastScrollTop = 0;
 
-  navBtn.addEventListener("click", () => {
+    window.addEventListener("scroll", function(){
+     const st = window.pageYOffset || document.documentElement.scrollTop;
+     console.log(st);
+
+     if (st > lastScrollTop){
+      nav.classList.add("scrolled");
+      nav.classList.remove("initial");
+      menu.classList.remove("hidden");
+      // hide burger
+      nav.querySelector("i").classList.add('hidden');
+     } else {
+      nav.classList.add("initial");
+      nav.classList.remove("scrolled");
+      menu.classList.add("hidden");
+      nav.querySelector("i").classList.remove('hidden');
+     };
+    //lastScrollTop = st;
+    }, false);
+
+    navBtn.addEventListener("click", () => {
       nav.classList.add("scrolled");
       nav.classList.remove("initial");
       menu.classList.remove("hidden");
       navBtn.classList.add("hidden");
     });
+  }
 
   function visitedButton1()
   {

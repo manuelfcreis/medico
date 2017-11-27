@@ -7,7 +7,8 @@ self = (x, y) ->
     "other"
 
 scroll_bottom = () ->
-  $('#messages-table').scrollTop($('#messages-table')[0].scrollHeight)
+  if $('#messages-table').length > 0
+    $('#messages-table').scrollTop($('#messages-table')[0].scrollHeight)
 
 submit_listen = () ->
   $('#new_message').on 'keydown', (event) ->
