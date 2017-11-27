@@ -34,8 +34,8 @@ class PagesController < ApplicationController
   def invite_patients
     if Patient.find_by(email: invite_params[:email]) == nil
       @patient = Patient.invite!({email: invite_params[:email]}, current_doctor) do |p|
-        p.skip_invitation = true
-        p.accept_invitation!
+        # p.skip_invitation = true
+        # p.accept_invitation!
       end
     else
       @patient = Patient.find_by(email: invite_params[:email])
