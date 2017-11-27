@@ -1,12 +1,16 @@
-<div class="container">
+<div class="container" style="width: 50%;">
+  <div class="password-form" style="background-color: white; padding: 20px;">
 <h2><%= t 'devise.invitations.edit.header' %></h2>
 <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
-  <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
+  <div class="password">
+  <%= f.input :password, require: true %>
+  </div>
+  <div class="password-confirmation">
+  <%= f.input :password_confirmation, require: true, error: 'can\'t be blank' %>
+  </div>
 
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-
-  <%= f.button :submit, t("devise.invitations.edit.submit_button") %>
+  <%= f.button :submit, t("devise.invitations.edit.submit_button"), class: "btn btn-primary"%>
 <% end %>
+</div>
 </div>
