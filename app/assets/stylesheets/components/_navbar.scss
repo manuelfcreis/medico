@@ -15,6 +15,10 @@
     padding: 50px;
     color: white;
     right: 0px;
+    &:hover {
+      color: #e4e4e4;
+      cursor: pointer;
+    }
   }
 }
 
@@ -146,20 +150,20 @@
   }
 }
 
-  .send-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: 0px 0px 0px 20px;
-    .doctor {
+.send-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0px 0px 0px 20px;
+  .doctor {
     background-color: $doctor;
-    }
+  }
 
-    .patient {
+  .patient {
     background-color: $patient;
-    }
   }
-  li{
-    list-style-type: none;
-  }
+}
+li{
+  list-style-type: none;
+}
