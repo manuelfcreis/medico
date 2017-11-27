@@ -16,6 +16,7 @@ until answer == "n"
 
   if answer == "y"
     puts 'Cleaning medication database...'
+    Dose.destroy_all
     Medication.destroy_all
 
     puts "reading the medication list"
@@ -23,7 +24,10 @@ until answer == "n"
     csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
 
     puts "Creating the Medication... This may take a while"
-    csv.each do |row|
+    i = 1
+    20.times do
+    # csv.each do |row|
+      row = csv[i]
       m = Medication.new
       m.name = row['Nome do medicamento']
       m.ingredient = row['Substancia Ativa']
@@ -34,6 +38,7 @@ until answer == "n"
       m.price = row['Preco']
       m.generic = row['Generico']
       m.save
+      i += 100
     end
     answer = "n"
     puts "There are now #{Medication.count} rows in the medications table"
@@ -86,6 +91,7 @@ end
 
 puts 'Cleaning Patient and Doctor database...'
 Chat.destroy_all
+Appointment.destroy_all
 Patient.destroy_all
 Doctor.destroy_all
 

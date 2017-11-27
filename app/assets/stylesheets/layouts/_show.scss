@@ -2,7 +2,8 @@
   .show-div {
     margin-top: 15px;
     position: relative;
-    height: calc(100vh - 70px);
+    // height: calc(100vh - 70px);
+    min-height: calc(100vh - 100px);
     display: grid;
     grid-template-columns: 25% 50% 25%;
     grid-template-rows: 50% 50%;

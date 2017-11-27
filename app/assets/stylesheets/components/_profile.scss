@@ -75,16 +75,23 @@
   }
 }
 
+
 #update {
+  background-color: rgba(0,0,0,0.07) !important;
+  .modal-dialog {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: transparent !important;
+  }
+
+  .modal-content {
   text-align: center;
   flex-orientation: column;
   background-color: white;
   margin-top: 100px;
   width: 400px;
   height: auto;
-  position: absolute;
-  top: 0%;
-  left: 37%;
   div {
     display: flex;
     align-items: center;
@@ -127,6 +134,7 @@
 }
     }
 
+}
 }
 .radio_buttons {
   display: flex;

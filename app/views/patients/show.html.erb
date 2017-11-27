@@ -3,11 +3,14 @@
     <%= render 'shared/profile', locals: { user: @doctor } %>
     <% if current_class == 'patient' %>
     <div class="medications">
-      medications
+      <h5>Medications:</h5>
       <%#= render 'shared/medications', locals: { user: user } %>
     </div>
     <% else %>
-    <div class="link-list">
+    <div class="calendar" style="background-color: white; border-radius: 3px;">
+          <%= render 'shared/calendar', locals: { user: @doctor } %>
+</div>
+<!--     <div class="link-list">
       <ul class="list-group">
         <li class="list-group-item">
           <a href="#">Add a Prescription</a>
@@ -19,28 +22,26 @@
           <a href="#">Search for a Medication</a>
         </li>
       </ul>
-    </div>
+    </div> -->
     <% end %>
   </div>
 
   <div class="center-bar">
-    <div class="chatroom">
       <%= render 'messages/messages' %>
-    </div>
   </div>
 
 
-  <div class="right-top-bar">
+  <div class="right-bar">
     <%= render 'shared/appointments', locals: { user: @doctor } %>
-  </div>
-  <div class="right-bottom-bar">
-    <%= render 'shared/documents', locals: { user: @doctor } %>
+    <div class="documents" style="background-color: white; border-radius: 3px;">
+      <%= render 'shared/documents', locals: { user: @doctor } %>
+    </div>
   </div>
 </div>
 
 
 <%#= render partial: 'shared/_unbind.js' %>
-
+<% content_for(:js_content) do %>
 <script>
   $('#update').on('hidden', function (e) {
     $(e.currentTarget).unbind(); // or $(this)
@@ -54,3 +55,7 @@ $('#document-form').on('hidden', function (e) {
     $(e.currentTarget).unbind(); // or $(this)
 });
 </script>
+<% end %>
+
+
+

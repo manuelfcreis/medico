@@ -44,6 +44,17 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     @patient.update(patient_params)
 
+    # if @patient.avatar.url.nil?
+    #   if @patient.sex == "Male"
+    #     @patient.avatar.url = "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1].sample.to_s}.png"
+    #   elsif @patient.sex == "Female"
+    #     @patient.avatar.url = "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[2,3].sample.to_s}.png"
+    #   else
+    #     @patient.avatar.url = "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1,2,3].sample.to_s}.png"
+    #   end
+    #   @patient.save
+    # end
+
     redirect_to dashboard_path
   end
   private

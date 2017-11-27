@@ -1,7 +1,7 @@
 <div class="profile-dashboard">
   <div class="user-name">
   <% if locals[:user].avatar.url.nil? %>
-    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle.png" %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle1.png" %>
   <% else %>
     <%= image_tag locals[:user].avatar.url %>
   <% end %>
@@ -34,17 +34,25 @@
   </div>
 </div>
 
-<div id="update" class="modal fade">
-  <% if locals[:user].chats.where(accepted: false).count == 0 %>
-  <div class="no-invitations">
-    <%= image_tag "thumbs_up.png", id: "thumbsup" %>
-</div>
-  <p>All clear!</p>
-  <% else %>
-<% locals[:user].chats.where(accepted: false).each do |chat| %>
-  <li class="list-group-item">
-    <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
-  </li>
-<% end %>
-<% end %>
+<div id="update" class="modal fade" role="dialog">
+  <div class="modal-dialog apt-form">
+      <% if locals[:user].chats.where(accepted: false).count == 0 %>
+    <div class="modal-content">
+        <div class="no-invitations">
+          <%= image_tag "thumbs_up.png", id: "thumbsup" %>
+        </div>
+    </div>
+      <p>All clear!</p>
+      <% else %>
+    <div class="modal-content" style="padding: 0;">
+      <ul class="list-group">
+      <% locals[:user].chats.where(accepted: false).each do |chat| %>
+        <li class="list-group-item">
+        <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+    <% end %>
+  </div>
 </div>

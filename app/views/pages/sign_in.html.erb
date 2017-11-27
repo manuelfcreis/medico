@@ -10,6 +10,7 @@
     </ul>
   </div>
 </div>
+<div class="login">
 <% @resources.each do |resource| %>
 <div class="modal fade" id="<%= resource.to_s %>modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -25,7 +26,7 @@
 
       <div class="modal-body">
         <div class="tab-content">
-          
+
           <div id="<%= resource.to_s %>login" class="tab-pane fade in active">
        <!--      <h3>Login here</h3> -->
             <%= simple_form_for(resource, :url => session_path(resource)) do |f| %>
@@ -69,3 +70,4 @@
 </div>
 
 
+</div>
