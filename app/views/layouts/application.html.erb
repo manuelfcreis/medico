@@ -1,32 +1,47 @@
 <%= content_for :title, "medi-co" %>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="chatid" <%= content_for?(:chatid_content) ? yield(:chatid_content) : "no chat"%>>
-    <meta name="receiver_class" content="<%= current_class %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="chatid" <%= content_for?(:chatid_content) ? yield(:chatid_content) : "no chat"%>>
+  <meta name="receiver_class" content="<%= current_class %>">
 
-    <title>medi-co</title>
+  <title>Medi-Co  - A smarter way to communicate between doctors and patients</title>
+  <meta name="description" content="Medi-Co is a smarter way to communicate between doctors and patients">
+  <!-- Facebook -->
+  <meta property="og:title" content="Medi-Co  - Engage with your health">
 
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <style>
-    @import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
-    </style>
-  </head>
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+  <meta property="og:description" content="Medi-Co is a smarter way to communicate between doctors and patients">
+  <meta property="og:site_name" content="Medi-Co"/>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- <meta name="twitter:site" content="@Lewagonparis"> -->
+  <meta name="twitter:title" content="Medi-Co  - Engage with your health">
+  <meta name="twitter:description" content="Medi-Co  - A smarter way to communicate between doctors and patients">
+  <!-- <meta name="twitter:creator" content="@Lewagonparis"> -->
+  <meta name="twitter:image:src" content="http://twitter-card.jpg">
 
 
-    <%= yield %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+</style>
+</head>
+<body class="<%= controller_name %>-<%= action_name %>">
+  <%= render 'shared/navbar' %>
+  <%= render 'shared/flashes' %>
 
-    <%#= render 'shared/footer' %>
 
-    <%= javascript_include_tag 'application' %>
+  <%= yield %>
 
-    <%= yield(:js_content) %>
-  </body>
+  <%#= render 'shared/footer' %>
+
+  <%= javascript_include_tag 'application' %>
+
+  <%= yield(:js_content) %>
+</body>
 </html>

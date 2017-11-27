@@ -5,3 +5,11 @@
 // @import "map";
 
 @import "show";
+
+.container, .dashboard {
+  padding-top: 90px;
+}
+
+.pages-home .container {
+  padding-top: 0;
+}
