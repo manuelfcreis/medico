@@ -1,0 +1,47 @@
+<div class="container prescription">
+  <div class="title">
+  <h3>Your appointment with Dr. <%= @doctor.first_name %> has finished</h3>
+  <%= button_to(request.original_url + ".pdf", method: :get, class: "btn btn-primary btn-xs") do %>
+    PDF
+  <% end %>
+  </div>
+
+  <hr style="border-color: red">
+
+  <div class="body-prescription">
+    <div class="row">
+    <div class="doctors-notes col-xs-12 col-md-6">
+      <h5>Doctor's Notes:</h5>
+      <p><%= @prescription.doctors_notes %></p>
+    </div>
+
+    <div class="prescription col-xs-12 col-md-6">
+      <h5>Medication prescribed:</h5>
+      <ul class="list-group">
+        <% @prescription.doses.each do |dose| %>
+          <li class="list-group-item">
+            <strong><%= dose.medication.name %></strong> - <%= dose.medication.ingredient %>
+            <hr>
+            <%= pluralize(dose.quantity, dose.medication.format) %> <br>
+            <strong><%= pluralize(dose.frequency, "time") %></strong> per day for <strong><%= pluralize(dose.days, "day") %></strong>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border-color: red">
+
+  <div class="other-info">
+    <div class="row">
+      <div class="dates col-xs-12 col-sm-6">
+        <strong>Date:</strong><br>
+        <%= @appointment.date.strftime('%a %d %b %Y') %>
+      </div>
+      <div class="authorization col-xs-12 col-sm-6">
+        This prescription has been aproved by Dr. <%= @doctor.first_name %> <%= @doctor.last_name %>
+      </div>
+    </div>
+  </div>
+</div>

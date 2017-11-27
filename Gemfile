@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.5'
 
+# Rails, servers, users
 gem 'devise'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'figaro'
@@ -10,11 +11,7 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 
-# File Upload
-gem 'carrierwave'
-gem 'fog-aws'
-gem 'mini_magick'
-
+# Styling
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -22,6 +19,11 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+
+# File Upload
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'mini_magick'
 
 # effects
 gem 'typing'
@@ -31,9 +33,12 @@ gem 'faker'
 gem 'coffee-rails'
 gem 'therubyracer'
 
-
 # calendar
 gem "simple_calendar", "~> 2.0"
+
+# PDF outputting
+gem 'wicked_pdf'
+gem 'wkhtmltopdf'
 
 group :development, :test do
   gem 'pry-byebug'
