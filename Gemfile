@@ -18,7 +18,6 @@ gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
-gem 'simple_form_extension'
 gem 'uglifier'
 
 # File Upload
