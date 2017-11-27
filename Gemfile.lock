@@ -247,7 +247,7 @@ DEPENDENCIES
   bootstrap-sass
   carrierwave
   coffee-rails
-  devise
+  devise (~> 4.2)
   devise_invitable (~> 1.7.0)
   email_spec
   faker
