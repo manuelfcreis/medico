@@ -24,11 +24,47 @@
 
 .doc-form {
     width: 400px;
-    height: 500px;
+    height: 420px;
     position: fixed;
     top: 10%;
     left: 36%;
     background-color: white;
-    padding: 50px 100px;
+    padding: 10px 20px;
 }
 
+.documents-patient {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+
+  li {
+    position: relative;
+    padding: 10px 0px 10px 15;
+    margin-bottom: 10px;
+  }
+
+  .new-document.patient {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: $patient;
+    border-size: 2px;
+    border-color: lighten($patient, 10%);
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0px 0px 5px #CCC;
+      border-color: darken($patient, 10%);
+    }
+  }
+
+  .new-document.doctor {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: $doctor;
+    border-size: 2px;
+    border-color: lighten($doctor, 10%);
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: 0px 0px 5px #CCC;
+      border-color: darken($doctor, 10%);
+    }
+  }
+}

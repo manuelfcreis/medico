@@ -1,0 +1,107 @@
+<% if locals[:user].class.to_s == "Patient" %>
+<div class="doctor-card">
+  <div class="card-avatar">
+  <% if locals[:user].avatar.url.nil? %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1,2,3].sample}.png" %>
+  <% else %>
+    <%= image_tag locals[:user].avatar.url %>
+  <% end %>
+  <p><%= locals[:user].first_name %> <br><%= locals[:user].last_name %></p>
+  </div>
+  <div class="card-body">
+    <% @apt = locals[:user].appointments.where(doctor_id: current_active.id).where.not(status: "cancelled").where.not(status: "pending").order(:date).last %>
+    <% if !@apt.nil? %>
+      <% if @apt.status == "scheduled" %>
+        <strong>Next Appointment: <%= @apt.date %></strong>
+      <% elsif @apt.status == "done" %>
+        <strong>Last Appointment: <%= @apt.date.day.to_s + " " + @apt.date.strftime("%B") %></strong>
+        <p><%= @apt.prescriptions.last.doctors_notes %></p>
+      <% end %>
+      <% if @apt.prescriptions.last.nil? %>
+        No previous prescriptions
+      <% else %>
+        <% link_to @apt.prescriptions.last do %>
+          Previous Prescription
+        <% end %>
+      <% end %>
+    <% else %>
+      No previous appointments
+    <% end %>
+
+  </div>
+  <div class="card-button <%= current_class %>">
+    <% if locals[:user].appointments.empty? %>
+      <%= button_to '#', remote:true do %>
+        <%= icon('paperclip') %>
+      <% end %>
+    <% else %>
+      <%= button_to new_patient_appointment_prescription_path(patient_id: locals[:user].appointments.where(doctor_id: current_doctor.id).last.patient.id , appointment_id: locals[:user].appointments.where(doctor_id: current_doctor.id).last.id), method: :get do %>
+        <%= icon('paperclip') %>
+      <% end %>
+    <% end %>
+    <%= button_to locals[:user], method: :get, form_class: "important" do %>
+      <%= icon('paper-plane-o') %>
+    <% end %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
+      <%= icon('calendar') %>
+    <% end %>
+  </div>
+</div>
+
+<!-- DOCTOR SIDE -->
+<% else %>
+
+<div class="patient-card">
+  <div class="card-avatar">
+  <% if locals[:user].avatar.url.nil? %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle#{[0,1,2,3].sample}.png" %>
+  <% else %>
+    <%= image_tag locals[:user].avatar.url %>
+  <% end %>
+  <p><%= locals[:user].first_name %> <br><%= locals[:user].last_name %></p>
+  </div>
+  <div class="card-body">
+ <% @apt = locals[:user].appointments.where(patient_id: current_active.id).where.not(status: "cancelled").where.not(status: "pending").order(:date).last %>
+    <% if !@apt.nil? %>
+      <% if @apt.status == "scheduled" %>
+        <strong>Next Appointment: <%= @apt.date %></strong>
+      <% elsif @apt.status == "done" %>
+        <strong>Last Appointment: <%= @apt.date.day.to_s + " " + @apt.date.strftime("%B") %></strong>
+        <p><%= @apt.prescriptions.last.doctors_notes %></p>
+      <% end %>
+      <% if @apt.prescriptions.last.nil? %>
+        No previous prescriptions
+      <% else %>
+        <% link_to @apt.prescriptions.last do %>
+          Previous Prescription
+        <% end %>
+      <% end %>
+    <% else %>
+      No previous appointments
+    <% end %>
+
+  </div>
+  <div class="card-button <%= current_class %>">
+        <% if locals[:user].appointments.empty? %>
+      <%= button_to '#', remote:true do %>
+        <%= icon('paperclip') %>
+      <% end %>
+    <% else %>
+    <%= button_to new_patient_appointment_prescription_path(patient_id: current_patient.id , appointment_id: locals[:user].appointments.where(doctor_id: locals[:user].appointments.last.doctor.id).last.id), method: :get do %>
+      <%= icon('paperclip') %>
+    <% end %>
+    <% end %>
+    <%= button_to locals[:user], method: :get, form_class: "important" do %>
+      <%= icon('paper-plane-o') %>
+    <% end %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{locals[:user].id}" do %>
+      <%= icon('calendar') %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<%= render 'appointments/new', locals: { user: locals[:user] } %>
+
+
+

@@ -1,12 +1,42 @@
-<div class="show-div patient">
-  <div class="left-side">
-    <%= @doctor.first_name %>
-    <%= @doctor.last_name %>
+<div class="show-div doctor dashboard">
+  <div class="left-bar">
+    <%= render 'shared/profile', locals: { user: @patient } %>
+    <div class="medications-block" style="padding-top: 5px; width: 100%; margin:20px 0px 0px 0px">
+    <h3>Medication</h3>
+      <%= render 'shared/medications', locals: { user: @patient } %>
+    </div>
   </div>
-  <div class="chatroom">
-    <%= render 'messages/messages' %>
+
+  <div class="center-bar">
+      <%= render 'messages/messages' %>
   </div>
-  <div class="right-side">
-    Right-side div
+
+  <div class="right-bar">
+    <%= render 'shared/appointments', locals: { user: @patient } %>
   </div>
 </div>
+
+<%#= render partial: 'shared/unbind' %>
+
+<script>
+  $('#update').on('hidden', function (e) {
+      if (e.keyCode == 13) {
+        console.log('hey this is working');
+        e.preventDefault();
+      }
+  });
+
+  $('#invite').on('hidden', function (e) {
+      if (e.keyCode == 13) {
+        console.log('hey this is working');
+        e.preventDefault();
+      }
+  });
+
+  $('#document-form').on('hidden', function (e) {
+      if (e.keyCode == 13) {
+        console.log('hey this is working');
+        e.preventDefault();
+      }
+  });
+</script>

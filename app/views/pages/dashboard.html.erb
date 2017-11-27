@@ -1,13 +1,14 @@
 <div class="dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @user } %>
+
     <% if current_class == 'patient' %>
       <div class="medications">
-        medications
-         <%#= render 'shared/medications', locals: { user: user } %>
+        <h4>Medications</h4>
+        <%= render 'shared/medications' %>
       </div>
     <% else %>
-      <div class="link-list">
+      <!-- div class="link-list">
         <ul class="list-group">
           <li class="list-group-item">
             <a href="#">Add a Prescription</a>
@@ -18,46 +19,116 @@
           <li class="list-group-item">
             <a href="#">Search for a Medication</a>
           </li>
-        </ul>
-      </div>
+       </ul>
+      </div> -->
+      <%= render 'shared/calendar', locals: { user: @user } %>
     <% end %>
   </div>
+
   <% if @user.class.to_s.downcase == 'patient' %>
     <div class="center-bar">
       <div class="center">
-        <div class="dash-main">
-          <div class="dash-card">
-            <ul class="list-group">
-              <% @user.chats.where(accepted: false).each do |chat| %>
-                <li class="list-group-item">
-                <%= render 'shared/accepting_invitations', locals: { chat: chat } %>
-                </li>
-              <% end %>
-            </ul>
-            <ul class="list-group">
-              <% @user.chats.where(accepted: true).each do |chat| %>
-                <li class="list-group-item">
-                  <%= render 'shared/doctor_card', locals: { patient: chat.patient } %>
-                </li>
-              <% end %>
-            </ul>
+        <div class="dash-main <%= current_class %>">
+           <div class="past">
+          <% if @user.appointments.where(status: "done").last.nil? %>
+          You didn't have a past appointment
+          <% else %>
+          <% @last = @user.appointments.where(status: "done").last %>
+          <h4>Last Appointment: <%= @last.doctor.first_name %> <%= @last.doctor.last_name %></h4>
+          <hr>
+          <%= @last.date.day %> of <%= @last.date.strftime("%B") %>
+          <% end %>
+        </div>
+        <div class="upcoming">
+          <% if @user.appointments.where(status: "scheduled").empty? %>
+          You don't have a scheduled appointment
+          <% else %>
+          <% @next = @user.appointments.where(status: "scheduled").first %>
+          <h4>Next Appointment: <%= @next.doctor.first_name %> <%= @next.doctor.last_name %></h4>
+          <hr>
+          <%= @next.date.day %> of <%= @next.date.strftime("%B") %> at <%= @next.date.strftime('%k') %>:<%= @next.date.strftime('%M') %>
+          <%= button_to "End Appointment",
+          new_doctor_appointment_prescription_path(doctor_id: @next.doctor, appointment_id: @next),
+           method: :get,
+           class: "btn btn-white",
+           style: 'color: #ff686b; margin-top: 10px;' %>
+          <% end %>
+        </div>
+        </div>
+          <div class="dash-card"  style="padding: 20px 40px 10px 30px;">
+            <% if @user.chats.where(accepted: true).empty? %>
+              <div class="card-img">
+              <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Images/no_doctors.png", style: "width: auto; height: 300px;" %>
+              </div>
+            <% end %>
+           <ul class="list-group">
+             <% @user.chats.where(accepted: true).each do |chat| %>
+             <li class="list-group-item">
+               <%= render 'shared/card', locals: { user: chat.doctor } %>
+             </li>
+             <% end %>
+           </ul>
           </div>
-        </div>
-        <div class="dash-cards">
-          Card list
-        </div>
-      </div>
     </div>
-<% end %>
   </div>
-<% if @user.class.to_s.downcase == 'patient' %>
+  <div class="right-bar">
+    <div class="appo-dash">
+      <%= render 'shared/appointments', locals: { user: @user } %>
+    </div>
+    <div class="documents-patient">
+      <%= render 'shared/documents', locals: { user: @user } %>
+    </div>
+  </div>
+
+  <% elsif current_class == "doctor" %>
   <div class="center-bar">
     <div class="center">
-      <div class="dash-main">
-        Main Dashboard
+      <div class="dash-main <%= current_class %>">
+        <div class="past">
+          <% if @user.appointments.where(status: "done").last.nil? %>
+          You didn't have a past appointment
+          <% else %>
+          <% @last = @user.appointments.where(status: "done").last %>
+          <h4>Last Appointment: <%= @last.patient.first_name %> <%= @last.patient.last_name %></h4>
+          <%= @last.date.day %> of <%= @last.date.strftime("%B") %>
+          <hr>
+          <p>"<emphasis><%= @last.prescriptions.last.doctors_notes %></emphasis>"</p>
+          <%= button_to "Edit Prescription",
+          new_patient_appointment_prescription_path(patient_id: @last.patient, appointment_id: @last),
+           method: :get,
+           class: "btn btn-white",
+           style: 'color: #ff686b; margin-top: 10px;' %>
+          <% end %>
+        </div>
+        <div class="upcoming">
+          <% if @user.appointments.where(status: "scheduled").empty? %>
+          You don't have a scheduled appointment
+          <% else %>
+          <% @next = @user.appointments.where(status: "scheduled").first %>
+          <h4>Next Appointment: <%= @next.patient.first_name %> <%= @next.patient.last_name %></h4>
+          <hr>
+          <%= @next.date.day %> of <%= @next.date.strftime("%B") %> at <%= @next.date.strftime('%k') %>:<%= @next.date.strftime('%M') %>
+          <%= button_to "End Appointment",
+          new_patient_appointment_prescription_path(patient_id: @next.patient, appointment_id: @next),
+           method: :get,
+           class: "btn btn-white",
+           style: 'color: #ff686b; margin-top: 10px;' %>
+          <% end %>
+        </div>
       </div>
-      <div class="dash-cards">
-        Card list
+      <div class="dash-card" style="padding: 20px 40px 10px 30px;">
+          <% if @user.chats.where(accepted: true).empty? %>
+            <div class="card-img">
+              <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Images/no_patients.png", style: "width: auto; height: 300px;" %>
+            </div>
+          <% end %>
+        <ul class="list-group">
+          <% @user.chats.where(accepted: true).each do |chat| %>
+          <li class="list-group-item">
+            <%= render 'shared/card', locals: { user: chat.patient } %>
+          </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
@@ -65,58 +136,14 @@
     <div class="appo-dash">
       <%= render 'shared/appointments', locals: { user: @user } %>
     </div>
-    <div class="documents">
-      Documents
-    </div>
-  </div>
-<% elsif current_class == "doctor" %>
-  <div class="center-bar">
-    <div class="center">
-      <div class="dash-main <%= current_class %>">
-        <div class="past">
-  <% if @user.appointments.where(status: "done").last.nil? %>
-          You didn't have a past appointment
-  <% else %>
-          <%= @user.appointments.where(status: "done").last %>
-  <% end %>
-        </div>
-        <div class="upcoming">
-  <% if @user.appointments.where(status: "scheduled").empty? %>
-          You don't have a scheduled appointment
-  <% else %>
-          <%= @user.appointments.where(status: "scheduled").order(:date).first %>
-  <% end %>
-        </div>
-      </div>
-      <div class="dash-card">
-        <ul class="list-group">
-  <% @user.patients.each do |p| %>
-          <li class="list-group-item">
-            <%= render 'shared/doctor_card', locals: { patient: p } %>
-          </li>
-  <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="right-bar">
-      <%= render 'shared/appointments', locals: { user: @user } %>
+    <div class="documents-patient">
       <%= render 'shared/documents', locals: { user: @user } %>
-  </div>
-<% end %>
-</div>
-
-
-<div id="invite" hidden>
-  <h2><%= t "devise.invitations.new.header" %></h2>
-
-  <%= form_for(Patient.new, url: invite_path) do |f| %>
-  <%= devise_error_messages! %>
-
-
-  <%= f.text_field :email %>
-
-
-  <%= f.submit %>
+    </div>
   <% end %>
 </div>
+
+
+
+<%= content_for :title do %>
+  <%= "Dashboard" %>
+<% end %>

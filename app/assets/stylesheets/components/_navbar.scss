@@ -1,4 +1,9 @@
 /* Main navbar */
+#navbar{
+  top: 0 !important;
+  position: sticky !important;
+  z-index: 1000;
+}
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
@@ -78,8 +83,16 @@
 
 .nav-patient {
   background: $patient !important;
-  a {
+  .navbar-wagon-link {
     color: #FEfEfE;
+    font-size: 14px;
+  }
+  .navbar-wagon-link:hover {
+    color: #DDD;
+    text-decoration: none;
+  }
+  a {
+    color: #FEfEfE !important;
     &:hover {
       color: #DDD;
     }
@@ -88,10 +101,33 @@
 
 .nav-doctor {
   background: $doctor !important;
-  a {
+  .navbar-wagon-link {
     color: #fefefe;
+    font-size: 14px;
+  }
+  .navbar-wagon-link:hover {
+    color: #DDD;
+    text-decoration: none;
+  }
+  a {
+    color: #fefefe !important;
     &:hover {
       color: #DDD;
     }
   }
 }
+
+  .send-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0px 0px 0px 20px;
+    .doctor {
+    background-color: $doctor;
+    }
+
+    .patient {
+    background-color: $patient;
+    }
+  }

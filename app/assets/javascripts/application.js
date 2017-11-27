@@ -4,3 +4,8 @@
 //= require typing
 //= require_tree .
 
+$("#invite").on("keydown", function (e) {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+    }
+});

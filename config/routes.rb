@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   resources :doctors, only: ['index', 'show', 'update', 'edit'] do
-    resources :documents, only: ['new', 'create', 'delete']
-    resources :appointments, only: ['show']
+    resources :documents, only: ['create', 'delete']
+    resources :appointments, only: ['show', 'create']
     resources :doctors_notes, only: ['show']
     resources :chats, only: ['show', 'create'] do
       resources :messages
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :patients, only: ['index', 'show', 'update', 'edit'] do
+    resources :documents, only: ['create', 'delete']
     resources :appointments, only: ['new', 'create', 'index', 'show'] do
       resources :prescriptions, only: ['new', 'create'] do
         resources :doses, only: ['new', 'create']
@@ -40,9 +41,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :prescriptions, only: ['update'] do
+    resources :doses, only: ['create', 'delete']
+  end
+
   get '/sign-in', to: 'pages#sign_in', as: 'sign-in'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   post '/dashboard', to: 'pages#invite_patients', as: 'invite'
+  get '/settings', to: 'pages#settings', as: 'settings'
 
 
   get '/patient', to: 'pages#patient', as: :patient_landing
@@ -50,6 +56,10 @@ Rails.application.routes.draw do
 
   post '/appointments/:id/accept', to: 'appointments#accept', as: :accept_appointment
   post '/appointments/:id/reject', to: 'appointments#reject', as: :reject_appointment
+
+  post '/chats/:id/accept', to: 'chats#accept', as: :accept_chat
+  post '/chats/:id/reject', to: 'chats#reject', as: :reject_chat
+
 end
 
 

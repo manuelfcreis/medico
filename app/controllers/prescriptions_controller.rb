@@ -1,17 +1,32 @@
 class PrescriptionsController < ApplicationController
   def new
-    @prescription = Prescription.new
+    @appointment = Appointment.find(params[:appointment_id])
+    @appointment.update(status: 'done')
+
+    if @appointment.prescriptions.empty?
+      @prescription = @appointment.prescriptions.create
+    else
+      @prescription = @appointment.prescriptions.last
+    end
   end
 
   def create
     @appointment = Appointment.find(params[:appointment_id])
-    @prescription = Prescription.create
-    @prescription.appointment = @appointment
+    @prescription = @appointment.prescriptions.last
 
     if @prescription.save
-      redirect_to doctor_appointment_path(@appointment.doctor, @appointment)
+      redirect_to patient_path(@appointment.patient)
     else
       render :new
     end
+  end
+
+  def update
+    @prescription = Prescription.find(params[:id])
+    @appointment = @prescription.appointment
+
+    @prescription.update(params.require(:prescription).permit(:doctors_notes))
+
+    render :new
   end
 end

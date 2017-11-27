@@ -1,14 +1,14 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  background: #333;
+  // position: fixed;
+  // bottom: 0;
+  // width: 100vw;
+  background: #F4F4F4;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100px !important;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.1);
 }
 
 .footer-logo img {

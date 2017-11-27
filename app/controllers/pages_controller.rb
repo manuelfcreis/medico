@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:home]
-
-
-
+  include ApplicationHelper
 
   def home
     @typing_array = ["health", "patients", "doctors"]
@@ -19,12 +17,18 @@ class PagesController < ApplicationController
   end
 
   def sign_in
+    @resources = [:patient, :doctor]
   end
 
   def patient
   end
 
   def doctor
+  end
+
+  def settings
+    @user = current_active
+    @specialty = Specialty.all.order(:name).collect { |i| [i.name, i.id] }
   end
 
   def invite_patients

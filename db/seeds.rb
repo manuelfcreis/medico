@@ -16,6 +16,7 @@ until answer == "n"
 
   if answer == "y"
     puts 'Cleaning medication database...'
+    Dose.destroy_all
     Medication.destroy_all
 
     puts "reading the medication list"
@@ -23,7 +24,10 @@ until answer == "n"
     csv = CSV.parse(csv_text.scrub, headers: true, col_sep: ';');
 
     puts "Creating the Medication... This may take a while"
-    csv.each do |row|
+    i = 1
+    20.times do
+    # csv.each do |row|
+      row = csv[i]
       m = Medication.new
       m.name = row['Nome do medicamento']
       m.ingredient = row['Substancia Ativa']
@@ -34,6 +38,7 @@ until answer == "n"
       m.price = row['Preco']
       m.generic = row['Generico']
       m.save
+      i += 100
     end
     answer = "n"
     puts "There are now #{Medication.count} rows in the medications table"
@@ -52,11 +57,31 @@ until answer == "n"
     puts "Clearing Specialties"
     Specialty.destroy_all
 
+    ary = [
+      'Radiology',
+      'Psychiatry',
+      'Pediatrics',
+      'Anesthesiology',
+      'Orthopaedic Surgery',
+      'Internal Medicine',
+      'Medical Genetics',
+      'Pathology-Anatomic & Clinical',
+      'Neurology',
+      'Immunology',
+      'Plastic Surgery',
+      'Thoracic Surgey',
+      'Dermatology',
+      'Obstetrics & Gynecology',
+      'Family Medicine',
+      'Emergency Medicine',
+      'Otolaryngology',
+      'Ophthalmology',
+      'Urology',
+    ]
+
     puts 'Creating Specialties'
-    10.times do
-      Specialty.create!(
-      name: ['Anaesthesiology', 'Cardiology', 'Cardiothoracic Surgery', 'Dermatology'].sample
-      )
+    ary.each do |s|
+      Specialty.create(name: s)
     end
     answer = "n"
   elsif answer != "n"
@@ -66,6 +91,7 @@ end
 
 puts 'Cleaning Patient and Doctor database...'
 Chat.destroy_all
+Appointment.destroy_all
 Patient.destroy_all
 Doctor.destroy_all
 

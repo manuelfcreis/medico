@@ -13,7 +13,7 @@ class Doctor < ApplicationRecord
   has_one :specialty
   has_many :messages, through: :chats
 
-  has_many :documents
+  has_many :documents, as: :uploader
 
   has_many :invitations, :class_name => 'Patient', :as => :invited_by
 end

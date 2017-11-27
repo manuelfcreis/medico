@@ -1,16 +1,22 @@
 <div class="navbar-wagon nav-<%= current_class %>" id="navbar">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Logos/medi-co.png" %>
+    <% if patient_signed_in? or doctor_signed_in? %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Images/whitelogo.png" %>
+    <% else %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Logos/medi-co.png" %>
+    <% end %>
   <% end %>
 
   <div class="navbar-wagon-right hidden-xs hidden-sm">
   <!-- Right Navigation -->
+  <% unless doctor_signed_in? or patient_signed_in? %>
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <div class="navbar-wagon-item navbar-wagon-link">Our Services</div>
     <div class="navbar-wagon-item navbar-wagon-link">Questions</div>
     <div class="navbar-wagon-item navbar-wagon-link">Testimonials</div>
   </div>
+  <% end %>
   <% if doctor_signed_in? %>
     <%= link_to 'Dashboard', dashboard_path, class: 'navbar-wagon-item navbar-wagon-link' %>
     <%= link_to t(".sign_out", default: "Logout"), destroy_doctor_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>

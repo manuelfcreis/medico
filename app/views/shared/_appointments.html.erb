@@ -3,48 +3,80 @@ allow doctors to accept or reject upcoming appointments.
 It receives a @user from the dashboard/conversation -->
 
 <div class="appointments">
-<% if current_class == "doctor" %>
-<h4>Appointment Requests:</h4>
+  <% if current_class == "doctor" %>
+    <h4>Appointment Requests:</h4>
+      <ul class="list-group">
+        <% if locals[:user].appointments.where(status: "pending").empty? %>
+          <li class="list-group-item">You don't have any pending appointments :) </li>
+        <% end %>
 
-<ul class="list-group">
+        <% locals[:user].appointments.where(status: "pending").each do |apt| %>
+          <li class="list-group-item">
+            <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
+            <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
+            <div class="buttons">
+              <%= button_to accept_appointment_path(id: apt.id), class: 'accept' do %>
+                <%= icon('check') %>
+              <% end %>
+              <%= button_to reject_appointment_path(id: apt.id), class: 'reject' do %>
+                <%= icon('times') %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
 
-<% if @user.appointments.where(status: "pending").empty? %>
-  <li class="list-group-item">You don't have any pending appointments :) </li>
-<% end %>
+    <% if !locals[:user].appointments.where(status: "scheduled").empty? %>
+      <ul class="list-group">
+        <h4>Upcoming Appointments:</h4>
+        <% locals[:user].appointments.where(status: "scheduled").each do |apt| %>
+          <li class="list-group-item">
+            <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
+            <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
 
-<% @user.appointments.where(status: "pending").each do |apt| %>
-  <li class="list-group-item">
-    <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
-    <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
-    <div class="buttons">
+  <% elsif current_class == "patient" %>
+  <h4>Appointment Requests:</h4>
+      <ul class="list-group">
+        <% if locals[:user].appointments.where(status: "pending").empty? %>
+          <li class="list-group-item">You don't have any pending appointments :) </li>
+        <% end %>
 
-      <%= button_to accept_appointment_path(id: apt.id), class: 'accept' do %>
-        <%= icon('check') %>
-      <% end %>
+        <% locals[:user].appointments.where(status: "pending").each do |apt| %>
+          <li class="list-group-item">
+            <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
+            <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
+          </li>
+        <% end %>
+      </ul>
 
-      <%= button_to reject_appointment_path(id: apt.id), class: 'reject' do %>
-        <%= icon('times') %>
-      <% end %>
-    </div>
-  </li>
-<% end %>
-</ul>
+  <h4>Upcoming Appointments:</h4>
+    <ul class="list-group">
+    <% if locals[:user].appointments.where(status: "scheduled").empty? %>
+      <li class="list-group-item">You don't have any upcoming appointments :) </li>
+    <% end %>
+    <% locals[:user].appointments.where(status: "scheduled").each do |apt| %>
+      <li class="list-group-item">
+        <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
+        <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
+      </li>
+    <% end %>
+    </ul>
 
 
-<% elsif current_class == "patient" %>
-<h4>Upcoming Appointments:</h4>
-
-<ul class="list-group">
-<% if @user.appointments.where(status: "scheduled").empty? %>
-  <li class="list-group-item">You don't have any upcoming appointments :) </li>
-<% end %>
-<% @user.appointments.where(status: "scheduled").each do |apt| %>
-  <li class="list-group-item">
-    <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
-    <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
-  </li>
-<% end %>
-</ul>
-
-<% end %>
+<% if controller_name != "pages" %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{params[:id]}", class: "btn-primary patient", style: "margin-top: 10px" do %>
+      Request an Appointment  <%= icon('calendar') %>
+    <% end %>
+  <% end %>
+  <% end %>
 </div>
+
+<% if current_class == "patient" && controller_name != "pages" %>
+  <%= render 'appointments/new', locals: { user: Doctor.find(params[:id]) } %>
+<% end %>
+
+

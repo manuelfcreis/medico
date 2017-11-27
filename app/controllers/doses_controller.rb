@@ -5,14 +5,14 @@ end
 
 def create
   @prescription = Prescription.find(params[:prescription_id])
+  @appointment = @prescription.appointment
   @dose = @prescription.doses.new(dose_params)
-  @patient = Patient.find(params[:patient_id])
-  @appointment = Appointment.find(params[:appointment_id])
+
     if @dose.save
-      redirect_to patient_appointment_path(@patient, @appointment)
-      flash[:notice] = "dose saved"
+      redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment.id)
+      flash[:notice] = "Prescription saved"
     else
-      redirect_to patient_appointment_path(@patient, @appointment)
+      redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment.id)
     end
 end
 

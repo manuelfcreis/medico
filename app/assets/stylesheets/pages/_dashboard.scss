@@ -47,6 +47,7 @@
     margin: 0px !important ;
     padding: 0px !important;
     background-color: transparent !important;
+    width: 100%;
 
     ul {
       li {
@@ -78,6 +79,30 @@
         width: 100%;
       }
     }
+
+    .dash-main.patient {
+      div {
+        background-color: transparent;
+        padding: 10px 20px;
+        margin: 10px 0px;
+      }
+      background-color: $patient;
+      margin: 0px 0px 20px 0px;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      color: white;
+      .past {
+        grid-column: 1 / span 1;
+        width: 100%;
+        border-radius: 0;
+        border-right: 2px solid white;
+      }
+      .upcoming {
+        grid-column: 2 / span 1;
+        width: 100%;
+      }
+    }
+
     .search-dash {
       margin: 5px 0px 20px 0px;
     }
@@ -85,6 +110,11 @@
     .dash-card {
       margin: 0px 0px 0px 0px;
       padding: 20px 10px 1px 10px;
+    }
+
+    .card-img {
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -96,5 +126,20 @@
   .documents {
     margin-bottom: 20px;
   }
-
 }
+
+.medications {
+  padding: 10px 20px;
+
+  .modal {
+    background-color: #000000 !important;
+  }
+  .fade {
+    opacity: 0.07;
+  }
+  .modal-dialong {
+    border-radius: 3px;
+    padding: 10px 20px;
+  }
+}
+
