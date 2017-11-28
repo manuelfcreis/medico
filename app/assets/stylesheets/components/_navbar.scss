@@ -4,10 +4,12 @@
   position: fixed;
   z-index: 1000;
   padding: 80px 50px;
+
   img {
     width: 150px;
     height: 100px;
   }
+
   i{
     top: 0 !important;
     position: fixed;
@@ -164,8 +166,8 @@
     background-color: $patient;
   }
 }
-@media only screen and (min-width: 320px){
-  #navbar.initial{
-    display: none;
-  }
-}
+// @media only screen and (min-width: 320px){
+//   #navbar.initial{
+//     display: none;
+//   }
+// }

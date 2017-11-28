@@ -18,7 +18,7 @@
   const menu = document.getElementById("navbar-menu");
   const navBtn = document.getElementById("hamburger-btn");
 
-  if (mq.matches) {
+  if (!mq.matches) {
     nav.classList.add("scrolled");
     nav.classList.remove("initial");
   } else {
