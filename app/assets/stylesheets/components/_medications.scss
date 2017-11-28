@@ -2,6 +2,7 @@
   position: relative;
   height: 20px;
   display: flex;
+  justify-content: flex-start;
   margin: 10px 0px !important;
 
   .pill {
@@ -9,8 +10,9 @@
     overflow: hidden;
     border-radius: 1000px;
     min-width: 40px;
+    min-height: 20px;
     z-index: 1;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 40px 0px 0px;
     display: flex;
 
     ul {
@@ -19,9 +21,6 @@
       margin: 0px;
       width: 100%;
       display: flex;
-      &:last-child {
-        border: none;
-      }
 
       a {
         width: 100%;
@@ -32,6 +31,9 @@
           padding: 0;
           height: 100%;
           border-right: 1px dashed $gray;
+        }
+        &:last-child li {
+          border: none !important;
         }
 
       }
@@ -46,6 +48,22 @@
 
   .taken {
     background-color: $patient;
+  }
+
+  .day-pill {
+      background: transparent !important;
+
+    height: auto;
+    width: auto;
+    margin: 0;
+    position: relative;
+    .day {
+      text-align: left;
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      font-size: 14px;
+    }
   }
 }
 
