@@ -1,31 +1,47 @@
 <div class="container">
+
   <h1>Settings</h1>
   <%= simple_form_for(@user) do |f| %>
   <%= f.input :email %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= @specialties %>
-    <% if current_class == "doctor" %>
-      <%= f.input :specialty_id, collection: Specialty.all.order(:name).collect { |i| [i.name, i.id] }, include_blank: true %>
-    <% else %>
-    <div class="flex-on">
-      <div style="width: 50%; border-right: 1px solid #84dcc6; padding: 10px 20px;">
-        <strong>Sex</strong>
-        <%= f.input :sex, label: false, collection: ['Male', 'Female', 'Other'], as: :radio_buttons, input_class: "form-check-input"  %>
-        <strong>Bloodtype</strong>
-        <%= f.input :bloodtype, label: false,collection: ['A', 'B', 'O', 'AB'], as: :radio_buttons, input_class: "form-check-input"  %>
-        <strong>Education</strong>
-        <%= f.input :education, label: false, collection: ['Basic Education', 'High School', 'College', 'Other'], as: :radio_buttons, input_class: "form-check-input" %>
-      </div>
-      <div style="width: 50%; padding: 10px 20px;">
-        <strong>Marital Status</strong>
-        <%= f.input :marital_status, label: false, collection: ['Married', 'Single', 'Other'], as: :radio_buttons, input_class: "form-check-input"  %>
-        <strong>Occupation</strong>
-        <%= f.input :occupation, label: false, collection: ['Retired', 'Full-time job', 'Student', 'Not working', 'Other'], as: :radio_buttons, input_class: "form-check-input"  %>
-      </div>
+  <% if current_class == "doctor" %>
+  <%= f.input :specialty_id, collection: Specialty.all.order(:name).collect { |i| [i.name, i.id] }, include_blank: true %>
+  <% else %>
+  <div class="flex-on">
+    <div style="width: 50%; border-right: 1px solid #84dcc6; padding: 10px 20px;">
+      <strong>Sex</strong>
+      <%= f.input :sex, label: false, collection: ['Male', 'Female', 'Other'], as: :radio_buttons, input_class: "form-check-input"  %>
+      <strong>Bloodtype</strong>
+      <%= f.input :bloodtype, label: false,collection: ['A', 'B', 'O', 'AB'], as: :radio_buttons, input_class: "form-check-input"  %>
+      <strong>Education</strong>
+      <%= f.input :education, label: false, collection: ['Basic Education', 'High School', 'College', 'Other'], as: :radio_buttons, input_class: "form-check-input" %>
     </div>
-    <%= f.input :disability %>
-    <% end %>
-    <%= f.submit "Update Information", class: 'btn btn-primary' %>
+    <div style="width: 50%; padding: 10px 20px;">
+      <strong>Marital Status</strong>
+      <%= f.input :marital_status, label: false, collection: ['Married', 'Single', 'Other'], as: :radio_buttons, input_class: "form-check-input"  %>
+      <strong>Occupation</strong>
+      <%= f.input :occupation, label: false, collection: ['Retired', 'Full-time job', 'Student', 'Not working', 'Other'], as: :radio_buttons, input_class: "form-check-input"  %>
+    </div>
+  </div>
+  <%= f.input :disability %>
   <% end %>
+  <%= f.submit "Update Information", class: 'btn btn-primary' %>
+  <% end %>
+
+  <%= render 'shared/onboard_modal' %>
+
 </div>
+
+  <% if current_active.sign_in_count == 1 %>
+  <% content_for :js_content  do%>
+  <script>
+   $(document).ready(function() {
+    $('#modal-click').click();
+  });
+</script>
+<% end %>
+<% end %>
+
+
