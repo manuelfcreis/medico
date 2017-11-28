@@ -15,6 +15,11 @@
     height: 100%;
   }
 
+  .add-to-calendar {
+    background-color: $doctor;
+    border-color: $doctor;
+  }
+
   .accept {
     background-color: $patient;
   }
