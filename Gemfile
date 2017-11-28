@@ -38,7 +38,7 @@ gem 'therubyracer'
 
 # calendar
 gem "simple_calendar", "~> 2.0"
-gem 'google-api-client'
+gem 'icalendar', '~> 2.4', '>= 2.4.1'
 
 # PDF outputting
 gem 'wicked_pdf'

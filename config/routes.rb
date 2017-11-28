@@ -66,6 +66,8 @@ Rails.application.routes.draw do
 
   get '/medications.json', to: 'medications#index', as: :medications
 
+  get '/appointments/download/:id', to: 'appointments#icalendar', as: :download_calendar
+
 end
 
 
