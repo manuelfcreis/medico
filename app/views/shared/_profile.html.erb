@@ -1,3 +1,4 @@
+<% if current_class == locals[:user].class.to_s.downcase %>
 <div class="profile-dashboard">
   <div class="user-name">
   <% if locals[:user].avatar.url.nil? %>
@@ -56,3 +57,31 @@
     <% end %>
   </div>
 </div>
+
+<% else %>
+<div class="profile-dashboard">
+  <% if current_class == "doctor" %>
+    <h6>Your Patient:</h6>
+  <% elsif current_class == "patient" %>
+    <h6>Your Doctor:</h6>
+  <% end %>
+  <div class="user-name">
+  <% if locals[:user].avatar.url.nil? %>
+    <%= image_tag "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle1.png" %>
+  <% else %>
+    <%= image_tag locals[:user].avatar.url %>
+  <% end %>
+  <div class="name">
+  <p><%= locals[:user].first_name %> <br><%= locals[:user].last_name %></p>
+  </div>
+  </div>
+  <div class="link-list">
+    <ul class="list-group">
+      <%= link_to dashboard_path do %><li class="list-group-item">Dashboard</li><% end %>
+      <%= link_to settings_path do %><li class="list-group-item">Settings</li><% end %>
+      <a href="#"><li class="list-group-item">Log-out</li></a>
+    </ul>
+  </div>
+</div>
+<% end %>
+
