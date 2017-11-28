@@ -1,0 +1,41 @@
+<button id="modal-click" value="" style="display: none;" data-toggle="modal" data-target="#modalSelector"></button>
+
+<div id="modalSelector" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Welcome to Medi-co:<br> A Quick Tour</h4>
+    </div>
+    <div class="modal-body">
+      <div id="left" class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3">
+        <p>1. Stay on top of your health by checking your profile's medication and wellness updates. </p>
+        <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/med_reminder.png', :width=>151, class: "text-center") %>
+      </div>
+    </div>
+    <div id="center" class="row hidden">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3">
+        <p>2. Talk to your doctor and receive essential documents and updates, using Medi-Co's chat feature. </p>
+        <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/smart_phone.png', :width=>127, class: "text-center") %>
+      </div>
+    </div>
+    <div id="right" class="row hidden">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3">
+        <p>3. Have more questions or concerns? Book an appointment with your doctor right from  your dashboard! </p>
+        <%= image_tag('https://s3-eu-west-1.amazonaws.com/medi-co/Icons/schedule_icon+2.png', :width=>154, class: "text-center") %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="onboard-modal-buttons btn-group" role="group"">
+      <button type="button" id="btn-1" class="btn btn-primary">1</button>
+      <button type="button" id="btn-2" class="btn btn-primary">2</button>
+      <button type="button" id="btn-3" class="btn btn-primary">3</button>
+    </div>
+  </div>
+</div>
+</div>
+
