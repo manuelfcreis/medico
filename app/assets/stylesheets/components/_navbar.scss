@@ -18,8 +18,9 @@
       padding: 50px;
       color: white;
       right: 0px;
+      transition: all 0.3s ease;
       &:hover {
-        color: #e4e4e4;
+        color: $doctor;
         cursor: pointer;
       }
     }
