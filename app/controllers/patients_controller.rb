@@ -72,9 +72,3 @@ class PatientsController < ApplicationController
         )
     end
 end
-
-def Patients::InvitationsController < Devise::InvitationsController
-  def after_invite_path_for(resource)
-    settings_path
-  end
-end
