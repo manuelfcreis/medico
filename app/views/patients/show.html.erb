@@ -27,7 +27,7 @@
 
         <% @doctor.documents.each do |doc| %>
           <%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
-          <%= f.hidden_field :content, class: 'form-control', id: 'content', value: "<a href='#{doc.file.url}'>Link to #{doc.name}</a>".html_safe %><br, style="height: 2px">
+          <%= f.hidden_field :content, class: 'form-control', id: 'content', value: "<a href='#{doc.file.url}'><i class='fa fa-chain'></i>  Link to #{doc.name}</a>".html_safe %><br, style="height: 2px">
           <%= hidden_field_tag 'sender', current_class %>
           <li class="list-group-item">
             <button type="submit" class="filesend", style="background-color: #ff686b; color: white; border: none">
