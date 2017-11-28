@@ -14,6 +14,8 @@ class Patient < ApplicationRecord
   has_many :medications, through: :doses
   has_many :messages, through: :chats
 
-    has_many :documents, as: :uploader
+  has_many :documents, as: :uploader
+
+  after_invitation_accepted :direct_to
 
 end
