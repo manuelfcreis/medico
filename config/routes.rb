@@ -64,6 +64,8 @@ Rails.application.routes.draw do
 
   get '/dose/:id', to: 'doses#progress', as: :progress
 
+  get '/medications.json', to: 'medications#index', as: :medications
+
 end
 
 

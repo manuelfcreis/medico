@@ -4,4 +4,6 @@ class Medication < ApplicationRecord
   has_many :prescriptions, through: :doses
   has_many :doctors_notes, through: :prescriptions
   has_many :doctors, through: :doctors_notes
+
+  validates_uniqueness_of :name
 end

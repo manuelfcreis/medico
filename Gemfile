@@ -25,7 +25,7 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 
-# effects
+# Effects
 gem 'typing'
 gem 'faker'
 
@@ -40,6 +40,7 @@ gem 'google-api-client'
 # PDF outputting
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
 
 group :development, :test do
   gem 'pry-byebug'
