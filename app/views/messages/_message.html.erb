@@ -1,5 +1,5 @@
 <div class="message-line">
   <div class="message <%= self_or_other(message.sender) %> <%= message.sender %>">
-    <p> <%= message.content %> </p>
+    <p> <%= message.content.html_safe %> </p>
   </div>
 </div>

@@ -1,8 +1,9 @@
 <div class="show-div doctor dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @doctor } %>
-    <div class="medications-block" style="padding-top: 5px; width: 100%; margin:20px 0px 0px 0px">
-    <h3>Medication</h3>
+
+    <div class="medications" style="background-color: white; border-radius: 3px;">
+    <h5>Medication</h5>
       <%= render 'shared/medication_progress', locals: { prescription: current_active.prescriptions.last } %>
     </div>
   </div>
@@ -19,23 +20,24 @@
       <ul class="list-group">
 
         <% if @patient.documents.empty? %>
-        <li class="list-group-item">You don't have any Documents :( </li>
+          <li class="list-group-item">You don't have any Documents :( </li>
         <% end %>
-        <% @patient.documents.each do |doc| %>
 
-        <%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
-        <%= f.hidden_field :content, class: 'form-control', id: 'content', value: doc.file.url %><br, style="height: 2px">
-        <%= hidden_field_tag 'sender', current_class %>
-        <li class="list-group-item">
-          <button type="submit" class="filesend", style="background-color: #84dcc6; color: white; border:none">
-            <i class="fa fa-paper-plane-o"></i>
-          </button>
-          <%= link_to doc.file.url, target: "_blank" do %>
-          <%= doc.name %></strong>
+        <% @patient.documents.each do |doc| %>
+          <%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
+          <%= f.hidden_field :content, class: 'form-control', id: 'content', value: "<a href='#{doc.file.url}'><i class='fa fa-chain'></i>  Link to #{doc.name}</a>".html_safe %><br, style="height: 2px">
+          <%= hidden_field_tag 'sender', current_class %>
+          <li class="list-group-item">
+            <button type="submit" class="filesend", style="background-color: #ff686b; color: white; border: none">
+              <i class="fa fa-paper-plane-o"></i>
+            </button>
+            <%= link_to doc.file.url, target: "_blank" do %>
+            <%= doc.name %></strong>
+            <% end %>
+          </li>
           <% end %>
-        </li>
         <% end %>
-        <% end %>
+
       </ul>
     </div>
   </div>

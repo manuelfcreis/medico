@@ -33,6 +33,10 @@
     border: 0px;
     border-top-right-radius: 5px;
     color: white;
+    a {
+      color: white;
+      text-decoration: underline;
+    }
   }
 
   .self.patient {
