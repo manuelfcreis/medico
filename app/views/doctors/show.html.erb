@@ -13,6 +13,27 @@
 
   <div class="right-bar">
     <%= render 'shared/appointments', locals: { user: @patient } %>
+     <div class="documents" style="background-color: white; border-radius: 3px;">
+            <h4> Documents list: </h4>
+
+<ul class="list-group">
+
+<% if @patient.documents.empty? %>
+  <li class="list-group-item">You don't have any Documents :( </li>
+<% end %>
+      <% @patient.documents.each do |doc| %>
+  <li class="list-group-item">
+    <button type="submit">
+    <i class="fa fa-paper-plane-o"></i>
+  </button>
+    <%= link_to doc.file.url, target: "_blank" do %>
+      <%= doc.name %></strong> <br>
+    <% end %>
+     </li>
+
+<% end %>
+</ul>
+    </div>
   </div>
 </div>
 
