@@ -1,4 +1,3 @@
-
 <% @prescription = locals[:prescription] %>
 <% if !@prescription.nil? %>
 <% @doses = @prescription.doses.order(:medication_id) %>

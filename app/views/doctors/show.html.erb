@@ -1,9 +1,9 @@
 <div class="show-div doctor dashboard">
   <div class="left-bar">
-    <%= render 'shared/profile', locals: { user: @patient } %>
+    <%= render 'shared/profile', locals: { user: @doctor } %>
     <div class="medications-block" style="padding-top: 5px; width: 100%; margin:20px 0px 0px 0px">
-      <h3>Medication</h3>
-      <%= render 'shared/medications', locals: { user: @patient } %>
+    <h3>Medication</h3>
+      <%= render 'shared/medication_progress', locals: { prescription: current_active.prescriptions.last } %>
     </div>
   </div>
 
@@ -41,27 +41,4 @@
   </div>
 </div>
 
-<%#= render partial: 'shared/unbind' %>
-
-<script>
-  $('#update').on('hidden', function (e) {
-      if (e.keyCode == 13) {
-        console.log('hey this is working');
-        e.preventDefault();
-      }
-  });
-
-  $('#invite').on('hidden', function (e) {
-      if (e.keyCode == 13) {
-        console.log('hey this is working');
-        e.preventDefault();
-      }
-  });
-
-  $('#document-form').on('hidden', function (e) {
-      if (e.keyCode == 13) {
-        console.log('hey this is working');
-        e.preventDefault();
-      }
-  });
-</script>
+<%= render partial: 'shared/symptoms' %>
