@@ -1,29 +1,11 @@
-<div class="show-div patient">
+<div class="show-div patient dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @patient } %>
-    <% if current_class == 'patient' %>
-    <div class="medications">
-      <h5>Medications:</h5>
-      <%#= render 'shared/medications', locals: { user: user } %>
-    </div>
-    <% else %>
+
     <div class="calendar" style="background-color: white; border-radius: 3px;">
       <%= render 'shared/calendar', locals: { user: @doctor } %>
     </div>
-<!--     <div class="link-list">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a href="#">Add a Prescription</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">Manage your appointments</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#">Search for a Medication</a>
-        </li>
-      </ul>
-    </div> -->
-    <% end %>
+
   </div>
 
   <div class="center-bar">
@@ -40,48 +22,25 @@
       <ul class="list-group">
 
         <% if @doctor.documents.empty? %>
-        <li class="list-group-item">You don't have any Documents :( </li>
+          <li class="list-group-item">You don't have any Documents :( </li>
         <% end %>
+
         <% @doctor.documents.each do |doc| %>
-        <%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
-        <%= f.hidden_field :content, class: 'form-control', id: 'content', value: doc.file.url %><br, style="height: 2px">
-        <%= hidden_field_tag 'sender', current_class %>
-        <li class="list-group-item"> 
-          <button type="submit" class="filesend", style="background-color: #ff686b; color: white; border: none">
-            <i class="fa fa-paper-plane-o"></i>
-          </button>
-          <%= link_to doc.file.url, target: "_blank" do %>
-          <%= doc.name %></strong>
+          <%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
+          <%= f.hidden_field :content, class: 'form-control', id: 'content', value: doc.file.url %><br, style="height: 2px">
+          <%= hidden_field_tag 'sender', current_class %>
+          <li class="list-group-item">
+            <button type="submit" class="filesend", style="background-color: #ff686b; color: white; border: none">
+              <i class="fa fa-paper-plane-o"></i>
+            </button>
+            <%= link_to doc.file.url, target: "_blank" do %>
+            <%= doc.name %></strong>
+            <% end %>
+          </li>
           <% end %>
-        </li>
-        
         <% end %>
-        <% end %>
+
       </ul>
     </div>
   </div>
 </div>
-
-
-
-
-
-<%#= render partial: 'shared/_unbind.js' %>
-<% content_for(:js_content) do %>
-<script>
-  $('#update').on('hidden', function (e) {
-    $(e.currentTarget).unbind(); // or $(this)
-  });
-
-  $('#invite').on('hidden', function (e) {
-    $(e.currentTarget).unbind(); // or $(this)
-  });
-
-  $('#document-form').on('hidden', function (e) {
-    $(e.currentTarget).unbind(); // or $(this)
-  });
-</script>
-<% end %>
-
-
-

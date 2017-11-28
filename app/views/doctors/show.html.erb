@@ -1,8 +1,9 @@
 <div class="show-div doctor dashboard">
   <div class="left-bar">
     <%= render 'shared/profile', locals: { user: @doctor } %>
-    <div class="medications-block" style="padding-top: 5px; width: 100%; margin:20px 0px 0px 0px">
-    <h3>Medication</h3>
+
+    <div class="medications" style="background-color: white; border-radius: 3px;">
+    <h5>Medication</h5>
       <%= render 'shared/medication_progress', locals: { prescription: current_active.prescriptions.last } %>
     </div>
   </div>
@@ -19,7 +20,7 @@
       <ul class="list-group">
 
         <% if @patient.documents.empty? %>
-        <li class="list-group-item">You don't have any Documents :( </li>
+          <li class="list-group-item">You don't have any Documents :( </li>
         <% end %>
         <% @patient.documents.each do |doc| %>
 
