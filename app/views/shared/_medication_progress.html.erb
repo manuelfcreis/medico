@@ -1,33 +1,40 @@
 
 <% @prescription = locals[:prescription] %>
+<% @doses = @prescription.doses.order(:medication_id) %>
 <% if !@prescription.nil? %>
+
 <ul class="list-group">
-  <% @prescription.doses.each do |dose| %>
+  <% @doses.each do |dose| %>
   <% @count = 0 %>
   <% @line_count = 0 %>
+
   <li class="list-group-item">
   <%= dose.medication.name %>
+
   <div class="med-progress">
     <% dose.days.times do |days| %>
-      <%#= days + @prescription.updated_at.strftime('%D').to_i %>
-      <div class="day pill">
-        <ul>
-        <% dose.frequency.times do |fr| %>
-            <p hidden id="count"> <%= @count += 1 %></p>
-            <% @line_count += 1 %>
-          <%= link_to progress_path(id: dose.id, progress: @count), method: :get do %>
-            <li class="fr <%= progress_helper(dose, @count) %>">
-            </li>
+      <% if ( @line_count / dose.frequency ) > 3 %>
+        </div>
+        <div class="med-progress">
+        <% @line_count = 0 %>
+      <% end %>
+      <div class="day-pill">
+      <span class="day"><%= (dose.created_at + days.days).strftime('%d') %></span>
+        <div class="pill">
+          <ul>
+          <% dose.frequency.times do |fr| %>
+              <p hidden id="count"> <%= @count += 1 %></p>
+              <% @line_count += 1 %>
+            <%= link_to progress_path(id: dose.id, progress: @count), method: :get do %>
+              <li class="fr <%= progress_helper(dose, @count) %>">
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+        </div>
       </div>
 
-      <% if ( @line_count / dose.frequency ) > 4 %>
-      </div>
-      <div class="med-progress">
-      <% @line_count = 0 %>
-      <% end %>
+
     <% end %>
   </div>
 <p style="font-size: 14px;"><strong><%= pluralize(dose.frequency, "time") %></strong> per day for <strong><%= pluralize(dose.days, "day") %></strong></p>
