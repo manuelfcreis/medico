@@ -83,7 +83,7 @@
   </div>
   <div class="card-button <%= current_class %>">
     <% @app = Appointment.where(patient_id: current_active.id, doctor_id: locals[:user].id).last %>
-    <% if @app.prescriptions.empty? %>
+    <% if @app.nil? || @app.prescriptions.empty? %>
       <%= button_to '#', remote:true do %>
         <%= icon('paperclip') %>
       <% end %>
