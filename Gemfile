@@ -11,6 +11,9 @@ gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
 
+#email
+gem 'postmark-rails'
+
 # Styling
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -36,6 +39,8 @@ gem 'therubyracer'
 # calendar
 gem "simple_calendar", "~> 2.0"
 gem 'google-api-client'
+gem 'google_calendar'
+gem 'capistrano-calendar'
 
 # PDF outputting
 gem 'wicked_pdf'
