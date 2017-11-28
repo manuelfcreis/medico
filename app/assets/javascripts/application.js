@@ -9,3 +9,4 @@ $("#invite").on("keydown", function (e) {
       e.preventDefault();
     }
 });
+

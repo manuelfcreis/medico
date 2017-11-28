@@ -13,14 +13,15 @@
   const btnPatient = document.getElementById("btn-home-patient");
   const landingPatient = document.getElementById("landing-patient");
 
-  const mq = window.matchMedia( "(min-width: 320px)" );
+  const mq = window.matchMedia( "(max-width: 415px)" );
   const nav = document.getElementById("navbar");
   const menu = document.getElementById("navbar-menu");
   const navBtn = document.getElementById("hamburger-btn");
-
-  if (!mq.matches) {
+  if (mq.matches) {
+console.log(mq.matches);
     nav.classList.add("scrolled");
     nav.classList.remove("initial");
+    navBtn.style.display="none";
   } else {
     const lastScrollTop = 0;
 
