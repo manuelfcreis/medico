@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require typing
+//= require simple_form_autocomplete
 //= require_tree .
 
 $("#invite").on("keydown", function (e) {
@@ -9,3 +10,4 @@ $("#invite").on("keydown", function (e) {
       e.preventDefault();
     }
 });
+
