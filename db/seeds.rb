@@ -88,9 +88,10 @@ until answer == "n"
     puts "Please answer (y/n)"
   end
 end
+answer = ""
 
 until answer == "n"
-  puts "Do you want to reboot the other databases? (y/n)"
+  puts "Do you want to reboot Users, Appointments and Chats?"
   answer = STDIN.gets.chomp
 
   if answer == "y"
@@ -132,10 +133,42 @@ until answer == "n"
       )
     end
     answer = "n"
-
   elsif answer != "n"
     puts "Please answer (y/n)"
   end
 end
+answer = ""
+
+until answer == "n"
+  puts "Do you want to reboot Symptoms?"
+  answer = STDIN.gets.chomp
+
+  if answer == "y"
+    puts 'Cleaning Symptoms...'
+    Symptom.destroy_all
+
+    puts "Generating Symptoms..."
+    have_list = ["Abdominal pain","Back pain","Chest pain","Otalgia (Earache)","Headache","Chronic pelvic pain","Toothache (ache)","Vaginal (Pain)","Rectal pain","Dermatomal pain"]
+    feel_list = ["Chills","Fever","Paresthesia (numbness, tingling, electric tweaks)","Light-headed","Dizzy, about to black out","Dizzy, with the room spinning around me","My mouth is dry","Nauseated","Sick","Sick like I have the flu","Sick like I have to vomit","Short of breath","Sleepy","Sweaty","Thirsty","Tired","Weak"]
+    cant_list = ["Breathe normally","hear well","Hear well, sounds are too loud","Hear well, ringing or hissing in my ears","Move one side – arm and/or leg","Pass a bowel action normally","Pass urine normally","Remember normally","See properly","See properly, I have blurred vision","See properly, I have double vision","Sleep normally","Smell things normally","Speak normally","Stop passing watery bowel actions","Stop scratching","Stop sweating","Swallow normally","Taste properly","Walk normally","Write normally"]
+
+    have_list.each do |pain|
+      Symptom.create(name: pain, classification: "have")
+    end
+
+    feel_list.each do |feel|
+      Symptom.create(name: feel, classification: "feel")
+    end
+
+    cant_list.each do |cant|
+      Symptom.create(name: cant, classification: "can't")
+    end
+
+    answer = "n"
+  elsif answer != "n"
+    puts "Please answer (y/n)"
+  end
+end
+answer = ""
 
 puts 'Finished!'

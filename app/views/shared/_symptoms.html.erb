@@ -1,0 +1,71 @@
+<div class="modal fade" id="symptoms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="border-radius: 3px;">
+      <div class="modal-header">
+        <div class="symptoms-buttons btn-group" role="group"">
+          <button type="button" id="have-btn" class="btn btn-primary">I have:</button>
+          <button type="button" id="feel-btn" class="btn btn-primary">I feel:</button>
+          <button type="button" id="cant-btn" class="btn btn-primary">I can't</button>
+          <button type="button" class="btn btn-primary closing" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><%= icon('times') %> Close</span>
+          </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <% Symptom.group(:classification).count.each do |classification| %>
+        <div id="<%= classification[0] %>" class="hidden">
+          <tr style="margin-right: 10px; display: flex; align-items: flex-start;">
+            <ul class="list-group">
+              <% Symptom.where(classification: classification[0]).each do |s| %>
+              <li id="symptom-type" class="list-group-item"><%= s.name %></li>
+              <% end %>
+            </ul>
+          </tr>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:js_content) do %>
+  <script>
+    let havebtn = document.getElementById('have-btn');
+    let feelbtn = document.getElementById('feel-btn');
+    let cantbtn = document.getElementById('cant-btn');
+    let libtn = document.querySelectorAll('#symptom-type');
+
+    let havelist = document.getElementById('have');
+    havelist.classList.remove('hidden');
+
+    havebtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('have').classList.remove('hidden');
+      document.getElementById('feel').classList.add('hidden');
+      document.getElementById('cant').classList.add('hidden');
+    });
+
+    feelbtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('have').classList.add('hidden');
+      document.getElementById('feel').classList.remove('hidden');
+      document.getElementById('cant').classList.add('hidden');
+    });
+
+    cantbtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('have').classList.add('hidden');
+      document.getElementById('feel').classList.add('hidden');
+      document.getElementById('cant').classList.remove('hidden');
+    });
+
+    Array.from(libtn).forEach( link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('.closing').click();
+        console.log(link.innerHTML)
+        document.getElementById('content').innerHTML = "#Symptom: " + link.innerHTML
+      });
+    });
+  </script>
+<% end %>
