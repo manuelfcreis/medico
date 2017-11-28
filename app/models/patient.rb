@@ -17,5 +17,14 @@ class Patient < ApplicationRecord
   has_many :documents, as: :uploader
 
   after_invitation_accepted :direct_to
+  after_invitation_accepted :direct_to
+
+  def invitation_email
+    invitation_instructions
+  end
+
+  def direct_to
+    sign_in_path
+  end
 
 end
