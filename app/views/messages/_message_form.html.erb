@@ -2,7 +2,9 @@
     <%= f.text_area :content, class: 'form-control', id: 'content' %>
     <%= hidden_field_tag 'sender', current_class %>
 
-    <div class="send-btn">
-      <%= f.submit 'send', id: "chat-input", class: "#{current_class} btn-primary" %>
-    </div>
+      <%= f.submit 'send', id: "chat-input", class: "hidden #{current_class} btn btn-primary" %>
+
   <% end %>
+      <button type="button" class="<%= current_class %> btn btn-primary" data-toggle="modal" data-target="#symptoms">
+        <%= icon('medkit') %>
+     </button>

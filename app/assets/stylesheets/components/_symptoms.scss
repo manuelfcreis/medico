@@ -1,0 +1,31 @@
+#symptom-type {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: $patient;
+    color: black;
+  }
+}
+
+.symptoms-buttons {
+  display: flex;
+  justify-content: center;
+  button {
+    flex-grow: auto;
+    background-color: $patient;
+    border-color: $patient;
+    transition: all 0.3s ease;
+    &:hover {
+      border-color: transparent;
+      background-color: darken($patient, 10%);
+    }
+  }
+
+  .closing {
+    color: $patient;
+    background-color: transparent;
+    &:hover {
+      color: white;
+    }
+  }
+}

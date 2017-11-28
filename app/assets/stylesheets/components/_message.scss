@@ -37,10 +37,12 @@
 
   .self.patient {
     background-color: $patient;
+    border-color: darken($patient, 10%);
   }
 
   .self.doctor {
     background-color: $doctor;
+    border-color: darken($doctor, 10%);
   }
 
 }
