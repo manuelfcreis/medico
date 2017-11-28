@@ -1,6 +1,6 @@
 <% @prescription = locals[:prescription] %>
-<% @doses = @prescription.doses.order(:medication_id) %>
 <% if !@prescription.nil? %>
+<% @doses = @prescription.doses.order(:medication_id) %>
 
 <ul class="list-group">
   <% @doses.each do |dose| %>
