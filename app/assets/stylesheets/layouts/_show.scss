@@ -1,6 +1,6 @@
 @media screen and (min-width: 480px) {
   .show-div {
-    margin-top: 15px;
+    // margin-top: 15px;
     position: relative;
     // height: calc(100vh - 70px);
     min-height: calc(100vh - 100px);
@@ -82,6 +82,7 @@
           background-color: $doctor;
           border-color: $doctor;
           transition: all 0.3s ease;
+          margin-top: 15px;
           &:hover {
             background-color: darken($doctor, 20%);
           }
@@ -91,6 +92,7 @@
           background-color: $patient;
           border-color: $patient;
           transition: all 0.3s ease;
+          padding-top: 85px;
           &:hover {
             background-color: lighten($patient, 10%);
           }
@@ -115,3 +117,4 @@
     }
   }
 }
+

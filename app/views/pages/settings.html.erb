@@ -30,18 +30,77 @@
   <%= f.submit "Update Information", class: 'btn btn-primary' %>
   <% end %>
 
-  <%= render 'shared/onboard_modal' %>
+
+  <% if current_active.sign_in_count == 1 && current_class == "patient" %>
+    <%= render 'shared/patient_onboard_modal' %>
+  <% elsif current_active.sign_in_count == 1 && current_class == "doctor"%>
+    <%= render 'shared/doctor_onboard_modal' %>
+  <% end %>
 
 </div>
-
-  <% if current_active.sign_in_count == 1 %>
-  <% content_for :js_content  do%>
+<% content_for :js_content do %>
   <script>
-   $(document).ready(function() {
-    $('#modal-click').click();
-  });
-</script>
-<% end %>
-<% end %>
+    $(document).ready(function() {
+      $('#modal-click').click();
+    });
 
+    <% if current_active.sign_in_count == 1 && current_class == "patient" %>
+
+      const btn1 = document.getElementById('btn-1');
+      const btn2 = document.getElementById('btn-2');
+      const btn3 = document.getElementById('btn-3');
+      console.log(btn1);
+
+      btn1.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('left').classList.remove('hidden');
+        document.getElementById('center').classList.add('hidden');
+        document.getElementById('right').classList.add('hidden');
+      });
+      btn2.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('center').classList.remove('hidden');
+        document.getElementById('left').classList.add('hidden');
+        document.getElementById('right').classList.add('hidden');
+      });
+      btn3.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('right').classList.remove('hidden');
+        document.getElementById('center').classList.add('hidden');
+        document.getElementById('left').classList.add('hidden');
+      });
+    <% else %>
+     const btnOne = document.getElementById('btn-one');
+     const btnTwo = document.getElementById('btn-two');
+     const btnThree = document.getElementById('btn-three');
+
+     const docLeft = document.getElementById('doc-left');
+     const docCenter = document.getElementById('doc-center');
+     const docRight = document.getElementById('doc-right');
+     console.log(btnTwo);
+
+     btnOne.addEventListener('click', function(e) {
+      e.preventDefault();
+      docLeft.classList.remove('hidden');
+      docCenter.classList.add('hidden');
+      docRight.classList.add('hidden');
+      });
+
+      btnTwo.addEventListener('click', function(e) {
+        e.preventDefault();
+        docCenter.classList.remove('hidden');
+        docLeft.classList.add('hidden');
+        docRight.classList.add('hidden');
+      });
+
+      btnThree.addEventListener('click', function(e) {
+        e.preventDefault();
+        docRight.classList.remove('hidden');
+        docCenter.classList.add('hidden');
+        docLeft.classList.add('hidden');
+      });
+
+    <% end %>
+  </script>
+<% end %>
 
