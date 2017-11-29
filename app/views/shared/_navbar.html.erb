@@ -17,9 +17,6 @@
     <!-- Right Navigation -->
     <% unless doctor_signed_in? or patient_signed_in? %>
       <div class="navbar-wagon-right hidden-xs hidden-sm <%= action_name == "home" ? 'hidden' : '' %>">
-        <div class="navbar-wagon-item navbar-wagon-link">Our Services</div>
-        <div class="navbar-wagon-item navbar-wagon-link">Questions</div>
-        <div class="navbar-wagon-item navbar-wagon-link">Testimonials</div>
       </div>
     <% end %>
 
