@@ -42,10 +42,16 @@
       justify-content: center;
       display: flex;
       margin-top: 2%;
-      border: 1px solid white;
-      .card-two-content{
-        text-align: center;
-        padding: 25px;
+      // border: 1px solid white;
+      .card_two_box{
+        height: 70%;
+        width: 54%;
+        border: 1px solid white;
+        position: absolute;
+        left: 23%;
+        padding: 49px;
+        background-color: white;
+        font-family: 'Lato', sans-serif;
         p {
           font-family: 'Roboto', sans-serif;
           opacity: 0.8;
@@ -59,9 +65,6 @@
           text-align: left;
         }
       }
-      .card-two-image{
-        padding: 13px;
-      }
     }
 
     .card_three{
@@ -74,6 +77,7 @@
       display: flex;
       margin-top: 2%;
       border: 1px solid white;
+      padding: 10px;
       .card-three-content{
         text-align: center;
         padding: 25px;
