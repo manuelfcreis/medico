@@ -9,8 +9,15 @@ class PagesController < ApplicationController
   def dashboard
     if !current_doctor.nil?
       @user = current_doctor
+      if params[:dashboard_path].nil?
+        @card_array = @user.chats.where(accepted: true)
+      else
+        @card_array = @user.chats.joins(:patient).where(accepted: true,
+          patients: { first_name: params[:dashboard_path][:query]})
+      end
     elsif !current_patient.nil?
       @user = current_patient
+      @card_array = @user.chats.where(accepted: true)
     else
       redirect_to root_path
     end

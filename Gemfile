@@ -46,7 +46,7 @@ gem 'wkhtmltopdf-binary'
 
 # Search
 gem 'simple_form_extension'
-
+gem 'pg_search'
 
 
 group :development, :test do
