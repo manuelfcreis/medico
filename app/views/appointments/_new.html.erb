@@ -1,36 +1,25 @@
 <%= content_for(:js_content) do %>
-  <% if current_class == "doctor" %>
   <div id="appointment-form-<%= locals[:user].id %>" class="apt-form modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h2>Add an appointment</h2>
         </div>
-        <div class="modar-body">
+        <div class="modal-body">
           <%= simple_form_for [locals[:user], locals[:user].appointments.new] do |f| %>
-          <%= f.input :date %>
-          <%= f.input :duration %>
-          <%= f.button :submit, class: "btn btn-primary" %>
+            <%= f.input :date,
+                start_year: Date.today.year,
+                end_year: Date.today.year + 1,
+                start_month: Date.today.month,
+                end_month: Date.today.month + 3,
+                minute_step: 30, class: "form-control datetime optional"
+            %>
+            <%= f.input :duration,  label: 'Select Appointment duration in min', collection: [ '30 min', '60 min' ], as: :radio_buttons %>
+            <%= f.input :notes %>
+            <%= f.button :submit, class: "btn btn-primary" %>
           <% end  %>
         </div>
       </div>
     </div>
   </div>
-
-  <% else %>
-  <div id="appointment-form-<%= locals[:user].id %>" class="apt-form modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Add an appointment</h2>
-        </div>
-        <%= simple_form_for [locals[:user], locals[:user].appointments.new] do |f| %>
-          <%= f.input :date %>
-          <%= f.input :duration %>
-          <%= f.button :submit, class: "btn btn-primary" %>
-        <% end  %>
-      </div>
-    </div>
-  </div>
-  <% end %>
 <% end %>

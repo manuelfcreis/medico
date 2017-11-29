@@ -59,6 +59,7 @@
           align-items: center;
           height: 100%;
           margin: 0px 0px 0px 20px;
+
           .doctor {
             background-color: $doctor;
           }
@@ -82,9 +83,8 @@
           background-color: $doctor;
           border-color: $doctor;
           transition: all 0.3s ease;
-          margin-top: 15px;
           &:hover {
-            background-color: darken($doctor, 20%);
+            background-color: lighten($doctor, 20%);
           }
         }
 
@@ -92,7 +92,6 @@
           background-color: $patient;
           border-color: $patient;
           transition: all 0.3s ease;
-          padding-top: 85px;
           &:hover {
             background-color: lighten($patient, 10%);
           }
