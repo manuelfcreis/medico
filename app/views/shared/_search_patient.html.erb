@@ -1,0 +1,7 @@
+<div class="patient-search">
+<h4>Search for a patient</h4>
+<%= simple_form_for :dashboard_path, method: :get do |f| %>
+  <%= f.input :query, placeholder: 'Search', label: false %>
+  <%= f.submit "search", class: 'btn btn-primary doctor' %>
+  <% end %>
+</div>

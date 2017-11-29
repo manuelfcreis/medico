@@ -1,4 +1,7 @@
 class Patient < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_by_name, against: [ :first_name, :last_name ]
+
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
