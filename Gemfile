@@ -44,6 +44,10 @@ gem 'icalendar', '~> 2.4', '>= 2.4.1'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+# Search
+gem 'simple_form_extension'
+
+
 
 group :development, :test do
   gem 'pry-byebug'
@@ -58,3 +62,5 @@ end
 
 
 
+
+gem 'redactor-rails', github: 'glyph-fr/redactor-rails'

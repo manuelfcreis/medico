@@ -44,3 +44,7 @@
 </div>
 
 <%= render partial: 'shared/symptoms' %>
+
+<%= content_for :title do %>
+  Dr. <%= @doctor.first_name %> - Medi-co
+<% end %>
