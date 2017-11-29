@@ -47,9 +47,16 @@
     display: flex;
     margin-top: 2% !important;
     border: 1px solid white;
-    .card-b-content{
-      text-align: center;
+    .card-b-box{
+      width: 50%;
+      height: 65%;
+      border: 1px solid white;
+      position: absolute;
+      left: 4%;
+      background-color: white;
+      font-family: 'Lato', sans-serif;
       padding: 2%;
+      padding-right: 4%;
       p {
         font-family: 'Roboto', sans-serif;
         opacity: 0.8;
@@ -63,25 +70,11 @@
         text-align: left;
       }
     }
-    .card-b-image{
-      padding: 13px;
-      .card-b-image-1{
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-      .card-b-image-2{
-        position: absolute;
-        top: 71%;
-        left: 62%;
-      }
-    }
   }
 
   .card-c{
     text-align: center;
-    height: 75vh;
+    height: 80vh;
     background-size: cover !important;
     display: flex;
     align-items: center;
@@ -89,7 +82,7 @@
     display: flex;
     margin-top: 2%;
     border: 1px solid white;
-    padding-bottom: 24px;
+    padding: 4%
     h3{
       margin-top: 6%;
     }
