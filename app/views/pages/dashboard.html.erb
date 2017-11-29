@@ -26,7 +26,7 @@
     <% end %>
   </div>
 
-  <% if @user.class.to_s.downcase == 'patient' %>
+  <% if current_class == 'patient' %>
     <div class="center-bar">
       <div class="center">
         <div class="dash-main <%= current_class %>">
@@ -42,17 +42,12 @@
         </div>
         <div class="upcoming">
           <% if @user.appointments.where(status: "scheduled").empty? %>
-          You don't have a scheduled appointment
+            You don't have a scheduled appointment
           <% else %>
           <% @next = @user.appointments.where(status: "scheduled").first %>
           <h4>Next Appointment: <%= @next.doctor.first_name %> <%= @next.doctor.last_name %></h4>
           <hr>
           <%= @next.date.day %> of <%= @next.date.strftime("%B") %> at <%= @next.date.strftime('%k') %>:<%= @next.date.strftime('%M') %>
-          <%= button_to "End Appointment",
-          new_doctor_appointment_prescription_path(doctor_id: @next.doctor, appointment_id: @next),
-           method: :get,
-           class: "btn btn-white",
-           style: 'color: #ff686b; margin-top: 10px;' %>
           <% end %>
         </div>
         </div>
