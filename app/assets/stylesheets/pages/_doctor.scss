@@ -11,14 +11,18 @@
     display: flex;
     margin-top: 2%;
     .card-a-box{
-      width: 65%;
+      width: 50%;
+      height: 65%;
       border: 1px solid white;
       position: absolute;
-      left: 2%;
+      right: 4%;
       background-color: white;
       font-family: 'Lato', sans-serif;
       padding: 2%;
-
+      padding-right: 4%;
+      .card-a-title{
+      margin-bottom: 40.5px;
+      }
       .card-a-text{
         margin-left: 9%;
         p{
