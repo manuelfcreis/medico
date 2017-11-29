@@ -80,7 +80,7 @@ class AppointmentsController < ApplicationController
       e.summary     = "Patient #{@appointment.patient.first_name}#{@appointment.patient.last_name}"
       e.description = @appointment.notes
     end
-
+    puts filename
   send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
   end
 

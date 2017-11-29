@@ -34,7 +34,7 @@ It receives a @user from the dashboard/conversation -->
             <strong><%= apt.patient.first_name %> <%= apt.patient.last_name %></strong> <br>
             <%= apt.date.day %> of  <%= apt.date.strftime("%B") %> - <%= apt.duration %> minutes
           </li>
-            <%= button_to "Add to my calendar", download_calendar_path(id: apt.id), remote: true, method: :get, class: "btn btn-primary add-to-calendar doctor" %>
+            <%= button_to "Add to my calendar", download_calendar_path(id: apt.id), method: :get, class: "btn btn-primary add-to-calendar doctor" %>
         <% end %>
       </ul>
     <% end %>
