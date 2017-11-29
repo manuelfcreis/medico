@@ -28,7 +28,7 @@
     <div class="new-dose col-xs-12 col-md-4">
       <h5>Add a medication</h5>
       <%= simple_form_for [@prescription, @prescription.doses.new] do |f| %>
-      <%= f.input :medication_id, collection: Medication.all.order(:name).collect { |i| [i.name, i.id] }, include_blank: true %>
+      <%= f.input :medication_id, as: :selectize, collection: Medication.all.order(:name), include_blank: true %>
       <%= f.input :quantity, label: "Take how many:" %>
       <%= f.input :days, label: "For how many days:" %>
       <%= f.input :frequency, label: "How many times per day:" %>
@@ -44,3 +44,7 @@
     </center>
   </div>
 </div>
+
+<%= content_for :title do %>
+  New Prescription - Medi-co
+<% end %>

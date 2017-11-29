@@ -1,3 +1,8 @@
+/*
+*= require simple_form_extension
+*/
+
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -14,3 +19,22 @@
 @import "components/index";
 @import "pages/index";
 
+
+.radio_buttons {
+  position: relative !important;
+  margin: 0px !important;
+  border: none;
+  box-shadow: none;
+  &:active {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.radio {
+  span {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -14,7 +14,7 @@
                 end_month: Date.today.month + 3,
                 minute_step: 30, class: "form-control datetime optional"
             %>
-            <%= f.input :duration,  label: 'Select Appointment duration in min', collection: [ '30 min', '60 min' ], as: :radio_buttons %>
+            <%= f.input :duration,  label: 'Select Appointment duration in min', collection: [ '30 min', '60 min' ], as: :radio_buttons, required: true %>
             <%= f.input :notes %>
             <%= f.button :submit, class: "btn btn-primary" %>
           <% end  %>
