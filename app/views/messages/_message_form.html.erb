@@ -1,10 +1,9 @@
-  <%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
-    <%= f.text_area :content, class: 'form-control', id: 'content' %>
-    <%= hidden_field_tag 'sender', current_class %>
-      <%= f.submit 'send', id: "chat-input", class: "hidden #{current_class} btn btn-primary" %>
+<%= form_for([@receiver, @chat, @message], remote: true, class: 'form-group') do |f| %>
+  <%= f.text_area :content, class: 'form-control', id: 'content' %>
+  <%= hidden_field_tag 'sender', current_class %>
+    <%= f.submit 'send', id: "chat-input", class: "hidden #{current_class} btn btn-primary" %>
+<% end %>
 
-  <% end %>
-
-<button type="button" class="<%= current_class %> btn btn-primary" data-toggle="modal" data-target="#symptoms">
+<button type="button" class=" <%= current_class %> btn btn-primary" data-toggle="modal" data-target="#symptoms">
   <%= icon('medkit') %>
 </button>
