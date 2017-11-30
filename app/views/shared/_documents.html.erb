@@ -1,4 +1,4 @@
-<% if current_class == "doctor" %>
+<% if current_class == "doctor" && action_name == "show"%>
   <% @messager = Patient.find(params[:id]) %>
 <% else %>
   <% @messager = current_patient %>
