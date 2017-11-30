@@ -4,7 +4,7 @@
 
     <% if current_class == 'patient' %>
       <div class="medications">
-        <h4>Medications</h4>
+        <h4>Track your medications</h4>
         <%#= render 'shared/medications' %>
         <%= render 'shared/medication_progress', locals: { prescription: current_active.prescriptions.last } %>
       </div>
