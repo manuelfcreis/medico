@@ -1,18 +1,14 @@
 class DosesController < ApplicationController
-
-  def new
-  end
-
   def create
     @prescription = Prescription.find(params[:prescription_id])
     @appointment = @prescription.appointment
     @dose = @prescription.doses.new(dose_params)
 
     if @dose.save
-      redirect_to request.referer
-      flash[:notice] = "Prescription saved"
+      redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment)
+      flash[:notice] = "Medication saved"
     else
-      redirect_to request.referer
+      redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment)
     end
   end
 
@@ -22,12 +18,11 @@ class DosesController < ApplicationController
 
     @dose.save
 
-    redirect_to request.referer
+    redirect_to new_patient_appointment_prescription_path(patient_id: @next.patient, appointment_id: @next)
   end
 
   private
-  def dose_params
-    params.require(:dose).permit(:days, :frequency, :quantity, :description, :medication_id)
-  end
-
+    def dose_params
+      params.require(:dose).permit(:days, :frequency, :quantity, :description, :medication_id)
+    end
 end

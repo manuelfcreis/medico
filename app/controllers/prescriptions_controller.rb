@@ -35,7 +35,7 @@ class PrescriptionsController < ApplicationController
     if @prescription.save
       redirect_to request.referer
     else
-      render :new
+      redirect_to request.referer
     end
   end
 
@@ -45,6 +45,6 @@ class PrescriptionsController < ApplicationController
 
     @prescription.update(params.require(:prescription).permit(:doctors_notes))
 
-    render :new
+    redirect_to request.referer
   end
 end
