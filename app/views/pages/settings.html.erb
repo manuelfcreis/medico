@@ -3,6 +3,7 @@
   <h1>Settings</h1>
   <%= simple_form_for(@user) do |f| %>
   <%= f.input :email %>
+  <%= f.input :avatar %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= @specialties %>
@@ -29,7 +30,6 @@
   <% end %>
   <%= f.submit "Update Information", class: 'btn btn-primary' %>
   <% end %>
-
 
   <% if current_active.sign_in_count == 1 && current_class == "patient" %>
     <%= render 'shared/patient_onboard_modal' %>

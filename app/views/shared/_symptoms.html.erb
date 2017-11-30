@@ -17,7 +17,7 @@
           <tr style="margin-right: 10px; display: flex; align-items: flex-start;">
             <ul class="list-group">
               <% Symptom.where(classification: classification[0]).each do |s| %>
-              <li id="symptom-type" class="list-group-item"><%= s.name %></li>
+                <li id="symptom-type" class="list-group-item"><%= s.name %></li>
               <% end %>
             </ul>
           </tr>
@@ -34,6 +34,7 @@
     let feelbtn = document.getElementById('feel-btn');
     let cantbtn = document.getElementById('cant-btn');
     let libtn = document.querySelectorAll('#symptom-type');
+    let medkit = document.getElementById('medkit')
 
     let havelist = document.getElementById('have');
     havelist.classList.remove('hidden');
@@ -59,14 +60,19 @@
       document.getElementById('cant').classList.remove('hidden');
     });
 
+    function symptom() {
     Array.from(libtn).forEach( link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector('.closing').click();
         document.getElementById('content').innerHTML = "#Symptom: " + link.innerHTML
+        document.querySelector('.closing').click();
         $('#chat-input').click()
         document.getElementById('content').innerHTML = ""
       });
     });
+  }
+    medkit.addEventListener('click', function(e) {
+      symptom();
+    })
   </script>
 <% end %>

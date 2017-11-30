@@ -68,7 +68,8 @@ class PatientsController < ApplicationController
         :education,
         :marital_status,
         :occupation,
-        :disability
+        :disability,
+        :avatar
         )
     end
 end
