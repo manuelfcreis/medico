@@ -58,7 +58,7 @@
   <% else %>
     <%= image_tag locals[:user].avatar.url %>
   <% end %>
-  <p><%= locals[:user].first_name %> <br><%= locals[:user].last_name %></p>
+  <p>Dr. <%= locals[:user].first_name %> <br><%= locals[:user].last_name %> <br> <br><%= Specialty.find(locals[:user].specialty_id).name %></p>
   </div>
   <div class="card-body">
  <% @apt = locals[:user].appointments.where(patient_id: current_active.id).where.not(status: "cancelled").where.not(status: "pending").order(:date).last %>
