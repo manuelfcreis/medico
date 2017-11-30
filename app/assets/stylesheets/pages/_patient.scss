@@ -16,19 +16,27 @@
     justify-content: center;
     display: flex;
     margin-top: 2%;
-    width: 100%;
     .card_one_box{
-      height: 70%;
-      width: 60%;
-      border: 1px solid white;
+      border-radius: 3px;
+      width: 50%;
+      height: auto;
+      border: 1px solid rgba(255,255,255,0.4);
       position: absolute;
       left: 4%;
-      background-color: white;
+      background-color: rgba(255,255,255,0.85);
       font-family: 'Lato', sans-serif;
+      padding: 2%;
+      padding-right: 4%;
+      padding-bottom: 5%;
+      h3 {
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
       .grid-landing{
-        padding-bottom: 16%;
         .benefit-icons{
-          margin: 0;
+          margin: 0 0 30px 0;
+
+
 
           p{
             font-family: 'Roboto', sans-serif;
@@ -50,16 +58,21 @@
       display: flex;
       margin-top: 2%;
       background-size: cover !important;
+      background-position: right center;
       // border: 1px solid white;
       .card_two_box{
-        height: 70%;
-        width: 54%;
-        border: 1px solid white;
+        border-radius: 3px;
+        width: 45%;
+        height: auto;
+        border: 1px solid rgba(255,255,255,0.4);
         position: absolute;
         right: 4%;
-        padding: 49px;
-        background-color: white;
+        background-color: rgba(255,255,255,0.85);
         font-family: 'Lato', sans-serif;
+        padding: 2%;
+        padding-right: 4%;
+        padding-bottom: 5%;
+
         p {
           font-family: 'Roboto', sans-serif;
           opacity: 0.8;
@@ -76,6 +89,7 @@
     }
 
     .card_three{
+      background-color: $patient;
       text-align: center;
       height: 75vh;
       width: 100%;
@@ -86,28 +100,44 @@
       margin-top: 2%;
       border: 1px solid white;
       padding: 10px;
+      background: url('https://s3-eu-west-1.amazonaws.com/medi-co/Images/joshua-ness-97203.jpg');
+      background-size: cover !important;
       .card-three-content{
-        text-align: center;
-        padding: 25px;
-        left: 4%;
-        p {
-          font-family: 'Roboto', sans-serif;
-          opacity: 0.8;
-          font-weight: lighter;
-          text-align: left;
-          font-size: 25px;
+        border-radius: 3px;
+        width: auto;
+        height: auto;
+        border: 1px solid rgba(255,255,255,0.4);
+        background-color: rgba(255,255,255,0.85);
+        font-family: 'Lato', sans-serif;
+        padding: 2%;
+        padding-right: 4%;
+        padding-bottom: 5%;
+          p {
+            font-family: 'Roboto', sans-serif;
+            opacity: 0.8;
+            font-weight: lighter;
+            text-align: left;
+            font-size: 25px;
+          }
+          li{
+            font-family: 'Roboto', sans-serif;
+            opacity: 0.8;
+            font-weight: lighter;
+            text-align: left;
+          }
         }
-        li{
-          font-family: 'Roboto', sans-serif;
-          opacity: 0.8;
-          font-weight: lighter;
-          text-align: left;
-        }
-      }
       .card-three-image{
         padding: 13px;
       }
     }
+  }
+
+  .flexer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 75vh;
   }
   @media only screen and (min-device-width: 320px)
   and (max-device-width: 480px)

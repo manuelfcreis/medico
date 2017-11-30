@@ -23,6 +23,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 
+
 # File Upload
 gem 'carrierwave'
 gem 'fog-aws'
