@@ -6,19 +6,30 @@
   font-weight: lighter;
   height: 800px;
   background-image: url(http://launchwithseven.com/wp-content/uploads/startupmeeting2.png?id=2203);
- padding-top: 50px;
- h2 {
-  margin-top: 80px;
- }
+  padding-top: 50px;
+  h2 {
+    margin-top: 80px;
+    margin-bottom: 53px;
+    font-size: 68px;
+  }
   .btn-primary {
     background-color: #ff686b !important;
     outline-color: #ff686b !important;
     border-color: #ff686b !important;
+    margin-right: 10px;
+    padding: 55px 70px;
+    font-size: 52px;
+    border-radius: 4px;
   }
   .btn-success {
     background-color: #84dcc6 !important;
     outline-color: #84dcc6 !important;
     border-color: #84dcc6 !important;
+    margin-left: 10px;
+    padding: 55px 70px;
+    font-size: 52px;
+    border-radius: 4px;
+
   }
 }
 .log-in-form {
@@ -118,39 +129,39 @@
 .btn.doctor {
   background-color: #ff686b !important;
 }
-  .modal.fade {
-    position: absolute;
-    margin-top: 240px;
-    .modal-dialog {
-      width: 460px;
-      .modal-header {
-        padding: 0;
-        li {
-          width: 50%;
-        }
+.modal.fade {
+  position: absolute;
+  margin-top: 240px;
+  .modal-dialog {
+    width: 460px;
+    .modal-header {
+      padding: 0;
+      li {
+        width: 50%;
       }
-      .tab-content {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
+    }
+    .tab-content {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
       // .accept {
       //   font-weight: lighter;
       // }
-        .buttons {
-          border-style: solid;
-          border-width: 1px;
-        }
+      .buttons {
+        border-style: solid;
+        border-width: 1px;
       }
     }
-    .forgot {
-        font-size: 14px;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        bottom: -30px;
-        text-align: center;
-      }
   }
+  .forgot {
+    font-size: 14px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -30px;
+    text-align: center;
+  }
+}
 }
 
 

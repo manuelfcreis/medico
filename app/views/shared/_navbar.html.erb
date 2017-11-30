@@ -1,7 +1,7 @@
 <div class='navbar-wagon <%= action_name == "home" ? "initial" : "scrolled nav-#{current_class}" %>' id="navbar">
 
   <% if action_name == "home" %>
-    <i class="fa fa-bars fa-4x" id="hamburger-btn"></i>
+    <i class="fa fa-chevron-up fa-4x" id="hamburger-btn"></i>
     <!-- <i class="fa fa-bars fa-2x col-md-12 hidden-md col-lg-12 hidden-lg" id="hamburger-btn"></i> -->
   <% end %>
   <!-- Logo -->
@@ -21,24 +21,15 @@
     <% end %>
 
     <% if doctor_signed_in? %>
-
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Our Services</a>
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Questions</a>
       <%= link_to 'Dashboard', dashboard_path, class: 'navbar-wagon-item navbar-wagon-link' %>
       <%= link_to t(".sign_out", default: "Logout"), destroy_doctor_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% elsif patient_signed_in? %>
-
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Our Services</a>
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Questions</a>
       <%= link_to 'Dashboard', dashboard_path, class: 'navbar-wagon-item navbar-wagon-link' %>
       <%= link_to t(".sign_out", default: "Logout"), destroy_patient_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% else %>
       <!-- Login link (when logged out) -->
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Our Services</a>
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Questions</a>
-      <a href="#" class="navbar-wagon-item navbar-wagon-link">Testimonials</a>
       <%= link_to t(".sign_in", default: "Login"), sign_in_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
@@ -51,14 +42,10 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if doctor_signed_in? %>
-            <li><a href="#" class="navbar-wagon-item navbar-wagon-link">Our Services</a></li>
-            <li><a href="#" class="navbar-wagon-item navbar-wagon-link">Questions</a></li>
             <li><%= link_to 'Dashboard', dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
             <li><%= link_to t(".sign_out", default: "Logout"), destroy_doctor_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %></li>
 
           <% elsif patient_signed_in? %>
-            <li><a href="#" class="navbar-wagon-item navbar-wagon-link">Our Services</a></li>
-            <li><a href="#" class="navbar-wagon-item navbar-wagon-link">Questions</a></li>
             <li><%= link_to 'Dashboard', dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
             <li><%= link_to t(".sign_out", default: "Logout"), destroy_patient_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %></li>
           <% else %>

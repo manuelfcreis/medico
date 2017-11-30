@@ -3,7 +3,6 @@
 //= require bootstrap-sprockets
 //= require typing
 //= require simple_form_extension
-//= require scrollReveal
 //= require_tree .
 
 $("#invite").on("keydown", function (e) {
