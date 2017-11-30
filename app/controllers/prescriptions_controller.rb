@@ -33,7 +33,7 @@ class PrescriptionsController < ApplicationController
     @prescription = @appointment.prescriptions.last
 
     if @prescription.save
-      redirect_to patient_path(@appointment.patient)
+      redirect_to request.referer
     else
       render :new
     end
