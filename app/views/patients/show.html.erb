@@ -18,8 +18,6 @@
     <div class="documents" style="background-color: white; border-radius: 3px;">
 
       <%= render "shared/documents", locals: { user: @doctor } %>
-
-
     </div>
   </div>
 </div>
@@ -27,5 +25,5 @@
 <%= render partial: 'shared/symptoms' %>
 
 <%= content_for :title do %>
-  <%= @patient.first_name %> - Medi-co
+<%= @patient.first_name %> - Medi-co
 <% end %>
