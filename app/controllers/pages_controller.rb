@@ -10,14 +10,14 @@ class PagesController < ApplicationController
     if !current_doctor.nil?
       @user = current_doctor
       if params[:dashboard_path].nil?
-        @card_array = @user.chats.where(accepted: true)
+        @card_array = @user.chats.order(created_at: :desc).where(accepted: true).order(:created_at)
       else
-        @card_array = @user.chats.joins(:patient).where(accepted: true,
+        @card_array = @user.chats.joins(:patient).order(created_at: :desc).where(accepted: true,
           patients: { first_name: params[:dashboard_path][:query]})
       end
     elsif !current_patient.nil?
       @user = current_patient
-      @card_array = @user.chats.where(accepted: true)
+      @card_array = @user.chats.where(accepted: true).order(:created_at)
     else
       redirect_to root_path
     end
