@@ -63,8 +63,9 @@
       link.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector('.closing').click();
-        console.log(link.innerHTML)
         document.getElementById('content').innerHTML = "#Symptom: " + link.innerHTML
+        $('#chat-input').click()
+        document.getElementById('content').innerHTML = ""
       });
     });
   </script>
