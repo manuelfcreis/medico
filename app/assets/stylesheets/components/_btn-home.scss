@@ -1,7 +1,8 @@
 .btn-home{
-  padding: 9%;
+  padding: 5%;
   color: white;
   border: 1.5px solid #FF686B;
+  background-color: rgba(255, 104, 107, 0.2);
   border-radius: 50px;
   font-weight: normal;
   opacity: 1;
@@ -10,8 +11,10 @@
   text-shadow: 1px 1px black;
   width: 240px;
   margin: 47px auto 0 auto;
-  .btn-home:hover{
+  transition: all 0.3s ease;
+  &:hover{
     border: 1.5px solid #84DCC6;
+    background-color: rgba(132, 220, 198, 0.2);
     text-decoration: none;
     color: white;
     cursor: pointer;
@@ -21,6 +24,7 @@
 
 .btn-home:hover{
   border: 1.5px solid #84DCC6;
+  background-color: rgba(132, 220, 198, 0.2);
   text-decoration: none;
   color: white;
   cursor: pointer;
@@ -30,7 +34,7 @@
   text-decoration: none;
   color: white;
   cursor: pointer;
-  padding: 9%;
+  padding: 5%;
   color: white;
   border: 1.5px solid #84DCC6;
   border-radius: 50px;
@@ -40,6 +44,10 @@
   font-size: 25px;
   text-shadow: 1px 1px black;
   width: 240px;
+}
+
+.btn-home:active {
+  background-color: rgba(132, 220, 198, 0.2);
 }
 
 
