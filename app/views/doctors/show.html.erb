@@ -3,7 +3,9 @@
     <%= render 'shared/profile', locals: { user: @doctor } %>
 
     <div class="medications" style="background-color: white; border-radius: 3px;">
+      
     <h5>Track your medication</h5>
+
       <%= render 'shared/medication_progress', locals: { prescription: current_active.prescriptions.last } %>
     </div>
   </div>
@@ -15,7 +17,7 @@
   <div class="right-bar">
     <%= render 'shared/appointments', locals: { user: @patient } %>
     <div class="documents" style="background-color: white; border-radius: 3px;">
-<%= render "shared/documents",  locals: { user: @patient }  %>
+      <%= render "shared/documents",  locals: { user: @patient }  %>
     </div>
   </div>
 </div>
@@ -23,7 +25,7 @@
 <%= render partial: 'shared/symptoms' %>
 
 <%= content_for :title do %>
-  Dr. <%= @doctor.first_name %> - Medi-co
+Dr. <%= @doctor.first_name %> - Medi-co
 <% end %>
 
 

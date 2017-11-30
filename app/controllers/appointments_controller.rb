@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
       @appointment.doctor = current_doctor
       @appointment.patient = Patient.find(params[:patient_id])
       if @appointment.save
-        redirect_to patient_path(@appointment.patient)
+        redirect_to request.referer
       else
         render :new
       end
@@ -25,7 +25,7 @@ class AppointmentsController < ApplicationController
       @appointment.doctor = Doctor.find(params[:doctor_id])
       @appointment.patient = current_patient
       if @appointment.save
-        redirect_to doctor_path(@appointment.doctor)
+        redirect_to request.referer
       else
         render :new
       end
@@ -48,7 +48,7 @@ class AppointmentsController < ApplicationController
     @appointment.status = "scheduled"
     @appointment.save
 
-    redirect_to dashboard_path
+    redirect_to request.referer
   end
 
   def reject
@@ -56,7 +56,7 @@ class AppointmentsController < ApplicationController
     @appointment.status = "cancelled"
     @appointment.save
 
-    redirect_to dashboard_path
+    redirect_to request.referer
   end
 
   def icalendar
