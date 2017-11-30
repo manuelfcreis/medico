@@ -69,7 +69,7 @@ It receives a @user from the dashboard/conversation -->
 
 
 <% if controller_name != "pages" %>
-    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{params[:id]}", class: "btn-primary patient", style: "margin-top: 10px" do %>
+    <%= button_to '#', method: :get, remote: true, 'data-toggle': 'modal', 'data-target': "#appointment-form-#{params[:id]}", class: "btn btn-primary patient", style: "margin-top: 10px" do %>
       Request an Appointment  <%= icon('calendar') %>
     <% end %>
   <% end %>
