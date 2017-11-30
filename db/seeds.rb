@@ -5,6 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Doctor.create!([{
+#   email: "manuelcfreis@gmail.com",
+#   encrypted_password: "secret"
+#   first_name: "Manuel",
+#   last_name: "Reis",
+# }])
+# Patient.create!([{
+#   email: "Ana@hello.com"
+#   first_name: "Ana"
+#   last_name:
+#   },
+#   {
+#   email:
+#   first_name:
+#   last_name: 
+#   }])
+
 require 'faker'
 require 'csv'
 answer = ""
@@ -103,20 +120,19 @@ until answer == "n"
 
 
     puts 'Creating Doctors...'
-    10.times do
       Doctor.create!(
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
-      email: Faker::Internet.email,
+      first_name: "Manuel",
+      last_name: "Reis",
+      email: "manuelfcreis@gmail.com",
       password: "secret",
-      specialty_id: rand(1..10),
+      specialty_id: 187,
       avatar: "http://www.wetpaint.com/wp-content/uploads/2016/08/greys-anatomy-chandra-wilson-miranda-bailey-4.jpg"
       )
-    end
+
 
     puts 'Creating Patients...'
-    10.times do
-      Patient.create!(
+    3.times do
+      a = Patient.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       email: Faker::Internet.email,
@@ -127,10 +143,13 @@ until answer == "n"
       education: ["Master's Degree", "Graduate", "Undergraduate", "Doctoral Degree", "High School"].sample,
       occupation: ["Student", "Teacher", "Anthropologist", "Architect", "Plumber"].sample,
       marital_status: ["Married", "Single", "Divorced", "Widowed"].sample,
-      disability: ["none", "High Blood Pressure", "Diabetes", "High Colesterol", "Hepatitis", "Obesity"].sample,
-      religion: ["Roman Catholic", "Protestant", "Sunni", "Jew", "Hindu", " jehovah's witness"].sample,
+      disability: ["none", "High Blood Pressure", "Diabetes", "High Cholesterol", "Hepatitis", "Obesity"].sample,
+      religion: ["Roman Catholic", "Protestant", "Sunni", "Jew", "Hindu", " Jehovah's Witness"].sample,
       avatar: "http://bubbamama.com/wp-content/uploads/2013/07/20130722-185719.jpg"
       )
+
+      a.chats.create(doctor_id: Doctor.last.id, accepted: true)
+      puts a.errors.full_messages
     end
     answer = "n"
   elsif answer != "n"
