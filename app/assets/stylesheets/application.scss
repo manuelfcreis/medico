@@ -38,3 +38,63 @@
     justify-content: center;
   }
 }
+
+.pdf {
+  position: relative;
+  height: 29.7cm;
+  width: 21cm;
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 100px 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+hr {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.prescription {
+  .list-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 50px;
+      flex: 0 0 100px;
+    }
+    h1 {
+      text-align: right;
+      flex: 1 1 auto;
+    }
+  }
+
+
+}
