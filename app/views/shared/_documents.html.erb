@@ -15,7 +15,7 @@
       <% locals[:user].documents.each do |doc| %>
         <% if action_name != "dashboard" %>
           <%= form_for([@messager, @chat, @message], remote: true, class: 'form-group') do |f| %>
-            <%= f.hidden_field :content, class: 'form-control', id: 'content', value: "#{icon('chain')} <a href='#{doc.file.url}'> Link to file </a>".html_safe %><br, style="height: 2px">
+            <%= f.hidden_field :content, class: 'form-control', id: 'content', value: "#{icon('chain')} <a href='#{doc.file.url}'> Link to file: #{doc.name} </a>".html_safe %><br, style="height: 2px">
               <%= hidden_field_tag 'sender', current_class %>
                 <li class="list-group-item" style="padding: 0px 15px 0px 0px;">
                   <button type="submit" class="filesend", style="margin: 0; margin-right: 10px; border-radius: 0px; background-color: #84dcc6; color: white; border:none">

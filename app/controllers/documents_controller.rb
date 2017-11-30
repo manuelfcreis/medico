@@ -8,15 +8,15 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    if params[:patient_id]      
+    if params[:patient_id]
       @user = Patient.find(params[:patient_id])
     else
       @user = Doctor.find(params[:doctor_id])
     end
 
-    @document = @user.documents.new(document_params)  
+    @document = @user.documents.new(document_params)
     if @document.save
-      redirect_to dashboard_path
+      redirect_to request.referer
     else
       render :new
     end
@@ -25,17 +25,17 @@ class DocumentsController < ApplicationController
   def destroy
     @document = Document.find(params[:id])
     @document.destroy
-    redirect_to dashboard_path
+    redirect_to request.referer
   end
 
-  private 
+  private
   def document_params
     params.require(:document).permit(
       :uploader_id,
       :uploader_type,
       :name,
       :description,
-      :file, 
+      :file,
       :file_cache
       )
   end

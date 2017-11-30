@@ -9,10 +9,10 @@ class DosesController < ApplicationController
     @dose = @prescription.doses.new(dose_params)
 
     if @dose.save
-      redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment.id)
+      redirect_to request.referer
       flash[:notice] = "Prescription saved"
     else
-      redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment.id)
+      redirect_to request.referer
     end
   end
 
@@ -22,7 +22,7 @@ class DosesController < ApplicationController
 
     @dose.save
 
-    redirect_to dashboard_path
+    redirect_to request.referer
   end
 
   private
