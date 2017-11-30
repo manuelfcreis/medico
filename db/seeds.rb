@@ -19,7 +19,7 @@
 #   {
 #   email:
 #   first_name:
-#   last_name: 
+#   last_name:
 #   }])
 
 require 'faker'
@@ -126,7 +126,7 @@ until answer == "n"
       email: "manuelfcreis@gmail.com",
       password: "secret",
       specialty_id: 187,
-      avatar: "http://www.wetpaint.com/wp-content/uploads/2016/08/greys-anatomy-chandra-wilson-miranda-bailey-4.jpg"
+      avatar: "https://s3-eu-west-1.amazonaws.com/medi-co/Images/Captura+de+ecra\%CC\%83+2017-11-30\%2C+a\%CC\%80s+13.10.25.png"
       )
 
 
@@ -145,7 +145,7 @@ until answer == "n"
       marital_status: ["Married", "Single", "Divorced", "Widowed"].sample,
       disability: ["none", "High Blood Pressure", "Diabetes", "High Cholesterol", "Hepatitis", "Obesity"].sample,
       religion: ["Roman Catholic", "Protestant", "Sunni", "Jew", "Hindu", " Jehovah's Witness"].sample,
-      avatar: "http://bubbamama.com/wp-content/uploads/2013/07/20130722-185719.jpg"
+      avatar: "https://s3-eu-west-1.amazonaws.com/medi-co/Avatars/Circle4.png"
       )
 
       a.chats.create(doctor_id: Doctor.last.id, accepted: true)
