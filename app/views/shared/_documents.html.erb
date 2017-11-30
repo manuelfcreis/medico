@@ -8,6 +8,11 @@
 
       <% locals[:user].documents.each do |doc| %>
         <li class="list-group-item" style="padding: 4px 0px 6px 20px;">
+            <% if action_name != "dashboard" %>
+              <button type="submit" class="filesend", style="background-color: #84dcc6; color: white; border: none">
+                <i class="fa fa-paper-plane-o"></i>
+              </button>
+            <% end %>
           <%= link_to doc.file.url, target: "_blank" do %>
             <strong><%= doc.name %></strong>
           <% end %>
