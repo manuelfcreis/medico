@@ -29,6 +29,13 @@
 </div>
 
 <% content_for(:js_content) do %>
+<div hidden>
+<%= form_for [@messager, @chat, @message], remote: true, html: {id: "symptom-submit"} do |f| %>
+  <%= f.text_field :content, class: 'form-control', id: 'symptom-content' %>
+  <%= f.text_field :sender, value: current_class %>
+<% end %>
+</div>
+
   <script>
     let havebtn = document.getElementById('have-btn');
     let feelbtn = document.getElementById('feel-btn');
@@ -60,19 +67,20 @@
       document.getElementById('cant').classList.remove('hidden');
     });
 
-    function symptom() {
+    // function symptom() {
     Array.from(libtn).forEach( link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        document.getElementById('content').innerHTML = "#Symptom: " + link.innerHTML
+        document.getElementById('symptom-content').value = "#Symptom: " + link.innerHTML
         document.querySelector('.closing').click();
-        $('#chat-input').click()
-        document.getElementById('content').innerHTML = ""
+        document.getElementById('symptom-submit').submit();
+        console.log('hello')
+        // document.getElementById('symptom-content').value = ""
       });
     });
-  }
-    medkit.addEventListener('click', function(e) {
-      symptom();
-    })
+  // }
+    // medkit.addEventListener('click', function(e) {
+    //   symptom();
+    // })
   </script>
 <% end %>

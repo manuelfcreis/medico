@@ -12,6 +12,11 @@ class MessagesController < ApplicationController
     @message.chat = @chat
     @message.sender = params[:sender]
 
+    if params[:sender].nil?
+      @message.sender = params[:message][:sender]
+    end
+
+
     if @message.save
       ActionCable.server.broadcast "room_channel_#{@chat.id}",
          content:  @message.content,
@@ -27,6 +32,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :sender)
     end
 end
