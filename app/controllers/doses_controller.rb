@@ -17,7 +17,7 @@ class DosesController < ApplicationController
 
     @dose.save
 
-    redirect_to new_patient_appointment_prescription_path(patient_id: @next.patient, appointment_id: @next)
+    redirect_to dashboard_path
   end
 
   private
