@@ -4,13 +4,21 @@
   .user-name {
     margin: 0;
     padding: 0;
-    img {
-      border-radius: 50%;
-      height: 100px;
-    }
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    .user-img {
+        margin: 0;
+        padding: 0;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 3px;
+        img {
+          height: 100px !important;
+          width: auto;
+        }
+      }
     .name {
       padding: 0;
       margin-left: 15px;
@@ -157,3 +165,5 @@
 #thumbsup {
   width: 50%;
 }
+
+

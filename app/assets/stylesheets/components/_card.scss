@@ -11,9 +11,10 @@
 
     width: 35%;
     display: flex;
+    border-radius: 3px;
     img {
-      border-radius: 50%;
       height: 80px;
+      width: auto;
       margin-right: 20px;
     }
     font-size: 0.8em;
@@ -72,13 +73,14 @@
   display: flex;
   .card-avatar {
     padding: 5px 10px !important;
-    margin: 0 !important;
-
+    margin: 5px 0px 0px 0px !important;
     width: 35%;
+    border-radius: 3px;
     display: flex;
     img {
-      border-radius: 50%;
+      border-radius: 3px;
       height: 80px;
+      width: auto;
       margin-right: 20px;
     }
     font-size: 0.8em;
