@@ -6,7 +6,6 @@ class DosesController < ApplicationController
 
     if @dose.save
       redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment)
-      flash[:notice] = "Medication saved"
     else
       redirect_to new_patient_appointment_prescription_path(patient_id: @appointment.patient.id, appointment_id: @appointment)
     end
